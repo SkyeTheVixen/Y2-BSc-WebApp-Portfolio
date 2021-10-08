@@ -35,17 +35,19 @@
                     <h1 class="text-center w-100">Login to VD Training</h1>
                 </div>
                 <div class="row pb-4">
-                    <form id="loginForm" method="POST" action="auth.php">
+                    <form id="loginForm" method="POST" autofill="off">
                         <div class="form-group py-2">
                             <label for="InputEmail">Email address</label>
-                            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="joe@somedomain.com" name="txtUser">
+                            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp"
+                                placeholder="joe@somedomain.com" name="txtUser">
                         </div>
                         <div class="form-group pb-2">
                             <label for="InputPassword">Password</label>
-                            <input type="password" name="txtPassword" class="form-control" id="InputPassword" placeholder="P4s5w0Rd">
+                            <input type="password" name="txtPassword" class="form-control" id="InputPassword"
+                                placeholder="P4s5w0Rd">
                         </div>
                         <div class="form-group pt-2 text-center">
-                            <button type="submit" class="btn btn-success" data-sitekey="6Ld3krgcAAAAAKsvN4iiHYnLzg_01XdW6Ye1LB9g" data-callback='onSubmit' data-action='submit'>Login</button>
+                            <button type="submit" id="loginBtn" class="btn btn-success">Login</button>
                         </div>
                     </form>
                 </div>
@@ -55,17 +57,40 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
-     <script>
-   function onSubmit(token) {
-     document.getElementById("loginForm").submit();
-   }
- </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#loginBtn").click(function(event) {
+                var email=$("#InputEmail").val;
+                var password=$("#InputPassword").val;
+
+                if(email === "" || password === ""){
+                    return;
+                }
+                $.ajax({
+                    type: "post",
+                    url: "./php/auth.php",
+                    data: {
+                        email:email,
+                        password:password
+                    },
+                    cache: false,
+                    success: function(dataResult){
+                        var DataResult = JSON.parse(dataResult);
+                        if(DataResult.statusCode === 200){
+                            location.href="index.php"
+                        }
+                    }
+                });
+                event.preventDefault();
+            })
+        })
+    </script>
+
     <!-- End Scripts -->
 </body>
 
