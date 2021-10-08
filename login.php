@@ -35,7 +35,7 @@
                     <h1 class="text-center w-100">Login to VD Training</h1>
                 </div>
                 <div class="row pb-4">
-                    <form id="loginForm" method="POST" autofill="off">
+                    <form id="loginForm" method="POST" autocomplete="off">
                         <div class="form-group py-2">
                             <label for="InputEmail">Email address</label>
                             <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp"
@@ -62,27 +62,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
+
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#loginBtn").click(function(event) {
-                var email=$("#InputEmail").val;
-                var password=$("#InputPassword").val;
-
-                if(email === "" || password === ""){
+            $("#loginBtn").click(function (event) {
+                var email = $("#InputEmail").val;
+                var password = $("#InputPassword").val;
+                if (email === "" || password === "") {
                     return;
                 }
+                var datastring = {"txtEmail": email, "txtPassword": password};
                 $.ajax({
                     type: "post",
-                    url: "./php/auth.php",
-                    data: {
-                        email:email,
-                        password:password
-                    },
+                    url: "php/auth.php",
+                    data: datastring,
                     cache: false,
-                    success: function(dataResult){
+                    success: function (dataResult) {
+                        console.log("dataresult success");
                         var DataResult = JSON.parse(dataResult);
-                        if(DataResult.statusCode === 200){
-                            location.href="index.php"
+                        if (DataResult.statusCode === 200) {
+                            location.href = "index.php"
                         }
                     }
                 });
