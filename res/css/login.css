@@ -5,11 +5,11 @@ body{
     background-size: 800% 800%;
     -webkit-animation: loginbg 30s ease infinite;
     animation: loginbg 30s ease infinite;
-    justify-content: center;
 }
 
-div.loginform{
-    background-color: white;
+.loginform{
+    background-color: aliceblue;
+    width: 100%;
     border-radius: 25px;
 }
 
