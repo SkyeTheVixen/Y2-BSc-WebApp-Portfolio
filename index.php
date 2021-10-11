@@ -22,7 +22,7 @@
     <meta name="msapplication-TileColor" content="#0b2033">
     <meta name="msapplication-config" content="res/favicon/browserconfig.xml">
     <meta name="theme-color" content="#0b2033">
-    <title>Home | VD Training</title>
+	<title>Home | VD Training</title>	
     <!-- End Metadata and Icons -->
 
     <!-- Stylesheets -->
@@ -30,6 +30,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- End Stylesheets -->
+	
+	<!-- Important Scripts -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+            $("#logoutBtn").click(function (event) {
+                $.ajax({
+                    type: "get",
+                    url: "php/logout.php",
+                    success: function (dataResult) {
+                            location.href = "login.php";
+                    }
+                });
+				event.preventDefault();
+            })
+        })
+    </script>
+	<!-- End Important Scripts -->
+	
+	
 </head>
 
 <body>
@@ -69,7 +89,7 @@
                     <li class="nav-item">
                         <a class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="logoutBtn">
                         <a class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
                     </li>
                 </ul>
@@ -89,8 +109,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/93e867abff.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">

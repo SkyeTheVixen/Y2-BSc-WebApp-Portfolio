@@ -1,26 +1,29 @@
 <?php
     session_start();
-    if(isset($_POST["txtEmail"]) && isset($_POST["txtPassword"])){
+    if(isset($_POST["txtUser"]) && isset($_POST["txtPassword"])){
         include_once("_connect.php");
-        $email = mysqli_real_escape_string($connect, $_POST["txtEmail"]);
+        $email = mysqli_real_escape_string($connect, $_POST["txtUser"]);
         $password = mysqli_real_escape_string($connect, $_POST["txtPassword"]);
-        $encPass = password_hash($password, 1, array('cost' => 9));
-
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             echo json_encode(array("statusCode" => 201));
         }
 
-        $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`Email` = ? AND `tblUsers`.`Password` = ?";
+        $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`Email` = ?";
         $stmt = mysqli_prepare($connect, $sql);
-        mysqli_stmt_bind_param($stmt, 'ss', $email, $encPass);
+        mysqli_stmt_bind_param($stmt, 's', $email);
         $stmt -> execute();
         $result = $stmt->get_result();
 
-
         if($result -> num_rows === 1){
             $User = $result->fetch_array(MYSQLI_ASSOC);
-            $_SESSION["userID"] = $User["UserID"];
-            echo json_encode(array("statusCode" => 200));
+			if(password_verify($password, $User["Password"], ))
+            {
+                $_SESSION["userID"] = $User["UserID"];
+                echo json_encode(array("statusCode" => 200));
+            }
+            else{
+                echo json_encode(array("statusCode" => 201));
+            }
         }
         else{
             echo json_encode(array("statusCode" => 201));
