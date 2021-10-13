@@ -18,7 +18,7 @@
             $User = $result->fetch_array(MYSQLI_ASSOC);
 			if(password_verify($password, $User["Password"], ))
             {
-                $_SESSION["userID"] = $User["UserID"];
+                $_SESSION["userID"] = $User["UUID"];
                 echo json_encode(array("statusCode" => 200));
             }
             else{

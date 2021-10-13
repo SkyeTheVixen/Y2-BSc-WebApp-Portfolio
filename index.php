@@ -81,7 +81,7 @@
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i> User Management</a></li>
+                            <li><a class="dropdown-item" href="usermanagement.php"><i class="fas fa-users"></i> User Management</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher"></i> Course
                                     Management</a></li>
                         </ul>
