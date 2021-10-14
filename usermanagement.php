@@ -47,7 +47,8 @@
     <!-- End Stylesheets -->
 
     <!-- Important Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#addUserBtn").click(function (event) {
@@ -57,24 +58,31 @@
                 var lastName = $("#lastNameInput").val();
                 var jobTitle = $("#jobTitleInput").val();
                 var accessLevel = $("#accessLevelSelect").val();
-				console.log(email);
-				console.log(password);
-				console.log(firstName);
-				console.log(lastName);
-				console.log(jobTitle);
-				console.log(accessLevel);
+                console.log(email);
+                console.log(password);
+                console.log(firstName);
+                console.log(lastName);
+                console.log(jobTitle);
+                console.log(accessLevel);
 
                 $.ajax({
                     type: "post",
                     url: "php/adduser.php",
-                    data: {email: email, password: password, firstname: firstName, lastname: lastName, jobtitle: jobTitle, accesslevel: accessLevel},
+                    data: {
+                        email: email,
+                        password: password,
+                        firstname: firstName,
+                        lastname: lastName,
+                        jobtitle: jobTitle,
+                        accesslevel: accessLevel
+                    },
                     cache: false,
                     success: function (result) {
                         var Data = JSON.parse(result);
                         if (Data.statuscode === 200) {
                             $("#addUserModal").modal('toggle');
-                        }
-                        else if (Data.statuscode === 201){
+                            $("#userTable").load("usermanagement.php #userTable");
+                        } else if (Data.statuscode === 201) {
                             alert("Error while adding User. Try again");
                         }
                     }
@@ -116,7 +124,8 @@
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item active" id="navddUserMgt" href="usermanagement.php"><i class="fas fa-users"></i> User Management</a></li>
+                            <li><a class="dropdown-item active" id="navddUserMgt" href="usermanagement.php"><i
+                                        class="fas fa-users"></i> User Management</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher"></i> Course
                                     Management</a></li>
                         </ul>
@@ -125,7 +134,8 @@
                         <a class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="./php/logout.php"><i class="fas fa-door-open"></i> Logout</a>
+                        <a class="nav-link link-light" href="./php/logout.php"><i class="fas fa-door-open"></i>
+                            Logout</a>
                     </li>
                 </ul>
             </div>
@@ -137,7 +147,7 @@
     <div class="container">
 
         <!-- Table of Users -->
-        <table class="mt-5 table table-striped table-hover">
+        <table class="mt-5 table table-striped table-hover" id="userTable">
             <thead>
                 <tr>
                     <th>User ID</th>
@@ -167,7 +177,7 @@
                     <td><?=$result["AccessLevel"]?></td>
                     <td><a href="#" data-id="<?=$result["UUID"]?>" class="editUser"><i class="fa fa-pencil"></i></a>
                     </td>
-                    <td><a href="#" data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
+                    <td><a  data-bs-toggle="modal" data-bs-target="#delUserModal" data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
                     </td>
                     <?php
                             }
@@ -176,6 +186,7 @@
             </tbody>
         </table>
         <!-- End Table of Users -->
+
 
         <!-- Pagination for Table -->
         <nav aria-label="...">
@@ -189,9 +200,11 @@
         </nav>
         <!-- End Pagination for Table -->
 
+
         <button class="px-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
 
-        <!-- Modal -->
+
+        <!-- Add User Modal -->
         <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
@@ -215,7 +228,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="accessLevelSelect" class="form-label">Access Level</label>
-                                <select class="form-select" required id="accessLevelSelect" aria-label="selectAccessLevel">
+                                <select class="form-select" required id="accessLevelSelect"
+                                    aria-label="selectAccessLevel">
                                     <option selected>Access Level</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
@@ -238,21 +252,52 @@
                 </div>
             </div>
         </div>
-        <!-- End Modal -->
+        <!-- End Add User Modal -->
 
-    </div>
-    <!-- End Main Page Content -->
 
-    <div class="footer">
+        <!-- Del User Modal -->
+        <div class="modal fade" id="delUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete User?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-3 h-100 align-content-center text-center">
+                                <h1><i class="fas fa-question-circle fa-2x"></i></h1>
+                            </div>
+                            <div class="col-9">
+                                <h1> Delete this user? (irreversible)</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="delUserBtn">Delete User</button>
+                    </div>
+                </div>
+            </div>
 
-    </div>
 
-    <!-- Scripts -->
-    <script src="https://kit.fontawesome.com/93e867abff.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-    </script>
-    <!-- End Scripts -->
+
+        </div>
+        <!-- End Del User Modal -->
+
+
+        <!-- End Main Page Content -->
+
+        <div class="footer">
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="https://kit.fontawesome.com/93e867abff.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+        </script>
+        <!-- End Scripts -->
 </body>
 
 </html>

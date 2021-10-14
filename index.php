@@ -33,7 +33,8 @@
     <!-- End Stylesheets -->
 
     <!-- Important Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#logoutBtn").click(function (event) {
@@ -116,12 +117,12 @@
 
     <!-- Main Page Content -->
     <div class="container">
-		
-		<!-- Welcome Greeting -->
+
+        <!-- Welcome Greeting -->
         <div class="row">
             <div class="col-12 mt-5 align-items-center">
-				<h1 class="text-center">Good 
-                <?php
+                <h1 class="text-center">Good
+                    <?php
                     $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
                     $stmt = mysqli_prepare($connect, $sql);
                     mysqli_stmt_bind_param($stmt, 's', $_SESSION["userID"]);
@@ -137,9 +138,12 @@
                         echo " Evening, ".$User["FirstName"]." ".$User["LastName"];
                     }
                 ?>
-					</h1>
+                </h1>
             </div>
         </div>
+        <!-- End Welcome Greeting -->
+
+
     </div>
     <!-- End Main Page Content -->
 
