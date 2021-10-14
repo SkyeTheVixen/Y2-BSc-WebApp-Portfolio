@@ -1,9 +1,23 @@
 <?php
     session_start();
+    include_once("./php/_connect.php");
     if (!isset($_SESSION['userID'])){
         header("Location: ./login.php");
-    }
-    include_once("./php/_connect.php");
+	}
+	else{
+		$sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
+        $stmt = mysqli_prepare($connect, $sql);
+        mysqli_stmt_bind_param($stmt, 's', $_SESSION["userID"]);
+        $stmt -> execute();
+        $result = $stmt->get_result();
+        if($result -> num_rows === 1){
+            $User = $result->fetch_array(MYSQLI_ASSOC);
+            if($User["AccessLevel"] === "user"){
+                echo "<script>alert('');</script>";
+                header("Location: index.php");
+            }
+        }
+	}
 ?>
 
 <!DOCTYPE html>
@@ -31,13 +45,53 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- End Stylesheets -->
+
+    <!-- Important Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#addUserBtn").click(function (event) {
+                var email = $("#emailInput").val();
+                var password = $("#passwordInput").val();
+                var firstName = $("#firstNameInput").val();
+                var lastName = $("#lastNameInput").val();
+                var jobTitle = $("#jobTitleInput").val();
+                var accessLevel = $("#accessLevelSelect").val();
+				console.log(email);
+				console.log(password);
+				console.log(firstName);
+				console.log(lastName);
+				console.log(jobTitle);
+				console.log(accessLevel);
+
+                $.ajax({
+                    type: "post",
+                    url: "php/adduser.php",
+                    data: {email: email, password: password, firstname: firstName, lastname: lastName, jobtitle: jobTitle, accesslevel: accessLevel},
+                    cache: false,
+                    success: function (result) {
+                        var Data = JSON.parse(result);
+                        if (Data.statuscode === 200) {
+                            $("#addUserModal").modal('toggle');
+                        }
+                        else if (Data.statuscode === 201){
+                            alert("Error while adding User. Try again");
+                        }
+                    }
+                })
+
+            });
+        });
+    </script>
+    <!-- End Important Scripts -->
+
 </head>
 
 <body>
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="#">
+            <a class="navbar-brand text-light" href="index.php">
                 <img src="res/img/vdLogoFull.png" alt="VD Training Logo" width="30" height="24"
                     class="d-inline-block align-text-top">
                 Vixendev Training
@@ -50,19 +104,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-light active" aria-current="page" href="#"><i class="fas fa-home"></i>
+                        <a class="nav-link link-light" aria-current="page" href="index.php"><i class="fas fa-home"></i>
                             Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-light" href="#"><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdownMenuLink"
+                        <a class="nav-link dropdown-toggle link-light active" href="#" id="navbarDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i> User Management</a></li>
+                            <li><a class="dropdown-item active" id="navddUserMgt" href="usermanagement.php"><i class="fas fa-users"></i> User Management</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher"></i> Course
                                     Management</a></li>
                         </ul>
@@ -71,7 +125,7 @@
                         <a class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
+                        <a class="nav-link link-light" href="./php/logout.php"><i class="fas fa-door-open"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -99,7 +153,7 @@
             <tbody>
                 <?php
                         $sql = "SELECT * FROM `tblUsers`";
-                        $run = mysqli_query($db_connect, $sql);
+                        $run = mysqli_query($connect, $sql);
 
                         while($result = mysqli_fetch_assoc($run))
                         {
@@ -126,17 +180,11 @@
         <!-- Pagination for Table -->
         <nav aria-label="...">
             <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                </li>
+                <li class="page-item disabled"><a class="page-link">Previous</a></li>
+                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
         </nav>
         <!-- End Pagination for Table -->
@@ -155,19 +203,19 @@
                         <form>
                             <div class="mb-3">
                                 <label for="firstNameInput" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstNameInput">
+                                <input type="text" required class="form-control" id="firstNameInput">
                             </div>
                             <div class="mb-3">
                                 <label for="lastNameInput" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastNameInput">
+                                <input type="text" required class="form-control" id="lastNameInput">
                             </div>
                             <div class="mb-3">
                                 <label for="jobTitleInput" class="form-label">Job Title</label>
-                                <input type="text" class="form-control" id="jobTitleInput">
+                                <input type="text" required class="form-control" id="jobTitleInput">
                             </div>
                             <div class="mb-3">
                                 <label for="accessLevelSelect" class="form-label">Access Level</label>
-                                <select class="form-select" id="accessLevelSelect" aria-label="selectAccessLevel">
+                                <select class="form-select" required id="accessLevelSelect" aria-label="selectAccessLevel">
                                     <option selected>Access Level</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
@@ -175,17 +223,17 @@
                             </div>
                             <div class="mb-3">
                                 <label for="emailInput" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="emailInput">
+                                <input type="email" required class="form-control" id="emailInput">
                             </div>
                             <div class="mb-3">
                                 <label for="passwordInput" class="form-label">Password (must be 8+ characters)</label>
-                                <input type="password" class="form-control" id="passwordInput">
+                                <input type="password" required class="form-control" id="passwordInput">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Add User</button>
+                        <button type="button" class="btn btn-primary" id="addUserBtn">Add User</button>
                     </div>
                 </div>
             </div>
@@ -200,8 +248,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/93e867abff.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
