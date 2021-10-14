@@ -89,6 +89,32 @@
                 })
 
             });
+
+            $("#delUserBtn").click(function (event) {
+                var uuid = $("#").attr('data-id');
+                $.ajax({
+                    type: "post",
+                    url: "php/deluser.php",
+                    data: {
+                        uuid: uuid
+                    },
+                    cache: false,
+                    success: function (result) {
+                        var Data = JSON.parse(result);
+                        if (Data.statuscode === 200) {
+                            $("#delUserModal").modal('toggle');
+                            $("#userTable").load("usermanagement.php #userTable");
+                        } else if (Data.statuscode === 201) {
+                            alert("Error while deleting User. Try again");
+                        }
+                    }
+                })
+
+            });
+
+            $(".delUUID").click(function (event) {
+                $("#delUserBtn").attr("data-id", $(this).attr('data-id'));
+            });
         });
     </script>
     <!-- End Important Scripts -->
@@ -177,7 +203,7 @@
                     <td><?=$result["AccessLevel"]?></td>
                     <td><a href="#" data-id="<?=$result["UUID"]?>" class="editUser"><i class="fa fa-pencil"></i></a>
                     </td>
-                    <td><a  data-bs-toggle="modal" data-bs-target="#delUserModal" data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
+                    <td><a class="delUUID" data-bs-toggle="modal" data-bs-target="#delUserModal" data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
                     </td>
                     <?php
                             }
