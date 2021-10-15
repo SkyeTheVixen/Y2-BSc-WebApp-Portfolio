@@ -50,7 +50,6 @@
                             location.href = "index.php";
                         } else if (DataResult.statusCode === 201) {
                             $("#incorrectPassModal").modal('toggle');
-                            $("#InputPassword").text("").select();
                         }
                     }
                 });
@@ -64,7 +63,12 @@
 <body>
 
     <div class="container h-100">
-        <div class="row h-100 align-items-center">
+        <div class="row h-25 align-items-center">
+            <div class="col">
+                <img src="res/img/vdLogoFull.png">
+            </div>
+        </div>
+        <div class="row h-75 align-items-center">
             <div class="col-3"></div>
             <div class="col-6 loginform align-items-center shadow">
                 <div class="row pt-4">
