@@ -65,7 +65,7 @@
     <div class="container h-100">
         <div class="row h-25 align-items-center">
             <div class="col">
-                <img src="res/img/vdLogoFull.png">
+                <img src="res/img/vdLogoFull.png" style="max-height:25vh;">
             </div>
         </div>
         <div class="row h-75 align-items-center">
