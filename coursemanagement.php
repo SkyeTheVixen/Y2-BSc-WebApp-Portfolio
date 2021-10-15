@@ -209,8 +209,8 @@
                                 <select class="form-select" required name="courseDeliveryMethod"
                                     aria-label="selectAccessLevel">
                                     <option selected>Delivery Method</option>
-                                    <option value="admin">In Person</option>
-                                    <option value="user">Online</option>
+                                    <option value="In Person">In Person</option>
+                                    <option value="Online">Online</option>
                                 </select>
                             </div>
                             <div class="mb-3">
