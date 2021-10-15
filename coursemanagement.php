@@ -104,22 +104,24 @@
     <div class="container">
 
         <!-- Table of Users -->
-        <table class="mt-5 table table-striped table-hover" id="userTable">
+        <table class="mt-5 table table-striped table-hover" id="courseTable">
             <thead>
                 <tr>
-                    <th>User ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Job Title</th>
-                    <th>Access Level</th>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Delivery Method</th>
+                    <th>Max Participants</th>
+                    <th>View</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                        $sql = "SELECT * FROM `tblUsers`";
+                        $sql = "SELECT * FROM `tblCourses`";
                         $run = mysqli_query($connect, $sql);
 
                         while($result = mysqli_fetch_assoc($run))
@@ -131,6 +133,7 @@
                     <td><?=$result["CourseDescription"]?></td>
                     <td><?=$result["StartDate"]?></td>
                     <td><?=$result["EndDate"]?></td>
+                    <td><?=$result["DeliveryMethod"]?></td>
                     <td><?=$result["MaxParticipants"]?></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="viewCourse"><i class="fa fa-eye"></i></a></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="editCourse"><i class="fa fa-pencil"></i></a></td>
