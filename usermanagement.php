@@ -13,7 +13,6 @@
         if($result -> num_rows === 1){
             $User = $result->fetch_array(MYSQLI_ASSOC);
             if($User["AccessLevel"] === "user"){
-                echo "<script>alert('');</script>";
                 header("Location: index.php");
             }
         }
@@ -58,12 +57,6 @@
                 var lastName = $("#lastNameInput").val();
                 var jobTitle = $("#jobTitleInput").val();
                 var accessLevel = $("#accessLevelSelect").val();
-                console.log(email);
-                console.log(password);
-                console.log(firstName);
-                console.log(lastName);
-                console.log(jobTitle);
-                console.log(accessLevel);
 
                 $.ajax({
                     type: "post",
@@ -91,7 +84,7 @@
             });
 
             $("#delUserBtn").click(function (event) {
-                var uuid = $("#").attr('data-id');
+                var uuid = $("#delUserBtn").attr('data-id');
                 $.ajax({
                     type: "post",
                     url: "php/deluser.php",
@@ -108,7 +101,8 @@
                             alert("Error while deleting User. Try again");
                         }
                     }
-                })
+                });
+                event.preventDefault();
 
             });
 
@@ -201,9 +195,10 @@
                     <td><?=$result["Email"]?></td>
                     <td><?=$result["JobTitle"]?></td>
                     <td><?=$result["AccessLevel"]?></td>
-                    <td><a href="#" data-id="<?=$result["UUID"]?>" class="editUser"><i class="fa fa-pencil"></i></a>
+                    <td><a data-id="<?=$result["UUID"]?>" class="editUser"><i class="fa fa-pencil"></i></a>
                     </td>
-                    <td><a class="delUUID" data-bs-toggle="modal" data-bs-target="#delUserModal" data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
+                    <td><a class="delUUID" data-bs-toggle="modal" data-bs-target="#delUserModal"
+                            data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
                     </td>
                     <?php
                             }
