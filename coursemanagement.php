@@ -48,8 +48,8 @@
     <!-- Important scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
             $("#addCourseBtn").click(function (event) {
                 $("#addCourseForm").submit();
             });
@@ -72,8 +72,14 @@
                 })
 
             });
+            $('.input').keypress(function (e) {
+                if (e.which == 13) {
+                    $('#addcourseForm').submit();
+                    return;
+                }
+            });
         })
-        </script>
+    </script>
     <!-- End Important scripts -->
 </head>
 
@@ -181,7 +187,8 @@
 
 
         <!-- Add User Modal -->
-        <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -191,7 +198,7 @@
                     <div class="modal-body">
                         <form autocomplete="off" id="addCourseForm">
                             <div class="mb-3">
-                                <label for="CourseNameInput" class="form-label">Course Name</label>
+                                <label for="courseNameInput" class="form-label">Course Name</label>
                                 <input type="text" required class="form-control" name="courseNameInput">
                             </div>
                             <div class="mb-3">
