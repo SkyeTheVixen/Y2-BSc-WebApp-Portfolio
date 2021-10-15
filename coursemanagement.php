@@ -50,7 +50,7 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
             $(document).ready(function () {
-            $("#addCourseBtn").click(function (event) {
+            $("#addCourseForm").submit(function (event) {
                 var data = $(this).serialize();
                 event.preventDefault();
                 $.ajax({
@@ -186,7 +186,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form autocomplete="off" id="addCourseForm">
                             <div class="mb-3">
                                 <label for="CourseNameInput" class="form-label">Course Name</label>
                                 <input type="text" required class="form-control" name="courseNameInput">
