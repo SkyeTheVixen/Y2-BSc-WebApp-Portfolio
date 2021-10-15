@@ -136,7 +136,7 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="#"><i class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light" href="courses.php"><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle link-light active" href="#" id="navbarDropdownMenuLink"
@@ -146,12 +146,12 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item active" id="navddUserMgt" href="usermanagement.php"><i
                                         class="fas fa-users"></i> User Management</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher"></i> Course
+                            <li><a class="dropdown-item" href="coursemanagement.php"><i class="fas fa-chalkboard-teacher"></i> Course
                                     Management</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
+                        <a href="account.php" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-light" href="./php/logout.php"><i class="fas fa-door-open"></i>
