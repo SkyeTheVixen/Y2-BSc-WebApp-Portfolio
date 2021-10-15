@@ -50,7 +50,7 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
             $(document).ready(function () {
-            $("#addUserBtn").click(function (event) {
+            $("#addCourseBtn").click(function (event) {
                 var data = $(this).serialize();
                 event.preventDefault();
                 $.ajax({
@@ -193,7 +193,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="courseDescriptionInput" class="form-label">Course Description</label>
-                                <input type="text" required class="form-control" name="courseDescriptionInput">
+                                <textarea required class="form-control" name="courseDescriptionInput"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="courseStartDateInput" class="form-label">Start Date</label>
