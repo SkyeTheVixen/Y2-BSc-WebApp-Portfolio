@@ -154,7 +154,7 @@
                     ?>
                 <tr>
                     <td><?=$result["CUID"]?></td>
-                    <td><?=$result["CourseName"]?></td>
+                    <td><?=$result["CourseTitle"]?></td>
                     <td><?=$result["CourseDescription"]?></td>
                     <td><?=$result["StartDate"]?></td>
                     <td><?=$result["EndDate"]?></td>
