@@ -220,7 +220,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="addCourseBtn">Add Course</button>
+                            <button type="submit" class="btn btn-primary" id="addCourseBtn">Add Course</button>
                         </div>
                     </form>
 
