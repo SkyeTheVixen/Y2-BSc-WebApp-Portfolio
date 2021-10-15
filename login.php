@@ -82,8 +82,8 @@
                                 placeholder="P4s5w0Rd">
                         </div>
                         <div class="form-group pt-2 text-center">
-                            <button type="submit" id="loginBtn" class="btn btn-success">Login</button>
-                            <button type="button" id="forgotBtn" class="btn btn-secondary">Forgot Password?</button>
+                            <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
+                            <button type="button" id="forgotBtn"  data-bs-toggle="modal" data-bs-target="#addUserModal" class="btn btn-secondary">Forgot Password?</button>
                         </div>
                     </form>
                 </div>
@@ -91,7 +91,9 @@
             <div class="col-3"></div>
         </div>
 
-        <div class="modal fade" id="incorrectPassModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <!-- Modals -->
+        <div class="modal fade" id="incorrectPassModal" tabindex="-1" aria-labelledby="incorrectUserModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -110,10 +112,32 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
+
+        <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="forgotUserModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="emailInput" class="form-label">Email address</label>
+                                <input type="email" required class="form-control" id="emailInput">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="addUserBtn">Send reset Link</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modals -->
     </div>
 
     <!-- Scripts -->
