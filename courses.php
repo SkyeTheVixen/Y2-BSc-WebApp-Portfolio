@@ -1,3 +1,11 @@
+<?php
+    session_start();
+	include("./php/_connect.php");
+    if (!isset($_SESSION['userID'])){
+        header("Location: ./login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +23,7 @@
     <meta name="msapplication-TileColor" content="#0b2033">
     <meta name="msapplication-config" content="res/favicon/browserconfig.xml">
     <meta name="theme-color" content="#0b2033">
-    <title>PAGE NAME | VD Training</title>
+    <title>Courses | VD Training</title>
     <!-- End Metadata and Icons -->
 
     <!-- Stylesheets -->
@@ -23,6 +31,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- End Stylesheets -->
+
+    <!-- Important scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- End Important scripts -->
 </head>
 
 <body>
@@ -42,11 +55,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-light active" aria-current="page" href="#"><i class="fas fa-home"></i>
+                        <a class="nav-link link-light" aria-current="page" href="index.php"><i class="fas fa-home"></i>
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="#"><i class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light active" href="#"><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdownMenuLink"
@@ -54,16 +67,15 @@
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i> User Management</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher"></i> Course
-                                    Management</a></li>
+                            <li><a class="dropdown-item" href="usermanagement.php"><i class="fas fa-users"></i> User Management</a></li>
+                            <li><a class="dropdown-item" href="coursemanagement.php"><i class="fas fa-chalkboard-teacher"></i> Course Management</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
+                        <a href="account.php" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
+                        <a href="php/logout.php" class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
                     </li>
                 </ul>
             </div>
@@ -77,13 +89,7 @@
     </div>
     <!-- End Main Page Content -->
 
-    <div class="footer">
-
-    </div>
-
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/93e867abff.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
