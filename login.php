@@ -50,6 +50,7 @@
                             location.href = "index.php";
                         } else if (DataResult.statusCode === 201) {
                             $("#incorrectPassModal").modal('toggle');
+                            $("#InputPassword").text("").select();
                         }
                     }
                 });
