@@ -52,7 +52,7 @@
 </head>
 
 <body>
-    
+
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
@@ -139,7 +139,8 @@
                     <td><?=$result["MaxParticipants"]?></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="viewCourse"><i class="fa fa-eye"></i></a></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="editCourse"><i class="fa fa-pencil"></i></a></td>
-                    <td><a data-id="<?=$result["CUID"]?>" class="delCourse" data-bs-toggle="modal" data-bs-target="#delCourseModal"><i class="fas fa-trash-alt"></i></a>
+                    <td><a data-id="<?=$result["CUID"]?>" class="delCourse" data-bs-toggle="modal"
+                            data-bs-target="#delCourseModal"><i class="fas fa-trash-alt"></i></a>
                     </td>
                     <?php
                             }
@@ -148,6 +149,60 @@
             </tbody>
         </table>
         <!-- End Table of courses -->
+
+
+        <button class="px-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCourseModal">Add Course</button>
+
+
+        <!-- Add User Modal -->
+        <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addCourseModalLabel">Add New Course</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="CourseNameInput" class="form-label">Course Name</label>
+                                <input type="text" required class="form-control" id="CourseNameInput">
+                            </div>
+                            <div class="mb-3">
+                                <label for="courseDescriptionInput" class="form-label">Course Description</label>
+                                <input type="text" required class="form-control" id="courseDescriptionInput">
+                            </div>
+                            <div class="mb-3">
+                                <label for="courseStartDateInput" class="form-label">Start Date</label>
+                                <input type="date" required class="form-control" id="courseStartDateInput">
+                            </div>
+                            <div class="mb-3">
+                                <label for="courseEndDateInput" class="form-label">End Date</label>
+                                <input type="date" required class="form-control" id="courseEndDateInput">
+                            </div>
+                            <div class="mb-3">
+                                <label for="courseDeliveryMethod" class="form-label">Delivery Method</label>
+                                <select class="form-select" required id="courseDeliveryMethod"
+                                    aria-label="selectAccessLevel">
+                                    <option selected>Access Level</option>
+                                    <option value="admin">In Person</option>
+                                    <option value="user">Online</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
+                                <input type="number" required class="form-control" id="courseMaxParticipants">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="addCourseBtn">Add Course</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Add User Modal -->
 
 
     </div>
