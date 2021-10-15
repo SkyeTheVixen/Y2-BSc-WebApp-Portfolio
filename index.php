@@ -104,7 +104,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
+                        <a href="account.php" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
                     <li class="nav-item" id="logoutBtn">
                         <a href="php/logout.php" class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
