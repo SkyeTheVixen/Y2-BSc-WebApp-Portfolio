@@ -72,7 +72,8 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="courses.php"><i class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light" href="courses.php"><i
+                                class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle link-light active" href="#" id="navbarDropdownMenuLink"
@@ -80,8 +81,10 @@
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="usermanagement.php"><i class="fas fa-users"></i> User Management</a></li>
-                            <li><a class="dropdown-item active" href="#"><i class="fas fa-chalkboard-teacher"></i> Course
+                            <li><a class="dropdown-item" href="usermanagement.php"><i class="fas fa-users"></i> User
+                                    Management</a></li>
+                            <li><a class="dropdown-item active" href="#"><i class="fas fa-chalkboard-teacher"></i>
+                                    Course
                                     Management</a></li>
                         </ul>
                     </li>
@@ -99,6 +102,49 @@
 
     <!-- Main Page Content -->
     <div class="container">
+
+        <!-- Table of Users -->
+        <table class="mt-5 table table-striped table-hover" id="userTable">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Job Title</th>
+                    <th>Access Level</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                        $sql = "SELECT * FROM `tblUsers`";
+                        $run = mysqli_query($connect, $sql);
+
+                        while($result = mysqli_fetch_assoc($run))
+                        {
+                    ?>
+                <tr>
+                    <td><?=$result["CUID"]?></td>
+                    <td><?=$result["CourseName"]?></td>
+                    <td><?=$result["CourseDescription"]?></td>
+                    <td><?=$result["StartDate"]?></td>
+                    <td><?=$result["EndDate"]?></td>
+                    <td><?=$result["MaxParticipants"]?></td>
+                    <td><a data-id="<?=$result["CUID"]?>" class="viewCourse"><i class="fa fa-eye"></i></a></td>
+                    <td><a data-id="<?=$result["CUID"]?>" class="editCourse"><i class="fa fa-pencil"></i></a></td>
+                    <td><a class="delCUID" data-bs-toggle="modal" data-bs-target="#delCourseModal"
+                            data-id="<?=$result["CUID"]?>" class="delCourse"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                    <?php
+                            }
+                        ?>
+                </tr>
+            </tbody>
+        </table>
+        <!-- End Table of Users -->
+
 
     </div>
     <!-- End Main Page Content -->
