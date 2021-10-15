@@ -25,28 +25,31 @@
     <!-- End Stylesheets -->
 
     <!-- Important Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#loginForm").submit(function (event) {
-				event.preventDefault();
+                event.preventDefault();
                 var email = $("#InputEmail").val();
-				var password = $("#InputPassword").val();
+                var password = $("#InputPassword").val();
                 if (email === "" || password === "") {
                     return;
                 }
                 $.ajax({
                     type: "post",
                     url: "php/auth.php",
-                    data: { txtUser: email, txtPassword: password },
+                    data: {
+                        txtUser: email,
+                        txtPassword: password
+                    },
                     cache: false,
                     success: function (dataResult) {
                         var DataResult = JSON.parse(dataResult);
                         if (DataResult.statusCode === 200) {
                             location.href = "index.php";
-                        }
-                        else if(DataResult.statusCode === 201){
-                            return;
+                        } else if (DataResult.statusCode === 201) {
+                            $("#incorrectPassModal").modal('toggle');
                         }
                     }
                 });
@@ -85,6 +88,30 @@
                 </div>
             </div>
             <div class="col-3"></div>
+        </div>
+
+        <div class="modal fade" id="incorrectPassModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Incorrect login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-3 h-100 align-content-center text-center">
+                                <h1><i class="fas fa-exclamation-triangle fa-2x"></i></h1>
+                            </div>
+                            <div class="col-9">
+                                <h1>Your user or password was incorrect</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 

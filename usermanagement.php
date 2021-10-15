@@ -74,7 +74,6 @@
                         var Data = JSON.parse(result);
                         if (Data.statuscode === 200) {
                             $("#addUserModal").modal('toggle');
-                            $("#userTable").load("usermanagement.php #userTable");
                         } else if (Data.statuscode === 201) {
                             alert("Error while adding User. Try again");
                         }
@@ -96,7 +95,6 @@
                         var Data = JSON.parse(result);
                         if (Data.statuscode === 200) {
                             $("#delUserModal").modal('toggle');
-                            $("#userTable").load("usermanagement.php #userTable");
                         } else if (Data.statuscode === 201) {
                             alert("Error while deleting User. Try again");
                         }
