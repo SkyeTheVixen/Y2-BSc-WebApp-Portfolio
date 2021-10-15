@@ -48,6 +48,29 @@
     <!-- Important scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+            $("#addUserBtn").click(function (event) {
+                var data = $(this).serialize();
+                event.preventDefault();
+                $.ajax({
+                    type: "post",
+                    url: "php/addcourse.php",
+                    data: data,
+                    cache: false,
+                    success: function (result) {
+                        var Data = JSON.parse(result);
+                        if (Data.statuscode === 200) {
+                            $("#addCourseModal").modal('toggle');
+                        } else if (Data.statuscode === 201) {
+                            alert("Error while adding Course. Try again");
+                        }
+                    }
+                })
+
+            });
+        })
+        </script>
     <!-- End Important scripts -->
 </head>
 
@@ -166,32 +189,32 @@
                         <form>
                             <div class="mb-3">
                                 <label for="CourseNameInput" class="form-label">Course Name</label>
-                                <input type="text" required class="form-control" id="CourseNameInput">
+                                <input type="text" required class="form-control" name="courseNameInput">
                             </div>
                             <div class="mb-3">
                                 <label for="courseDescriptionInput" class="form-label">Course Description</label>
-                                <input type="text" required class="form-control" id="courseDescriptionInput">
+                                <input type="text" required class="form-control" name="courseDescriptionInput">
                             </div>
                             <div class="mb-3">
                                 <label for="courseStartDateInput" class="form-label">Start Date</label>
-                                <input type="date" required class="form-control" id="courseStartDateInput">
+                                <input type="date" required class="form-control" name="courseStartDateInput">
                             </div>
                             <div class="mb-3">
                                 <label for="courseEndDateInput" class="form-label">End Date</label>
-                                <input type="date" required class="form-control" id="courseEndDateInput">
+                                <input type="date" required class="form-control" name="courseEndDateInput">
                             </div>
                             <div class="mb-3">
                                 <label for="courseDeliveryMethod" class="form-label">Delivery Method</label>
-                                <select class="form-select" required id="courseDeliveryMethod"
+                                <select class="form-select" required name="courseDeliveryMethod"
                                     aria-label="selectAccessLevel">
-                                    <option selected>Access Level</option>
+                                    <option selected>Delivery Method</option>
                                     <option value="admin">In Person</option>
                                     <option value="user">Online</option>
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
-                                <input type="number" required class="form-control" id="courseMaxParticipants">
+                                <input type="number" required class="form-control" name="courseMaxParticipants">
                             </div>
                         </form>
                     </div>

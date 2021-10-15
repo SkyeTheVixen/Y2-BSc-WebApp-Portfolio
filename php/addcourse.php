@@ -11,12 +11,12 @@
             header("Location: index.php");
         }
     }
-    $courseName= mysqli_real_escape_string($connect, $_POST["email"]);
-    $courseDescription= mysqli_real_escape_string($connect, $_POST["password"]);
-    $courseStartDate= mysqli_real_escape_string($connect, $_POST["firstname"]);
-    $courseEndDate= mysqli_real_escape_string($connect, $_POST["lastname"]);
-    $courseDeliveryMethod= mysqli_real_escape_string($connect, $_POST["jobtitle"]);
-    $CourseMaxParticipants= mysqli_real_escape_string($connect, $_POST["accesslevel"]);
+    $courseName= mysqli_real_escape_string($connect, $_POST["courseNameInput"]);
+    $courseDescription= mysqli_real_escape_string($connect, $_POST["courseDescriptionInput"]);
+    $courseStartDate= mysqli_real_escape_string($connect, $_POST["courseStartDateInput"]);
+    $courseEndDate= mysqli_real_escape_string($connect, $_POST["courseEndDateInput"]);
+    $courseDeliveryMethod= mysqli_real_escape_string($connect, $_POST["courseDeliveryMethod"]);
+    $CourseMaxParticipants= mysqli_real_escape_string($connect, $_POST["courseMaxParticipants"]);
 
     //UUID
     $CUIDData = $CUIDData ?? random_bytes(16);
