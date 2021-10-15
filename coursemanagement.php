@@ -50,9 +50,6 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
-            $("#addCourseBtn").click(function (event) {
-                $("#addCourseForm").submit();
-            });
             $("#addCourseForm").submit(function (event) {
                 var data = $(this).serialize();
                 event.preventDefault();
@@ -71,12 +68,6 @@
                     }
                 })
 
-            });
-            $('.input').keypress(function (e) {
-                if (e.which == 13) {
-                    $('#addcourseForm').submit();
-                    return;
-                }
             });
         })
     </script>
@@ -191,12 +182,12 @@
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addCourseModalLabel">Add New Course</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form autocomplete="off" id="addCourseForm">
+                    <form autocomplete="off" id="addCourseForm">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addCourseModalLabel">Add New Course</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
                             <div class="mb-3">
                                 <label for="courseNameInput" class="form-label">Course Name</label>
                                 <input type="text" required class="form-control" name="courseNameInput">
@@ -226,12 +217,13 @@
                                 <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
                                 <input type="number" required class="form-control" name="courseMaxParticipants">
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" id="addCourseBtn">Add Course</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="addCourseBtn">Add Course</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
