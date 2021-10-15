@@ -52,6 +52,7 @@
 </head>
 
 <body>
+    
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
@@ -103,7 +104,8 @@
     <!-- Main Page Content -->
     <div class="container">
 
-        <!-- Table of Users -->
+
+        <!-- Table of courses -->
         <table class="mt-5 table table-striped table-hover" id="courseTable">
             <thead>
                 <tr>
@@ -137,8 +139,7 @@
                     <td><?=$result["MaxParticipants"]?></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="viewCourse"><i class="fa fa-eye"></i></a></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="editCourse"><i class="fa fa-pencil"></i></a></td>
-                    <td><a class="delCUID" data-bs-toggle="modal" data-bs-target="#delCourseModal"
-                            data-id="<?=$result["CUID"]?>" class="delCourse"><i class="fas fa-trash-alt"></i></a>
+                    <td><a data-id="<?=$result["CUID"]?>" class="delCourse" data-bs-toggle="modal" data-bs-target="#delCourseModal"><i class="fas fa-trash-alt"></i></a>
                     </td>
                     <?php
                             }
@@ -146,7 +147,7 @@
                 </tr>
             </tbody>
         </table>
-        <!-- End Table of Users -->
+        <!-- End Table of courses -->
 
 
     </div>
