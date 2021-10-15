@@ -83,6 +83,7 @@
                         </div>
                         <div class="form-group pt-2 text-center">
                             <button type="submit" id="loginBtn" class="btn btn-success">Login</button>
+                            <button type="button" id="forgotBtn" class="btn btn-secondary">Forgot Password?</button>
                         </div>
                     </form>
                 </div>
