@@ -103,10 +103,13 @@
     <!-- Main Page Content -->
     <div class="container">
 
-        <?php
-            echo $User["profileImage"];
-        ?>
-
+        <div class="row h-25">
+            <div class="col-12">
+                <?php
+                    echo $User["profileImage"];
+                ?>
+            </div>
+        </div>
     </div>
     <!-- End Main Page Content -->
 
