@@ -33,8 +33,7 @@
     <!-- End Stylesheets -->
 
     <!-- Important scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <?php
         $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
         $stmt = mysqli_prepare($connect, $sql);
@@ -44,6 +43,7 @@
         if($result -> num_rows === 1){
             $User = $result->fetch_array(MYSQLI_ASSOC);
             if($User["AccessLevel"] === "user"){
+                print("1");
                 echo "<script type='text/javascript'>$(document).ready(function () { $('#mgtDrop').remove(); })</script>";
             }
         }
