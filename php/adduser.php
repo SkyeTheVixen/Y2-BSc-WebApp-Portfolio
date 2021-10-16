@@ -26,8 +26,10 @@
     $uuidData[8] = chr(ord($uuidData[8]) & 0x3f | 0x80);
     $UUID = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($uuidData), 4));
 
+    $url = "<img src=\"https://proficon.stablenetwork.uk/api/identicon/$UUID.svg\" alt=\"Profile Photo\">";
+
     //SQL Prepped Statement
-    $sql="INSERT INTO `tblUsers` (`UUID`, `Email`, `Password`, `FirstName`, `LastName`, `JobTitle`, `AccessLevel`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql="INSERT INTO `tblUsers` (`UUID`, `Email`, `Password`, `FirstName`, `LastName`, `JobTitle`, `AccessLevel`, profileImage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	$to = $email;
 	$subject = "User Account Creation";
@@ -35,7 +37,7 @@
 	$headers = "From: noreply@vixendev.com";
 	mail($to,$subject,$txt,$headers);
     $stmt=mysqli_prepare($connect, $sql);
-    mysqli_stmt_bind_param($stmt, "sssssss", $UUID, $email, $encPass, $firstName, $lastName, $jobTitle, $accessLevel);
+    mysqli_stmt_bind_param($stmt, "sssssss", $UUID, $email, $encPass, $firstName, $lastName, $jobTitle, $accessLevel, $url);
     if($stmt -> execute()){
         echo json_encode(array("statuscode" => 200));
     }
