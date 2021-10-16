@@ -37,7 +37,7 @@
 	$headers = "From: noreply@vixendev.com";
 	mail($to,$subject,$txt,$headers);
     $stmt=mysqli_prepare($connect, $sql);
-    mysqli_stmt_bind_param($stmt, "sssssss", $UUID, $email, $encPass, $firstName, $lastName, $jobTitle, $accessLevel, $url);
+    mysqli_stmt_bind_param($stmt, "ssssssss", $UUID, $email, $encPass, $firstName, $lastName, $jobTitle, $accessLevel, $url);
     if($stmt -> execute()){
         echo json_encode(array("statuscode" => 200));
     }
