@@ -103,8 +103,8 @@
     <!-- Main Page Content -->
     <div class="container">
 
-        <div class="row h-25">
-            <div class="col-12 h-25">
+        <div class="row mh-25">
+            <div class="col-12 mh-25">
                 <?php
                     echo $User["profileImage"];
                 ?>
