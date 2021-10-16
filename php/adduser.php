@@ -26,7 +26,7 @@
     $uuidData[8] = chr(ord($uuidData[8]) & 0x3f | 0x80);
     $UUID = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($uuidData), 4));
 
-    $url = "<img src=\"https://proficon.stablenetwork.uk/api/identicon/$UUID.svg\" alt=\"Profile Photo\">";
+    $url = "<img class=\"h-25\" src=\"https://proficon.stablenetwork.uk/api/identicon/$UUID.svg\" alt=\"Profile Photo\">";
 
     //SQL Prepped Statement
     $sql="INSERT INTO `tblUsers` (`UUID`, `Email`, `Password`, `FirstName`, `LastName`, `JobTitle`, `AccessLevel`, profileImage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
