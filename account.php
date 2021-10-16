@@ -104,7 +104,7 @@
     <div class="container">
 
         <div class="row h-25">
-            <div class="col-12">
+            <div class="col-12 h-25">
                 <?php
                     echo $User["profileImage"];
                 ?>
