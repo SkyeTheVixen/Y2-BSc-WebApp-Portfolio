@@ -103,7 +103,7 @@
     <!-- Main Page Content -->
     <div class="container">
 
-        <img src="<?php $User["profileImage"]?>" alt="Profile Image">
+        <img src="<?php $User['profileImage']?>" alt="Profile Image">
 
     </div>
     <!-- End Main Page Content -->
