@@ -33,7 +33,8 @@
     <!-- End Stylesheets -->
 
     <!-- Important scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <?php
         $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
         $stmt = mysqli_prepare($connect, $sql);
@@ -43,7 +44,6 @@
         if($result -> num_rows === 1){
             $User = $result->fetch_array(MYSQLI_ASSOC);
             if($User["AccessLevel"] === "user"){
-                print("1");
                 echo "<script type='text/javascript'>$(document).ready(function () { $('#mgtDrop').remove(); })</script>";
             }
         }
@@ -75,12 +75,12 @@
                         <a class="nav-link link-light" href="courses.php"><i
                                 class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdownMenuLink"
+                    <li class="nav-item dropdown" id="mgtDrop">
+                        <a id="mgtDrop" class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-wrench"></i> Management
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <ul id="mgtDrop" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="usermanagement.php"><i class="fas fa-users"></i> User
                                     Management</a></li>
                             <li><a class="dropdown-item" href="coursemanagement.php"><i
