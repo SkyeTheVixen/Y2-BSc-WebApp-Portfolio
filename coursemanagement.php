@@ -138,6 +138,7 @@
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Delivery Method</th>
+                    <th>Allow Self-enrol?</th>
                     <th>Max Participants</th>
                     <th>View</th>
                     <th>Edit</th>
@@ -159,6 +160,7 @@
                     <td><?=$result["StartDate"]?></td>
                     <td><?=$result["EndDate"]?></td>
                     <td><?=$result["DeliveryMethod"]?></td>
+                    <td><?=$result["SelfEnrol"]?></td>
                     <td><?=$result["MaxParticipants"]?></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="viewCourse"><i class="fa fa-eye"></i></a></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="editCourse"><i class="fa fa-pencil"></i></a></td>
@@ -212,6 +214,10 @@
                                     <option value="In Person">In Person</option>
                                     <option value="Online">Online</option>
                                 </select>
+                            </div>
+                            <div class="mb-3 form-check form-switch">
+                                <label for="courseSelfEnrol" class="form-label">Allow Self Enrolment?</label>
+                                <input class="form-check-input" type="checkbox" role="switch" name="courseSelfEnrol">
                             </div>
                             <div class="mb-3">
                                 <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
