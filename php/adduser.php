@@ -1,7 +1,19 @@
 <?php
     include_once("_connect.php");
     include_once("functions.inc.php");
-    if(!PermCheck()) return;
+    
+    $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
+    $stmt = mysqli_prepare($connect, $sql);
+    mysqli_stmt_bind_param($stmt, 's', $_SESSION["userID"]);
+    $stmt -> execute();
+    $result = $stmt->get_result();
+    if($result -> num_rows === 1){
+        $User = $result->fetch_array(MYSQLI_ASSOC);
+        if($User["AccessLevel"] === "user"){
+            header("Location: index.php");
+        }
+    }
+
     $email= mysqli_real_escape_string($connect, $_POST["email"]);
     $password= mysqli_real_escape_string($connect, $_POST["password"]);
     $firstName= mysqli_real_escape_string($connect, $_POST["firstname"]);
