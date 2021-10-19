@@ -19,7 +19,7 @@
             if($User["AccessLevel"] === "user"){
                 header("Location: index.php");
             }
+            return "true";
         }
-        return "true";
     }
 ?>

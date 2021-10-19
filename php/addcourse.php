@@ -1,6 +1,6 @@
 <?php
     include_once("_connect.php");
-    include_once("functions.inc.php");
+    include("functions.inc.php");
     if(!PermCheck() === "true") return;
 
     $courseName= mysqli_real_escape_string($connect, $_POST["courseNameInput"]);
