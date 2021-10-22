@@ -162,7 +162,7 @@
             </thead>
             <tbody>
                 <?php
-                        $sql = "SELECT * FROM `tblCourses` ORDER BY `tblCourses`.`CreatedAt` ASC";
+                        $sql = "SELECT * FROM `tblCourses` ORDER BY `tblCourses`.`CreatedAt` DESC";
                         $run = mysqli_query($connect, $sql);
 
                         while($result = mysqli_fetch_assoc($run))
