@@ -50,7 +50,6 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
     <script>
         $(document).ready(function () {
             $("#addCourseForm").submit(function (event) {
@@ -163,7 +162,7 @@
             </thead>
             <tbody>
                 <?php
-                        $sql = "SELECT * FROM `tblCourses`";
+                        $sql = "SELECT * FROM `tblCourses` ORDER BY `tblCourses`.`CreatedAt` ASC";
                         $run = mysqli_query($connect, $sql);
 
                         while($result = mysqli_fetch_assoc($run))
