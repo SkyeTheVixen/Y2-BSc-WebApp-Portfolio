@@ -54,6 +54,21 @@
                     }
                 });
             })
+
+            function myFunction(width) {
+                if (width.matches) { // If media query matches
+                    $(".container").addClass('container-fluid');
+                    $(".container").removeClass('container');       
+                } else {
+                    $(".container").addClass('container');
+                    $(".container").removeClass('container-fluid');
+                    
+                }
+            }
+
+            var width = window.matchMedia("(max-width: 700px)");
+            myFunction(width);
+            width.addListener(myFunction);
         })
     </script>
     <!-- End Important Scripts -->
@@ -83,7 +98,8 @@
                         </div>
                         <div class="form-group pt-2 text-center">
                             <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
-                            <button type="button" id="forgotBtn"  data-bs-toggle="modal" data-bs-target="#forgotPassModal" class="btn btn-secondary">Forgot Password?</button>
+                            <button type="button" id="forgotBtn" data-bs-toggle="modal"
+                                data-bs-target="#forgotPassModal" class="btn btn-secondary">Forgot Password?</button>
                         </div>
                     </form>
                 </div>
