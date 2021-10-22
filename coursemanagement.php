@@ -48,6 +48,8 @@
     <!-- Important scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $("#addCourseForm").submit(function (event) {
@@ -62,8 +64,21 @@
                         var Data = JSON.parse(result);
                         if (Data.statuscode === 200) {
                             $("#addCourseModal").modal('toggle');
+                            let timerInterval
+                            Swal.fire({
+                                title: 'Course Added!',
+                                html: 'Please reload to see changes.',
+                                timer: 2000,
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
                         } else if (Data.statuscode === 201) {
-                            alert("Error while adding Course. Try again");
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong. Please try again',
+                            })
                         }
                     }
                 })
