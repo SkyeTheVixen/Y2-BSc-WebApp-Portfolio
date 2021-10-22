@@ -194,7 +194,7 @@
         <button class="px-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCourseModal">Add Course</button>
 
 
-        <!-- Add User Modal -->
+        <!-- Add Course Modal -->
         <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -248,7 +248,7 @@
                 </div>
             </div>
         </div>
-        <!-- End Add User Modal -->
+        <!-- End Add Course Modal -->
 
 
     </div>
