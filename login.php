@@ -64,7 +64,7 @@
 
     <div class="container h-100">
         <div class="row h-100 deflex justify-content-center align-content-center">
-            <div class="col-auto loginform align-items-center shadow">
+            <div class="col-auto loginform vw-100 align-items-center shadow">
                 <div class="row pt-4">
                     <h1 class="text-center w-100">Login to VD Training</h1>
                 </div>

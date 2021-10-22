@@ -43,11 +43,15 @@
     <link rel="stylesheet" href="res/css/global.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <!-- End Stylesheets -->
 
     <!-- Important Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#addUserBtn").click(function (event) {
@@ -107,6 +111,8 @@
             $(".delUUID").click(function (event) {
                 $("#delUserBtn").attr("data-id", $(this).attr('data-id'));
             });
+
+            $("#userTable").DataTable();
         });
     </script>
     <!-- End Important Scripts -->
@@ -134,7 +140,8 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="courses.php"><i class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light" href="courses.php"><i
+                                class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle link-light active" href="#" id="navbarDropdownMenuLink"
@@ -144,7 +151,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item active" id="navddUserMgt" href="usermanagement.php"><i
                                         class="fas fa-users"></i> User Management</a></li>
-                            <li><a class="dropdown-item" href="coursemanagement.php"><i class="fas fa-chalkboard-teacher"></i> Course
+                            <li><a class="dropdown-item" href="coursemanagement.php"><i
+                                        class="fas fa-chalkboard-teacher"></i> Course
                                     Management</a></li>
                         </ul>
                     </li>
