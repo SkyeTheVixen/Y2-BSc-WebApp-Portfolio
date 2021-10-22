@@ -43,12 +43,16 @@
     <link rel="stylesheet" href="res/css/global.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
     <!-- End Stylesheets -->
 
     <!-- Important scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -84,6 +88,8 @@
                 })
 
             });
+
+            $("#courseTable").DataTable();
         })
     </script>
     <!-- End Important scripts -->
@@ -144,6 +150,8 @@
 
 
         <!-- Table of courses -->
+        <!-- Table of Users -->
+        <div class="row mt-5">
         <table class="mt-5 table table-striped table-hover" id="courseTable">
             <thead>
                 <tr>

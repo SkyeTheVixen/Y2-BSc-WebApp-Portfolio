@@ -173,60 +173,48 @@
     <div class="container">
 
         <!-- Table of Users -->
-        <table class="mt-5 table table-striped table-hover" id="userTable">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Job Title</th>
-                    <th>Access Level</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <div class="row mt-5">
+            <table class="mt-5 table table-striped table-hover" id="userTable">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Job Title</th>
+                        <th>Access Level</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                         $sql = "SELECT * FROM `tblUsers`";
                         $run = mysqli_query($connect, $sql);
 
                         while($result = mysqli_fetch_assoc($run))
                         {
                     ?>
-                <tr>
-                    <td><?=$result["UUID"]?></td>
-                    <td><?=$result["FirstName"]?></td>
-                    <td><?=$result["LastName"]?></td>
-                    <td><?=$result["Email"]?></td>
-                    <td><?=$result["JobTitle"]?></td>
-                    <td><?=$result["AccessLevel"]?></td>
-                    <td><a data-id="<?=$result["UUID"]?>" class="editUser"><i class="fa fa-pencil"></i></a>
-                    </td>
-                    <td><a class="delUUID" data-bs-toggle="modal" data-bs-target="#delUserModal"
-                            data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                    <?php
+                    <tr>
+                        <td><?=$result["UUID"]?></td>
+                        <td><?=$result["FirstName"]?></td>
+                        <td><?=$result["LastName"]?></td>
+                        <td><?=$result["Email"]?></td>
+                        <td><?=$result["JobTitle"]?></td>
+                        <td><?=$result["AccessLevel"]?></td>
+                        <td><a data-id="<?=$result["UUID"]?>" class="editUser"><i class="fa fa-pencil"></i></a>
+                        </td>
+                        <td><a class="delUUID" data-bs-toggle="modal" data-bs-target="#delUserModal"
+                                data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                        <?php
                             }
                         ?>
-                </tr>
-            </tbody>
-        </table>
-        <!-- End Table of Users -->
-
-
-        <!-- Pagination for Table -->
-        <nav aria-label="...">
-            <ul class="pagination">
-                <li class="page-item disabled"><a class="page-link">Previous</a></li>
-                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
-        <!-- End Pagination for Table -->
-
+                    </tr>
+                </tbody>
+            </table>
+            <!-- End Table of Users -->
+        </div>
 
         <button class="px-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
 
