@@ -54,21 +54,6 @@
                     }
                 });
             })
-
-            function myFunction(width) {
-                if (width.matches) { // If media query matches
-                    $(".container").addClass('container-fluid');
-                    $(".container").removeClass('container');       
-                } else {
-                    $(".container").addClass('container');
-                    $(".container").removeClass('container-fluid');
-                    
-                }
-            }
-
-            var width = window.matchMedia("(max-width: 700px)");
-            myFunction(width);
-            width.addListener(myFunction);
         })
     </script>
     <!-- End Important Scripts -->
@@ -79,8 +64,7 @@
 
     <div class="container h-100">
         <div class="row h-100 align-items-center">
-            <div class="col-3"></div>
-            <div class="col-6 loginform align-items-center shadow">
+            <div class="col-auto deflex justify-content-center align-content-center loginform align-items-center shadow">
                 <div class="row pt-4">
                     <h1 class="text-center w-100">Login to VD Training</h1>
                 </div>
@@ -104,7 +88,6 @@
                     </form>
                 </div>
             </div>
-            <div class="col-3"></div>
         </div>
 
         <!-- Modals -->
