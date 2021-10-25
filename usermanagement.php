@@ -51,6 +51,7 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -78,6 +79,15 @@
                         var Data = JSON.parse(result);
                         if (Data.statuscode === 200) {
                             $("#addUserModal").modal('toggle');
+                            let timerInterval
+                            Swal.fire({
+                                title: 'User Added!',
+                                html: 'Please reload to see changes.',
+                                timer: 2000,
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            })
                         } else if (Data.statuscode === 201) {
                             alert("Error while adding User. Try again");
                         }
