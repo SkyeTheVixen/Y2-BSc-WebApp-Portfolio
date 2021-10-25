@@ -27,6 +27,7 @@
     <!-- Important Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#loginForm").submit(function (event) {
@@ -49,7 +50,15 @@
                         if (DataResult.statusCode === 200) {
                             location.href = "index.php";
                         } else if (DataResult.statusCode === 201) {
-                            $("#incorrectPassModal").modal('toggle');
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'You may have entered invalid credentials. Please try again',
+                                timer: 2000,
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            });
                         }
                     }
                 });
@@ -63,7 +72,8 @@
 <body>
 
     <div class="container h-100">
-        <div class="row h-100 deflex justify-content-center align-content-center">
+        <!-- Login Form -->
+        <div class="row justify-content-center">
             <div class="col-auto loginform vw-100 align-items-center shadow">
                 <div class="row pt-4">
                     <h1 class="text-center w-100">Login to VD Training</h1>
@@ -89,30 +99,9 @@
                 </div>
             </div>
         </div>
+        <!-- End Login Form -->
 
         <!-- Modals -->
-        <div class="modal fade" id="incorrectPassModal" tabindex="-1" aria-labelledby="incorrectUserModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Incorrect login</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-3 h-100 align-content-center text-center">
-                                <h1><i class="fas fa-exclamation-triangle fa-2x"></i></h1>
-                            </div>
-                            <div class="col-9">
-                                <h1>Your user or password was incorrect</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="forgotUserModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
