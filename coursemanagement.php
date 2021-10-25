@@ -108,7 +108,7 @@
                             $("#delUserModal").modal('toggle');
                             Swal.fire(
                                 'Deleted!',
-                                'Your file has been deleted.',
+                                'Course has been deleted.',
                                 'success'
                             )
                         } else if (Data.statuscode === 201) {
