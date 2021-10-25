@@ -91,8 +91,9 @@
                         } else if (Data.statuscode === 201) {
                             let timerInterval;
                             Swal.fire({
-                                title: "Error",
-                                html:"Error while adding user. Try again",
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong. Please try again',
                                 timer: 2000,
                                 willClose: () => {
                                     clearInterval(timerInterval)
@@ -123,8 +124,9 @@
                         } else if (Data.statuscode === 201) {
                             let timerInterval;
                             Swal.fire({
-                                title: "Error",
-                                html:"Error while Deleting user. Try again",
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong. Please try again',
                                 timer: 2000,
                                 willClose: () => {
                                     clearInterval(timerInterval)
