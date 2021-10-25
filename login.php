@@ -72,10 +72,10 @@
 <body>
     <!-- Main Page Content -->
     
-    <div class="container h-100">
+    <div class="container -fluid h-100">
         <!-- Login Form -->
-        <div class="row justify-content-center">
-            <div class="col-auto loginform vw-100 align-items-center shadow">
+        <div class="row h-100 justify-content-center">
+            <div class="col-auto loginform w-50 align-items-center shadow">
                 <div class="row pt-4">
                     <h1 class="text-center w-100">Login to VD Training</h1>
                 </div>
