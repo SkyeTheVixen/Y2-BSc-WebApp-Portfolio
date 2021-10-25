@@ -72,7 +72,7 @@
 <body>
     <!-- Main Page Content -->
     
-    <div class="container -fluid h-100">
+    <div class="container-fluid h-100">
         <!-- Login Form -->
         <div class="row h-100 justify-content-center">
             <div class="col-auto loginform w-50 align-items-center shadow">
