@@ -78,11 +78,16 @@
                                 }
                             })
                         } else if (Data.statuscode === 201) {
+                            let timerInterval;
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
                                 text: 'Something went wrong. Please try again',
-                            })
+                                timer: 2000,
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            });
                         }
                     }
                 })
@@ -107,7 +112,16 @@
                                 'success'
                             )
                         } else if (Data.statuscode === 201) {
-                            alert("Error while deleting User. Try again");
+                            let timerInterval;
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong. Please try again',
+                                timer: 2000,
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            });
                         }
                     }
                 });
