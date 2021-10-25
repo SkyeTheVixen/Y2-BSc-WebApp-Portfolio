@@ -79,7 +79,7 @@
                         var Data = JSON.parse(result);
                         if (Data.statuscode === 200) {
                             $("#addUserModal").modal('toggle');
-                            let timerInterval
+                            let timerInterval;
                             Swal.fire({
                                 title: 'User Added!',
                                 html: 'Please reload to see changes.',
@@ -89,15 +89,22 @@
                                 }
                             })
                         } else if (Data.statuscode === 201) {
-                            alert("Error while adding User. Try again");
+                            let timerInterval;
+                            Swal.fire({
+                                title: "Error",
+                                html:"Error while adding user. Try again",
+                                timer: 2000,
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            });
                         }
                     }
                 })
 
             });
 
-            $("#delUserBtn").click(function (event) {
-                var uuid = $("#delUserBtn").attr('data-id');
+            function delUser(uuid) {
                 $.ajax({
                     type: "post",
                     url: "php/deluser.php",
@@ -108,18 +115,40 @@
                     success: function (result) {
                         var Data = JSON.parse(result);
                         if (Data.statuscode === 200) {
-                            $("#delUserModal").modal('toggle');
+                            Swal.fire(
+                                'Deleted!',
+                                'User has been deleted.',
+                                'success'
+                            )
                         } else if (Data.statuscode === 201) {
-                            alert("Error while deleting User. Try again");
+                            let timerInterval;
+                            Swal.fire({
+                                title: "Error",
+                                html:"Error while Deleting user. Try again",
+                                timer: 2000,
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            });
                         }
                     }
                 });
-                event.preventDefault();
+            };
 
-            });
-
-            $(".delUUID").click(function (event) {
-                $("#delUserBtn").attr("data-id", $(this).attr('data-id'));
+            $(".deluuid").click(function (event) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "This action is irreversible",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Delete'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        delUser($(this).attr('data-id'));
+                    }
+                })
             });
 
             $("#userTable").DataTable();
