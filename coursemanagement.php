@@ -113,7 +113,7 @@
                 });
             };
 
-            $(".delCUID").click(function (event) {
+            $(".delCourse").click(function (event) {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
