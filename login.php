@@ -53,11 +53,7 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'You may have entered invalid credentials. Please try again',
-                                timer: 2000,
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
+                                text: 'You may have entered invalid credentials. Please try again'
                             });
                         }
                     }
