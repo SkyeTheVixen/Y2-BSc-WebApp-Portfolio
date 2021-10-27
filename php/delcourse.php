@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['userID'])){
+        header("Location: ../login");
+    }
 include_once("_connect.php");
 $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
 $stmt = mysqli_prepare($connect, $sql);
@@ -8,7 +12,7 @@ $result = $stmt->get_result();
 if($result -> num_rows === 1){
     $User = $result->fetch_array(MYSQLI_ASSOC);
     if($User["AccessLevel"] === "user"){
-        header("Location: index.php");
+        header("Location: index");
     }
 }
     $sql = "DELETE FROM `tblCourses` WHERE `tblCourses`.`CUID` = ?";

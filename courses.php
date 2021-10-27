@@ -2,7 +2,7 @@
     session_start();
 	include("./php/_connect.php");
     if (!isset($_SESSION['userID'])){
-        header("Location: ./login.php");
+        header("Location: ./login");
     }
 ?>
 
@@ -69,7 +69,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-light" aria-current="page" href="index.php"><i class="fas fa-home"></i>
+                        <a class="nav-link link-light" aria-current="page" href="index"><i class="fas fa-home"></i>
                             Home</a>
                     </li>
                     <li class="nav-item">
@@ -81,18 +81,18 @@
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul id="mgtDrop" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="usermanagement.php"><i class="fas fa-users"></i> User
+                            <li><a class="dropdown-item" href="usermanagement"><i class="fas fa-users"></i> User
                                     Management</a></li>
-                            <li><a class="dropdown-item" href="coursemanagement.php"><i
+                            <li><a class="dropdown-item" href="coursemanagement"><i
                                         class="fas fa-chalkboard-teacher"></i> Course
                                     Management</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="account.php" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
+                        <a href="account" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
                     <li class="nav-item">
-                        <a href="php/logout.php" class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
+                        <a href="php/logout" class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
                     </li>
                 </ul>
             </div>

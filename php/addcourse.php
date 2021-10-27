@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['userID'])){
+        header("Location: ../login");
+    }
     include_once("_connect.php");
     include("functions.inc.php");
 
@@ -10,7 +14,7 @@
     if($result -> num_rows === 1){
         $User = $result->fetch_array(MYSQLI_ASSOC);
         if($User["AccessLevel"] === "user"){
-            header("Location: index.php");
+            header("Location: index");
         }
     }
 

@@ -2,7 +2,7 @@
     session_start();
     include_once("./php/_connect.php");
     if (!isset($_SESSION['userID'])){
-        header("Location: ./login.php");
+        header("Location: ./login");
 	}
 	else{
 		$sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
@@ -153,7 +153,7 @@
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="index.php">
+            <a class="navbar-brand text-light" href="index">
                 <img src="res/img/vdLogoFull.png" alt="VD Training Logo" width="30" height="24"
                     class="d-inline-block align-text-top">
                 Vixendev Training
@@ -166,11 +166,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-light" aria-current="page" href="index.php"><i class="fas fa-home"></i>
+                        <a class="nav-link link-light" aria-current="page" href="index"><i class="fas fa-home"></i>
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="courses.php"><i
+                        <a class="nav-link link-light" href="courses"><i
                                 class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -179,7 +179,7 @@
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="usermanagement.php"><i class="fas fa-users"></i> User
+                            <li><a class="dropdown-item" href="usermanagement"><i class="fas fa-users"></i> User
                                     Management</a></li>
                             <li><a class="dropdown-item active" href="#"><i class="fas fa-chalkboard-teacher"></i>
                                     Course
@@ -187,10 +187,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="account.php" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
+                        <a href="account" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
                     <li class="nav-item">
-                        <a href="php/logout.php" class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
+                        <a href="php/logout" class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
                     </li>
                 </ul>
             </div>

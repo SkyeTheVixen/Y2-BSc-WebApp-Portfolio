@@ -17,7 +17,7 @@
         if($result -> num_rows === 1){
             $User = $result->fetch_array(MYSQLI_ASSOC);
             if($User["AccessLevel"] === "user"){
-                header("Location: index.php");
+                header("Location: index");
             }
         }
     }
