@@ -8,7 +8,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: "post",
-            url: "php/auth.php",
+            url: "../php/auth.php",
             data: {
                 txtUser: email,
                 txtPassword: password
