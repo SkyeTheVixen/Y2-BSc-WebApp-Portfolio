@@ -1,153 +1,8 @@
-<?php
-    session_start();
-    include_once("./php/_connect.php");
-    if (!isset($_SESSION['userID'])){
-        header("Location: ./login");
-	}
-	else{
-		$sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
-        $stmt = mysqli_prepare($connect, $sql);
-        mysqli_stmt_bind_param($stmt, 's', $_SESSION["userID"]);
-        $stmt -> execute();
-        $result = $stmt->get_result();
-        if($result -> num_rows === 1){
-            $User = $result->fetch_array(MYSQLI_ASSOC);
-            if($User["AccessLevel"] === "user"){
-                header("Location: index.php");
-            }
-        }
-	}
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Metadata and Icons -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="res/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="res/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="res/favicon/favicon-16x16.png">
-    <link rel="manifest" href="res/favicon/site.webmanifest">
-    <link rel="mask-icon" href="res/favicon/safari-pinned-tab.svg" color="#0b2033">
-    <link rel="shortcut icon" href="res/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#0b2033">
-    <meta name="msapplication-config" content="res/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#0b2033">
-    <title>Course Management | VD Training</title>
-    <!-- End Metadata and Icons -->
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="res/css/global.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-
-    <!-- End Stylesheets -->
-
-    <!-- Important scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $("#addCourseForm").submit(function (event) {
-                var data = $(this).serialize();
-                event.preventDefault();
-                $.ajax({
-                    type: "post",
-                    url: "php/addcourse.php",
-                    data: data,
-                    cache: false,
-                    success: function (result) {
-                        var Data = JSON.parse(result);
-                        if (Data.statuscode === 200) {
-                            $("#addCourseModal").modal('toggle');
-                            let timerInterval
-                            Swal.fire({
-                                title: 'Course Added!',
-                                html: 'Please reload to see changes.',
-                                timer: 2000,
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            })
-                        } else if (Data.statuscode === 201) {
-                            let timerInterval;
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Something went wrong. Please try again',
-                                timer: 2000,
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            });
-                        }
-                    }
-                })
-
-            });
-
-            function delCourse(cuid) {
-                $.ajax({
-                    type: "post",
-                    url: "php/delcourse.php",
-                    data: {
-                        cuid: cuid
-                    },
-                    cache: false,
-                    success: function (result) {
-                        var Data = JSON.parse(result);
-                        if (Data.statuscode === 200) {
-                            $("#delUserModal").modal('toggle');
-                            Swal.fire(
-                                'Deleted!',
-                                'Course has been deleted.',
-                                'success'
-                            )
-                        } else if (Data.statuscode === 201) {
-                            let timerInterval;
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Something went wrong. Please try again',
-                                timer: 2000,
-                                willClose: () => {
-                                    clearInterval(timerInterval)
-                                }
-                            });
-                        }
-                    }
-                });
-            };
-
-            $(".delCourse").click(function (event) {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        delCourse($(this).attr('data-id'));
-                    }
-                })
-            });
-
-            $("#courseTable").DataTable();
-        })
-    </script>
-    <!-- End Important scripts -->
-</head>
+<?php include("./php/_accesscheck.php"); ?>
+<?php include("./php/_authcheck.php"); ?>
+<?php $title = "Course Management | VD Training"; ?>
+<?php $currentPage = "coursemanagement"; ?>
+<?php include("./php/_header.php"); ?>
 
 <body>
     <!-- Navigation bar -->
@@ -170,8 +25,7 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="courses"><i
-                                class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light" href="courses"><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle link-light active" href="#" id="navbarDropdownMenuLink"
@@ -253,7 +107,8 @@
         </div>
         <!-- End Table of Courses -->
 
-        <button class="px-3 btn btn-primary right" data-bs-toggle="modal" data-bs-target="#addCourseModal">Add Course</button>
+        <button class="px-3 btn btn-primary right" data-bs-toggle="modal" data-bs-target="#addCourseModal">Add
+            Course</button>
 
         <!-- Add Course Modal -->
         <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel"
@@ -315,10 +170,4 @@
     <!-- End Main Page Content -->
 
 
-    <!-- Scripts -->
-    <script src="https://kit.fontawesome.com/93e867abff.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <!-- End Scripts -->
-</body>
-
-</html>
+    <?php include("../includes/footer.php"); ?>
