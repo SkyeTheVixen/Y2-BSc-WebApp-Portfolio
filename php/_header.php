@@ -28,7 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-    <script type="text/javascript" src='<?php echo($currentPage); ?>'></script>
+    <script type="text/javascript" src='../res/js/<?php echo($currentPage); ?>.js'></script>
     <!-- End Important Scripts -->
     <?php include("./php/removedropdown.php"); ?>
 
