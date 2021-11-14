@@ -30,7 +30,7 @@
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src='../res/js/<?php echo($currentPage); ?>.js'></script>
     <!-- End Important Scripts -->
-    <?php include("./php/removedropdown.php"); ?>
+    <?php include("./removedropdown.php"); ?>
 
 
 </head>
