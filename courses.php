@@ -1,6 +1,6 @@
 <?php include("./php/_authcheck.php"); ?>
-<?php $title = "Home | VD Training"; ?>
-<?php $currentPage = "index"; ?>
+<?php $title = "Courses | VD Training"; ?>
+<?php $currentPage = "courses"; ?>
 <?php include("./php/_header.php"); ?>
 
 
@@ -55,19 +55,24 @@
     <!-- Main Page Content -->
     <div class="container">
 
+        <!-- Title -->
         <div class="row my-5">
-            <div class="col">
-                <h1>Courses</h1>
+            <div class="col-12">
+                <h1 class="text-center">Courses</h1>
+                <hr>
             </div>
         </div>
+        <!-- End Title -->
 
+        <!-- Classes cards -->
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
                 <div class="card">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
                             additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
@@ -77,7 +82,8 @@
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
                             additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
@@ -87,7 +93,8 @@
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
                             additional content.</p>
                     </div>
                 </div>
@@ -97,15 +104,19 @@
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
                             additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
             </div>
         </div>
-
+        <!-- End Classes Cards -->
 
     </div>
     <!-- End Main Page Content -->
 
-    <?php include("../includes/footer.php"); ?>
+    <?php include("../includes/_footer.php"); ?>
+</body>
+
+</html>

@@ -60,5 +60,9 @@
         </div>
         <!-- End Modals -->
     </div>
+    <!-- End Main Page Content -->
 
-<?php include("./php/_footer.php"); ?>
+    <?php include("./php/_footer.php"); ?>
+</body>
+
+</html>

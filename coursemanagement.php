@@ -52,7 +52,6 @@
     </nav>
     <!-- End Navigation bar -->
 
-
     <!-- Main Page Content -->
     <div class="container">
 
@@ -103,12 +102,12 @@
                 </tbody>
             </table>
             <!-- End Table of courses -->
-
         </div>
         <!-- End Table of Courses -->
 
-        <button class="px-3 btn btn-primary right" data-bs-toggle="modal" data-bs-target="#addCourseModal">Add
-            Course</button>
+        <!-- Add Course Button -->
+        <button class="px-3 btn btn-primary right" data-bs-toggle="modal" data-bs-target="#addCourseModal">Add Course</button>
+        <!-- End Add Course Button -->
 
         <!-- Add Course Modal -->
         <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel"
@@ -169,5 +168,7 @@
     </div>
     <!-- End Main Page Content -->
 
+    <?php include("../includes/_footer.php"); ?>
+</body>
 
-    <?php include("../includes/footer.php"); ?>
+</html>

@@ -85,9 +85,7 @@
     </div>
     <!-- End Main Page Content -->
 
-
     <?php include("../includes/_footer.php"); ?>
-    <!-- End Main Page Content -->
 </body>
 
 </html>

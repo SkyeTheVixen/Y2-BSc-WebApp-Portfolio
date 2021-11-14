@@ -25,8 +25,7 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="courses"><i
-                                class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light" href="courses"><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle link-light active" href="#" id="navbarDropdownMenuLink"
@@ -184,12 +183,10 @@
 
         </div>
         <!-- End Del User Modal -->
+    </div>
+    <!-- End Main Page Content -->
 
+    <?php include("../includes/_footer.php"); ?>
+</body>
 
-        <!-- End Main Page Content -->
-
-        <div class="footer">
-
-        </div>
-
-<?php include("../includes/footer.php"); ?>
+</html>

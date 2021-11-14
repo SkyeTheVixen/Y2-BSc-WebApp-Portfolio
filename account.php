@@ -4,7 +4,6 @@
 <?php include("./php/_header.php"); ?>
 
 
-
 <body>
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
@@ -26,8 +25,7 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="courses"><i
-                                class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light" href="courses"><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown" id="mgtDrop">
                         <a id="mgtDrop" class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdownMenuLink"
@@ -56,7 +54,6 @@
 
     <!-- Main Page Content -->
     <div class="container">
-
         <div class="row">
             <div class="col-12">
                 <?php
@@ -67,4 +64,7 @@
     </div>
     <!-- End Main Page Content -->
 
-    <?php include("../includes/footer.php"); ?>
+    <?php include("../includes/_footer.php"); ?>
+</body>
+
+</html>
