@@ -41,7 +41,7 @@
         try {
             //Server settings
             $mail->isSMTP();
-            $mail->Host       = 'webmail.vixendev.com';
+            $mail->Host       = 'mail.vixendev.com';
             $mail->SMTPAuth   = true;
             $mail->Username   = 'no-reply@vixendev.com';
             $mail->Password   = 'Orange@72';
