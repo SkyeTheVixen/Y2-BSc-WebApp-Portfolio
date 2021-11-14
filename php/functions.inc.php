@@ -3,7 +3,6 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
     require 'vendor/autoload.php';
-    $mail = new PHPMailer(true);
 
     function GenerateID() {
         $IDData = $IDData ?? random_bytes(16);
@@ -54,6 +53,7 @@
 
 
     function sendMail($email, $userName,  $subject, $message, $altMessage){
+        $mail = new PHPMailer(true);
         try {
             //Server settings
             $mail->isSMTP();
