@@ -1,3 +1,4 @@
+<?php include("./functions.inc.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,5 @@
     <script src="https://kit.fontawesome.com/93e867abff.js" crossorigin="anonymous"></script>
     </script>
     <!-- End Important Scripts -->
-    <?php include("removedropdown.php"); ?>
-
-
+    <?php echo removeDropdown($currentPage); ?>
 </head>
