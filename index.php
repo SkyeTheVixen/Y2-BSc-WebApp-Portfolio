@@ -1,8 +1,10 @@
 <?php include("./php/_authcheck.php"); ?>
-<?php $title = "Home | VD Training"; ?>
-<?php $currentPage = "index"; ?>
+<?php $title="Home | VD Training"; ?>
+<?php $currentPage="index"; ?>
 <?php include("./php/_header.php"); ?>
 
+
+<body>
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
@@ -83,8 +85,5 @@
     </div>
     <!-- End Main Page Content -->
 
-    <div class="footer">
 
-    </div>
-
-    <?php include("../includes/footer.php"); ?>
+    <?php include("../includes/_footer.php"); ?>
