@@ -1,4 +1,4 @@
-<?php include("./php/_authcheck.php"); ?>
+<?php include("php/_authcheck.php"); ?>
 <?php $title="Home | VD Training"; ?>
 <?php $currentPage="index"; ?>
 <?php include("./php/_header.php"); ?>
