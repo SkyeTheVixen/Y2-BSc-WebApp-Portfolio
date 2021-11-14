@@ -27,6 +27,7 @@
         include_once("_connect.php");
         $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
         $stmt = mysqli_prepare($connect, $sql);
+        file_put_contents("dberror.txt", mysqli_connect_error());
         mysqli_stmt_bind_param($stmt, 's', $_SESSION["userID"]);
         $stmt -> execute();
         $result = $stmt->get_result();
