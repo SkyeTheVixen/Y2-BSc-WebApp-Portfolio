@@ -8,6 +8,7 @@
     $mail = new PHPMailer(true);
     try {
         //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
         $mail->isSMTP();
         $mail->Host       = 'mail.vixendev.com';
         $mail->SMTPAuth   = true;
@@ -30,6 +31,7 @@
         echo json_encode(array("statuscode" => 200));
 
     } catch (Exception $e) {
+        echo json_encode(array("statuscode" => 201));
         file_put_contents("errorlog.txt", "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
     }
 
