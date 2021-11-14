@@ -4,11 +4,6 @@
     use PHPMailer\PHPMailer\Exception;
     require '../vendor/autoload.php';
 
-    $to = "skylar.beacham@outlook.com";
-$subject = "Test Email";
-$userName = "Skylar Beacham";
-$txt = "Test Email";
-
 
     $mail = new PHPMailer(true);
     try {
@@ -22,17 +17,17 @@ $txt = "Test Email";
 
         //Recipients
         $mail->setFrom('no-reply@vixendev.com', 'Vixendev');
-        $mail->addAddress($to, $userName);
+        $mail->addAddress("skylar.beacham@outlook.com", "Skylar");
 
         //Content
         $mail->isHTML(true);
-        $mail->Subject = $subject;
-        $mail->Body    = $txt;
-        $mail->AltBody = $txt;
+        $mail->Subject = "Test Email";
+        $mail->Body    = "Config correct";
+        $mail->AltBody = "Config correct";
 
         $mail->send();
         echo 'Message has been sent';
-echo json_encode(array("statuscode" => 200));
+        echo json_encode(array("statuscode" => 200));
 
     } catch (Exception $e) {
         file_put_contents("errorlog.txt", "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
