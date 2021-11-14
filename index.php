@@ -2,7 +2,6 @@
 <?php $title="Home | VD Training"; ?>
 <?php $currentPage="index"; ?>
 <?php include("./php/_header.php"); ?>
-<?php include("./php/functions.inc.php"); ?>
 
 <body>
     
