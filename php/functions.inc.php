@@ -42,7 +42,7 @@
         $result = $stmt->get_result();
         if($result -> num_rows === 1){
             $User = $result->fetch_array(MYSQLI_ASSOC);
-            return $User["FirstName"] . " " . $User["LastName"];
+            return $User;
         }
     }
 ?>
