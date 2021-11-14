@@ -34,7 +34,7 @@
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="#">
+            <a class="navbar-brand text-light" href="index">
                 <img src="res/img/vdLogoFull.png" alt="VD Training Logo" width="30" height="24"
                     class="d-inline-block align-text-top">
                 Vixendev Training
@@ -47,28 +47,32 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-light active" aria-current="page" href="#"><i class="fas fa-home"></i>
+                        <a class="nav-link link-light" aria-current="page" href="index"><i class="fas fa-home"></i>
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="#"><i class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light" href="courses"><i
+                                class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdownMenuLink"
+                        <a class="nav-link dropdown-toggle link-light active" href="#" id="navbarDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-users"></i> User Management</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher"></i> Course
+                            <li><a class="dropdown-item active" id="navddUserMgt" href="usermanagement"><i
+                                        class="fas fa-users"></i> User Management</a></li>
+                            <li><a class="dropdown-item" href="coursemanagement"><i
+                                        class="fas fa-chalkboard-teacher"></i> Course
                                     Management</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
+                        <a href="account" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
+                        <a class="nav-link link-light" href="./php/logout"><i class="fas fa-door-open"></i>
+                            Logout</a>
                     </li>
                 </ul>
             </div>

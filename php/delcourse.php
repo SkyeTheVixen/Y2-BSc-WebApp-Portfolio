@@ -15,9 +15,9 @@ if($result -> num_rows === 1){
         header("Location: index");
     }
 }
-    $sql = "DELETE FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
+    $sql = "DELETE FROM `tblCourses` WHERE `tblCourses`.`CUID` = ?";
     $stmt = mysqli_prepare($connect, $sql);
-    mysqli_stmt_bind_param($stmt, 's', $_POST["uuid"]);
+    mysqli_stmt_bind_param($stmt, 's', $_POST["cuid"]);
     if($stmt -> execute()){
         echo json_encode(array("statuscode" => 200));
     }
