@@ -63,6 +63,11 @@
         </div>
         <!-- End Welcome Greeting -->
 
+        <br>
+
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="button">
+            <i class="fas fa-paper-airplane">Send Test Email
+        </button>
 
     </div>
     <!-- End Main Page Content -->
