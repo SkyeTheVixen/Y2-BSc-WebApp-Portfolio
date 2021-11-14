@@ -1,5 +1,5 @@
-<?php include("./php/_accesscheck.php"); ?>
 <?php include("./php/_authcheck.php"); ?>
+<?php include("./php/_accesscheck.php"); ?>
 <?php $title = "User Management | VD Training"; ?>
 <?php $currentPage = "usermanagement"; ?>
 <?php include("./php/_header.php"); ?>
