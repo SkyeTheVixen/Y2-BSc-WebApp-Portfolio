@@ -8,6 +8,6 @@
     $connect = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
 
     if(!$connect){
-        die("Connection failed: " . mysqli_connect_error());
+        file_put_contents("dbError.txt", "Connection failed: " . mysqli_connect_error());
     }
 ?>
