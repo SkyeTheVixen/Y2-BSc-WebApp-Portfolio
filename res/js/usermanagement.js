@@ -10,7 +10,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "post",
-            url: "../php/adduser.php",
+            url: "../../php/adduser.php",
             data: {
                 email: email,
                 password: password,
