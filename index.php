@@ -59,7 +59,7 @@
         <!-- Welcome Greeting -->
         <div class="row">
             <div class="col-12 mt-5 align-items-center">
-                <h1 class="text-center"><?php echo getGreeting(); ?> <?php echo getUser()["FirstName"];?></h1>
+                <h1 class="text-center"><?php echo getGreeting(); ?>, <?php echo getUser()["FirstName"];?></h1>
             </div>
         </div>
         <!-- End Welcome Greeting -->
