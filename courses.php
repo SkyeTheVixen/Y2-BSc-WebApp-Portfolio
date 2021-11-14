@@ -116,7 +116,7 @@
     </div>
     <!-- End Main Page Content -->
 
-    <?php include("../includes/_footer.php"); ?>
+    <?php include("./php/_footer.php"); ?>
 </body>
 
 </html>

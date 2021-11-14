@@ -53,7 +53,7 @@ $(document).ready(function () {
     function delUser(uuid) {
         $.ajax({
             type: "post",
-            url: "php/deluser.php",
+            url: "../../php/deluser.php",
             data: {
                 uuid: uuid
             },
