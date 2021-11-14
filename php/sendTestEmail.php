@@ -1,5 +1,7 @@
 <?php
 
+include("functions.inc.php");
+
 $to = "skylar.beacham@outlook.com";
 $subject = "Test Email";
 $userName = "Skylar Beacham";
