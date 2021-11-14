@@ -27,7 +27,6 @@
         $mail->AltBody = "Config correct";
 
         $mail->send();
-        echo 'Message has been sent';
         echo json_encode(array("statuscode" => 200));
 
     } catch (Exception $e) {

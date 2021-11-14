@@ -15,6 +15,7 @@ $(document).ready(function () {
             type: "get",
             url: "php/sendTestEmail.php",
             success: function (dataResult) {
+                console.log(dataResult);
                 var status = JSON.parse(dataResult);
                 if (status.statuscode === 200) {
                     alert("Email sent successfully");
