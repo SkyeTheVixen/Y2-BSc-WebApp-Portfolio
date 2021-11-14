@@ -16,7 +16,11 @@ $(document).ready(function () {
             url: "php/sendTestEmail.php",
             success: function (dataResult) {
                 var status = JSON.parse(dataResult);
-                alert(status.statuscode);
+                if (status.statuscode === 200) {
+                    alert("Email sent successfully");
+                } else if (status.statuscode === 201) {                 
+                    alert("Email not sent");
+                }
             }
         });
         event.preventDefault();
