@@ -4,7 +4,7 @@
 <?php include("./php/_header.php"); ?>
 
 <body>
-    
+    <?php echo mysqli_connect_error(); ?>
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
