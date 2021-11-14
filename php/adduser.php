@@ -34,9 +34,10 @@
     //Mail confirmation
 	$to = $email;
 	$subject = "User Account Creation";
+    $userName = $firstName . " " . $lastName;
 	$txt = "Hi ".$firstName." ".$lastName.".\n\nA User account has been created for you on the training platform. The login details are listed below.\n\n\nUsername: ".$email."\nPassword: ".$password."\nURL: https://ws255237-wad.remote.ac\n\nKind Regards,\nVD Training Team\n\n";
-	$headers = "From: noreply@vixendev.com";
-	mail($to,$subject,$txt,$headers);
+    sendMail($to, $userName,  $subject, $txt, $txt);
+
     $stmt = mysqli_prepare($connect, $sql);
     mysqli_stmt_bind_param($stmt, "ssssssss", $UUID, $email, $encPass, $firstName, $lastName, $jobTitle, $accessLevel, $url);
     if($stmt -> execute()){
