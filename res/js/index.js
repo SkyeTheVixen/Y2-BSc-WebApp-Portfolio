@@ -15,7 +15,8 @@ $(document).ready(function () {
             type: "get",
             url: "php/sendTestEmail.php",
             success: function (dataResult) {
-                alert(JSON.parse(dataResult).statusCode);
+                var status = JSON.parse(dataResult);
+                alert(status.statuscode);
             }
         });
         event.preventDefault();
