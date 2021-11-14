@@ -2,7 +2,7 @@
 <?php $title="Home | VD Training"; ?>
 <?php $currentPage="index"; ?>
 <?php include("./php/_header.php"); ?>
-
+<?php include("./php/functions.inc.php"); ?>
 
 <body>
     <!-- Navigation bar -->
@@ -59,24 +59,7 @@
         <!-- Welcome Greeting -->
         <div class="row">
             <div class="col-12 mt-5 align-items-center">
-                <h1 class="text-center">Good
-                    <?php
-                    $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
-                    $stmt = mysqli_prepare($connect, $sql);
-                    mysqli_stmt_bind_param($stmt, 's', $_SESSION["userID"]);
-                    $stmt -> execute();
-                    $result = $stmt->get_result();
-                    $User = $result->fetch_array(MYSQLI_ASSOC);
-                    $hour = date('G');
-                    if ( $hour >= 0 && $hour <= 12) {
-                        echo " Morning, ".$User["FirstName"]." ".$User["LastName"];
-                    } else if ( $hour >= 12 && $hour <= 18 ) {
-                        echo " Afternoon, ".$User["FirstName"]." ".$User["LastName"];
-                    } else if ( $hour >= 19 ) {
-                        echo " Evening, ".$User["FirstName"]." ".$User["LastName"];
-                    }
-                ?>
-                </h1>
+                <h1 class="text-center"><?php getGreeting(); ?> <?php getUser();?></h1>
             </div>
         </div>
         <!-- End Welcome Greeting -->
