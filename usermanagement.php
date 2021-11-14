@@ -111,8 +111,9 @@
                         <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form id="addUserForm">
+                    <form id="addUserForm">
+
+                        <div class="modal-body">
                             <div class="mb-3">
                                 <label for="firstNameInput" class="form-label">First Name</label>
                                 <input type="text" required class="form-control" id="firstNameInput">
@@ -142,12 +143,13 @@
                                 <label for="passwordInput" class="form-label">Password (must be 8+ characters)</label>
                                 <input type="password" required class="form-control" id="passwordInput">
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary" id="addUserBtn">Add User</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="addUserBtn">Add User</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
