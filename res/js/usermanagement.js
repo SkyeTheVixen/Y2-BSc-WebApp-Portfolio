@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $("#addUserBtn").click(function (event) {
+    $("#addUserForm").submit(function (event) {
+        event.preventDefault();
         var email = $("#emailInput").val();
         var password = $("#passwordInput").val();
         var firstName = $("#firstNameInput").val();

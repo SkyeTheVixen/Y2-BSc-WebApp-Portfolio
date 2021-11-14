@@ -112,7 +112,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="addUserForm">
                             <div class="mb-3">
                                 <label for="firstNameInput" class="form-label">First Name</label>
                                 <input type="text" required class="form-control" id="firstNameInput">
