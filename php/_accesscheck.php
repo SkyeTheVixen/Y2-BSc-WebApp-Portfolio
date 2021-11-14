@@ -1,4 +1,5 @@
 <?php
+    include_once('_connect.php');
     $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
     $stmt = mysqli_prepare($connect, $sql);
     mysqli_stmt_bind_param($stmt, 's', $_SESSION["userID"]);
