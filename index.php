@@ -3,7 +3,6 @@
 <?php $currentPage = "index"; ?>
 <?php include("./php/_header.php"); ?>
 
-<body>
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
