@@ -1,4 +1,10 @@
 <?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    require 'vendor/autoload.php';
+    $mail = new PHPMailer(true);
+
     function GenerateID() {
         $IDData = $IDData ?? random_bytes(16);
         assert(strlen($IDData) == 16);
@@ -45,4 +51,33 @@
             return $User;
         }
     }
+
+
+    function sendMail($email, $userName,  $subject, $message, $altMessage){
+        try {
+            //Server settings
+            $mail->isSMTP();
+            $mail->Host       = 'webmail.vixendev.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'no-reply@vixendev.com';
+            $mail->Password   = 'Orange@72';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+
+            //Recipients
+            $mail->setFrom('no-reply@vixendev.com', 'Vixendev');
+            $mail->addAddress($email, $userName);
+
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+            $mail->AltBody = $altMessage;
+
+            $mail->send();
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            file_put_contents("errorlog.txt", "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+        }
+    }
+
 ?>
