@@ -1,1 +1,0 @@
-<?php echo mysqli_connect_error();?>
