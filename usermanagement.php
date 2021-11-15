@@ -88,8 +88,7 @@
                         <td><?=$result["AccessLevel"]?></td>
                         <td><a data-id="<?=$result["UUID"]?>" class="editUser"><i class="fa fa-pencil"></i></a>
                         </td>
-                        <td><a class="delUUID" data-bs-toggle="modal" data-bs-target="#delUserModal"
-                                data-id="<?=$result["UUID"]?>" class="delUser"><i class="fas fa-trash-alt"></i></a>
+                        <td><a class="delUUID" data-id="<?=$result["UUID"]?>"><i class="fas fa-trash-alt"></i></a>
                         </td>
                         <?php
                             }
@@ -155,36 +154,6 @@
         </div>
         <!-- End Add User Modal -->
 
-
-        <!-- Del User Modal -->
-        <!-- <div class="modal fade" id="delUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete User?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-3 h-100 align-content-center text-center">
-                                <h1><i class="fas fa-question-circle fa-2x"></i></h1>
-                            </div>
-                            <div class="col-9">
-                                <h1> Delete this user? (irreversible)</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" id="delUserBtn">Delete User</button>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div> -->
-        <!-- End Del User Modal -->
     </div>
     <!-- End Main Page Content -->
 
