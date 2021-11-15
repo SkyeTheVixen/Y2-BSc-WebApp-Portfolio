@@ -157,7 +157,7 @@
 
 
         <!-- Del User Modal -->
-        <div class="modal fade" id="delUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="delUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -183,7 +183,7 @@
 
 
 
-        </div>
+        </div> -->
         <!-- End Del User Modal -->
     </div>
     <!-- End Main Page Content -->
