@@ -10,14 +10,14 @@ $(document).ready(function () {
         event.preventDefault();
     })
 
-    $("#button").click(function (event) {
-        $.ajax({
-            type: "get",
-            url: "php/sendTestEmail.php",
-            success: function (dataResult) {
-                console.log(dataResult);
-            }
-        });
-        event.preventDefault();
-    })
+    // $("#button").click(function (event) {
+    //     $.ajax({
+    //         type: "get",
+    //         url: "php/sendTestEmail.php",
+    //         success: function (dataResult) {
+    //             console.log(dataResult);
+    //         }
+    //     });
+    //     event.preventDefault();
+    // })
 })
