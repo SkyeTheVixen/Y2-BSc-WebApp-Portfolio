@@ -19,7 +19,7 @@
 
         //Recipients
         $mail->setFrom('no-reply@vixendev.com', 'Vixendev');
-        $mail->addAddress("skylar.beacham@outlook.com", "Skylar");
+        $mail->addAddress("warningatom9922@gmail.com", "Skylar");
 
         //Content
         $mail->isHTML(true);
