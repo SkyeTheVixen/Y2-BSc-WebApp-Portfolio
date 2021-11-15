@@ -21,7 +21,6 @@ $(document).ready(function () {
             },
             cache: false,
             success: function (result) {
-                console.log(result);
                 var Data = JSON.parse(result);
                 if (Data.statuscode === 200) {
                     $("#addUserModal").modal('toggle');
@@ -94,6 +93,7 @@ $(document).ready(function () {
             confirmButtonText: 'Delete'
         }).then((result) => {
             if (result.isConfirmed) {
+                console.log($(this).attr("data-id"));
                 delUser($(this).attr('data-id'));
             }
         })
