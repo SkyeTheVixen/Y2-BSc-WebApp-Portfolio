@@ -82,7 +82,7 @@ $(document).ready(function () {
         });
     };
 
-    $(".deluuid").click(function (event) {
+    $(".delUUID").click(function (event) {
         Swal.fire({
             title: 'Are you sure?',
             text: "This action is irreversible",
