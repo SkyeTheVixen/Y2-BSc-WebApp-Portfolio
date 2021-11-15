@@ -63,7 +63,6 @@
             $mail->AltBody = $altMessage;
 
             $mail->send();
-            echo 'Message has been sent';
         } catch (Exception $e) {
             file_put_contents("errorlog.txt", "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
         }
