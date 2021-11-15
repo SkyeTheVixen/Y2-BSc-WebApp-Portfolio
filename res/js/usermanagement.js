@@ -21,6 +21,7 @@ $(document).ready(function () {
             },
             cache: false,
             success: function (result) {
+                console.log(result);
                 var Data = JSON.parse(result);
                 if (Data.statuscode === 200) {
                     $("#addUserModal").modal('toggle');
