@@ -93,8 +93,8 @@ $(document).ready(function () {
             confirmButtonText: 'Delete'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log($(this).attr("data-id"));
                 delUser($(this).attr('data-id'));
+                window.location.reload();
             }
         })
     });
