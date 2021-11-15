@@ -35,8 +35,9 @@
 	$to = $email;
 	$subject = "User Account Creation";
     $userName = $firstName . " " . $lastName;
-	$txt = "Hi ".$firstName." ".$lastName.".\n\nA User account has been created for you on the training platform. The login details are listed below.\n\n\nUsername: ".$email."\nPassword: ".$password."\nURL: https://ws255237-wad.remote.ac\n\nKind Regards,\nVD Training Team\n\n";
-    sendMail($to, $userName,  $subject, $txt, $txt);
+	$txt = "Hi ".$firstName." ".$lastName.".<br><br>A User account has been created for you on the training platform. The login details are listed below.<br><br><br>Username: ".$email."<br>Password: ".$password."<br>URL: https://ws255237-wad.remote.ac<br><br>Kind Regards,<br>VD Training Team<br><br>";
+    $plaintxt = "Hi ".$firstName." ".$lastName.".\n\nA User account has been created for you on the training platform. The login details are listed below.\n\n\nUsername: ".$email."\nPassword: ".$password."\nURL: https://ws255237-wad.remote.ac\n\nKind Regards,\nVD Training Team\n\n";
+    sendMail($to, $userName,  $subject, $txt, $plaintxt);
 
     $stmt = mysqli_prepare($connect, $sql);
     mysqli_stmt_bind_param($stmt, "ssssssss", $UUID, $email, $encPass, $firstName, $lastName, $jobTitle, $accessLevel, $url);
