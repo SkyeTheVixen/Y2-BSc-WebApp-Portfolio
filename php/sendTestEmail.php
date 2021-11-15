@@ -14,7 +14,6 @@
         $mail->SMTPAuth   = true;
         $mail->Username   = 'skylar@vixendev.com';
         $mail->Password   = 'Orange@72';
-        $mail->Port       = 587;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 
         //Recipients
