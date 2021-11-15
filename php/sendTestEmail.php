@@ -12,7 +12,7 @@
         $mail->isSMTP();
         $mail->Host       = 'mail.vixendev.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'skylar@vixendev.com';
+        $mail->Username   = 'no-reply@vixendev.com';
         $mail->Password   = 'Orange@72';
         $mail->Port       = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
