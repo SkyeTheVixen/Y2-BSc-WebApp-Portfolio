@@ -65,6 +65,14 @@ $(document).ready(function () {
                         text: 'Please enter your email address'
                     });
                 }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown, jqXHR);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong! Please try again'
+                });
             }
         });
     });
