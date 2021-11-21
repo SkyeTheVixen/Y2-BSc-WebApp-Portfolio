@@ -74,8 +74,8 @@
                 <form id="passResetForm">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="emailInput" class="form-label">Email address</label>
-                            <input type="email" required class="form-control" id="emailInput">
+                            <label for="emailInputReset" class="form-label">Email address</label>
+                            <input type="email" required class="form-control" id="emailInputReset">
                         </div>
                     </div>
                     <div class="modal-footer">

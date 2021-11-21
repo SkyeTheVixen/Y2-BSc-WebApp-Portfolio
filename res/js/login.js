@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     $("#passResetForm").submit(function (event) {
         event.preventDefault();
-        var email = $("#emailInput").val();
+        var email = $("#emailInputReset").val();
         if (email === "") {
             return Swal.fire({
                 icon: 'error',
