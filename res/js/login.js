@@ -45,7 +45,7 @@ $(document).ready(function () {
         }
         $.ajax({
             type: "post",
-            url: "../../php/passReset.php",
+            url: "../php/passReset.php",
             data: {
                 email: email
             },
