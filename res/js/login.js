@@ -47,7 +47,7 @@ $(document).ready(function () {
             type: "post",
             url: "../../php/passReset.php",
             data: {
-                txtEmail: email
+                email: email
             },
             cache: false,
             success: function (dataResult) {
