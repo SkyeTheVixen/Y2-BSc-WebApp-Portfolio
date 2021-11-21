@@ -29,6 +29,10 @@
         $txt = "Hi ".$userName.".<br><br>You recently requested a password reset, no biggie, happens to the best of us<br><br>Reset Link: https://ws255237-wad.remote.ac/reset.php?token=".$token."<br><br>Kind Regards,<br>VD Training Team<br><br>";
         $plaintxt = "Hi ".$userName.".\n\nYou recently requested a password reset, no biggie, happens to the best of us\n\nReset Link: https://ws255237-wad.remote.ac/reset.php?token=".$token."\n\nKind Regards,\nVD Training Team\n\n";
         sendMail($to, $userName,  $subject, $txt, $plaintxt);
+        echo json_encode(array("statuscode" => 200));
+    }
+    else{
+        echo json_encode(array("statuscode" => 201));
 
     }
 ?>
