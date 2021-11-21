@@ -3,7 +3,7 @@
     include_once("_connect.php");
     include("functions.inc.php");
 
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $email = $_POST['email'];
 
     $sql = "SELECT * FROM tblUsers WHERE email = ?";
     $stmt = mysqli_prepare($connect, $sql);
