@@ -21,11 +21,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-light" aria-current="page" href="index"><i class="fas fa-home"></i>
+                        <a class="nav-link link-light" href="index"><i class="fas fa-home"></i>
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light active" href="#"><i class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light active" aria-current="page" href="#"><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown" id="mgtDrop">
                         <a id="mgtDrop" class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdownMenuLink"
