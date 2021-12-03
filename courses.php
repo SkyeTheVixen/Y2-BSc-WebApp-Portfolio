@@ -72,7 +72,7 @@
         <div class="row">
             <?php while($rows = mysqli_fetch_assoc($query)) { ?>
                 <div class="col-sm-3 mb-4">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-header bg-dark text-light">
                             <?php echo $rows['CourseTitle']; ?>
                         </div>
