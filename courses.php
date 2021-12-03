@@ -82,7 +82,7 @@
                                 <li class="list-group-item">Start Date: <?php echo $rows['StartDate']; ?></li>
                                 <li class="list-group-item">End Date: <?php echo $rows['EndDate']; ?></li>
                                 <li class="list-group-item">Delivery Method: <?php echo $rows['DeliveryMethod']; ?></li>
-                                <li class="list-group-item">Participants: <?php echo $rows['MaxParticipants']; ?>/<?php echo $rows['CurrentPArticipants']; ?></li>
+                                <li class="list-group-item">Participants: <?php echo $rows['CurrentParticipants']?>/<?php echo $rows['MaxParticipants']; ?></li>
                             </ul>
                         </div>
                     </div>
