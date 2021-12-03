@@ -7,7 +7,8 @@ $(document).ready(function () {
             return Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'You may have entered invalid credentials. Please try again'
+                text: 'You may have entered invalid credentials. Please try again',
+                heightAuto: false
             });
         }
         $.ajax({
@@ -26,7 +27,8 @@ $(document).ready(function () {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'You may have entered invalid credentials. Please try again'
+                        text: 'You may have entered invalid credentials. Please try again',
+                        heightAuto: false
                     });
                 }
             }
