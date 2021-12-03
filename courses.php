@@ -2,6 +2,9 @@
 <?php $title = "Courses | VD Training"; ?>
 <?php $currentPage = "courses"; ?>
 <?php include("./php/_header.php"); ?>
+<?php include("./php/_connect.php"); ?>
+<?php $sql="SELECT * FROM `tblCourses` WHERE date(`EndDate`) > cast(now() as date) ORDER BY `StartDate` ASC"; ?>
+<?php $query = mysqli_query($connect, $sql); ?>
 
 
 <body>
@@ -25,7 +28,8 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light active" aria-current="page" href="#"><i class="fas fa-graduation-cap"></i>Courses</a>
+                        <a class="nav-link link-light active" aria-current="page" href="#"><i
+                                class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown" id="mgtDrop">
                         <a id="mgtDrop" class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdownMenuLink"
@@ -65,8 +69,26 @@
         <!-- End Title -->
 
         <!-- Classes cards -->
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
+        <div class="row">
+            <?php while($rows = mysqli_fetch_assoc($query)) { ?>
+                <div class="col-sm-3 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <?php echo $rows['CourseTitle']; ?>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><?php echo $rows['CourseDescription'] ?></p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Start Date: <?php echo $rows['StartDate']; ?></li>
+                                <li class="list-group-item">End Date: <?php echo $rows['EndDate']; ?></li>
+                                <li class="list-group-item">Delivery Method: <?php echo $rows['DeliveryMethod']; ?></li>
+                                <li class="list-group-item">Participants: <?php echo $rows['MaxParticipants']; ?>/<?php echo $rows['CurrentPArticipants']; ?></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+            <div class="col-sm-3 mb-4">
                 <div class="card">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
@@ -77,18 +99,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                            to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
+            <div class="col-sm-3 mb-4">
                 <div class="card">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
@@ -99,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-sm-3 mb-4">
                 <div class="card">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
