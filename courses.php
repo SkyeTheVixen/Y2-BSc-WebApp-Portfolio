@@ -78,7 +78,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text"><?php echo $rows['CourseDescription'] ?></p>
-                            <ul class="list-group list-group-flush">
+                            <ul class="list-group">
                                 <li class="list-group-item">Start Date: <?php echo $rows['StartDate']; ?></li>
                                 <li class="list-group-item">End Date: <?php echo $rows['EndDate']; ?></li>
                                 <li class="list-group-item">Delivery Method: <?php echo $rows['DeliveryMethod']; ?></li>
@@ -88,39 +88,6 @@
                     </div>
                 </div>
             <?php } ?>
-            <div class="col-sm-3 mb-4">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                            to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 mb-4">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                            to
-                            additional content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 mb-4">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                            to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- End Classes Cards -->
 
