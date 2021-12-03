@@ -78,6 +78,8 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text"><?php echo $rows['CourseDescription'] ?></p>
+                        </div>
+                        <div class="card-footer">
                             <ul class="list-group">
                                 <li class="list-group-item">Start Date: <?php echo $rows['StartDate']; ?></li>
                                 <li class="list-group-item">End Date: <?php echo $rows['EndDate']; ?></li>
