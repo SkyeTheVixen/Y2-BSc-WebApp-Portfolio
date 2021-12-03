@@ -43,7 +43,7 @@
                     <li class="nav-item">
                         <a href="account" class="nav-link link-light"><i class="far fa-id-badge"></i> My Account</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item right">
                         <a href="php/logout" class="nav-link link-light"><i class="fas fa-door-open"></i> Logout</a>
                     </li>
                 </ul>
