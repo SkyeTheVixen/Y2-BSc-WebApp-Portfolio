@@ -26,13 +26,13 @@
                         <a href="<?=$pageredirect;?>Courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-pencil-alt"></i> New Baste</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle link-light active" href="#" id="navbarDropdownMenuLink"
+                        <a <?= ($currentPage=="coursemanagement") || ($currentPage=="usermanagement") ? "class=\"nav-link dropdown-toggle link-light active\"" : "class=\"nav-link dropdown-toggle  link-light\"";?>href="#" id="navbarDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-wrench"></i> Management
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a href="<?=$pageredirect;?>usermanagement" <?=$currentPage=="courses" ? "class=\"droptdown-item\" aria-current=\"page\"" : "class=\"dropdown-item\"";?> id="navddUserMgt"><i class="fas fa-users"></i> User Management</a>
+                                <a href="<?=$pageredirect;?>usermanagement" <?=$currentPage=="usermanagement" ? "class=\"droptdown-item\" aria-current=\"page\"" : "class=\"dropdown-item\"";?> id="navddUserMgt"><i class="fas fa-users"></i> User Management</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?= $pageredirect;?>coursemanagement"><i class="fas fa-chalkboard-teacher"></i> Course Management</a>
