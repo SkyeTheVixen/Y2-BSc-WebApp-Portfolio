@@ -1,5 +1,5 @@
 <?php 
-    $currentPage == "account" ? ($pathHead = "../res/" && $pageredirect = "../") : ($pathHead = "res/" && $pageredirect = "");
+    $currentPage == "account" ? ($pathHead = "../res/") && ($pageredirect = "../") : ($pathHead = "res/") && ($pageredirect = "");
 ?>
 
 <body style="min-height: 100%;">
