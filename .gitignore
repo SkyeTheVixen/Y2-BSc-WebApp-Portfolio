@@ -3,3 +3,4 @@ vendor/*
 /.OLD/
 vendor/
 Planning
+res/php/.env
