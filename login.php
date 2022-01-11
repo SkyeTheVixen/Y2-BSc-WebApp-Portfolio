@@ -27,10 +27,7 @@
             case "invalidtokensupplied":
                 echo "<script>Swal.fire({ icon: 'warning', title: 'Oops...', text: 'Your token was invalid, please request a new one', heightAuto: false });</script>"; 
                 break;
-
         }
-
-
     }
 ?>
     <!-- Main Page Content -->
