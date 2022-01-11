@@ -1,0 +1,41 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(270deg, #0055ff, #1166bb, #2277aa, #224faa, #2b22aa, #5b22aa, #8522aa, #5b22aa, #2b22aa, #224faa, #2277aa, #1166bb, #0055ff);
+    background-size: 2600% 2600%;
+    -webkit-animation: loginbg 60s ease infinite;
+    animation: loginbg 60s ease infinite;
+}
+
+.loginform{
+    background-color: aliceblue;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#formcol{
+    width: 35%;
+}
+
+@-webkit-keyframes loginbg {
+    0%{background-position:0% 13%}
+    50%{background-position:100% 88%}
+    100%{background-position:0% 13%}
+}
+@-moz-keyframes loginbg {
+    0%{background-position:0% 13%}
+    50%{background-position:100% 88%}
+    100%{background-position:0% 13%}
+}
+@keyframes loginbg {
+    0%{background-position:0% 13%}
+    50%{background-position:100% 88%}
+    100%{background-position:0% 13%}
+}
+
+
+@media only screen and (max-width: 800px) {
+    #formcol{
+        width: 100%;
+    }
+}
