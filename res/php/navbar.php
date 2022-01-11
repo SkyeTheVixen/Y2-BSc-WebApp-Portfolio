@@ -23,7 +23,7 @@
                         <a href="<?=$pageredirect;?>index" <?= $currentPage=="index" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=$pageredirect;?>Courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-pencil-alt"></i> New Baste</a>
+                        <a href="<?=$pageredirect;?>courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a <?= ($currentPage=="coursemanagement") || ($currentPage=="usermanagement") ? "class=\"nav-link dropdown-toggle link-light active\"" : "class=\"nav-link dropdown-toggle  link-light\"";?>href="#" id="navbarDropdownMenuLink"
