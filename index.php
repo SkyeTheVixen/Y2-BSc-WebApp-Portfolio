@@ -7,9 +7,13 @@
     include("res/php/navbar.php");
 ?>
 
+
 <!-- Main Content -->
 
+
+
 <!-- End Main Content -->
+
 
 <?php
     include("res/php/footer.php");
