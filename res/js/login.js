@@ -38,7 +38,6 @@ $(document).ready(function () {
                             console.log(dataResult);
                             var DataResult = JSON.parse(dataResult);
                             if (DataResult.statusCode === 200) {
-                                console.log(dataResult);
                                 location.href = "index";
             
                             } else if (DataResult.statusCode === 201) {
