@@ -1,4 +1,4 @@
-<?php $title="Login | VDBP"; ?>
+<?php $title="Login | VD Training"; ?>
 <?php $currentPage="login"; ?>
 <?php include_once("res/php/header.php"); ?>
 
