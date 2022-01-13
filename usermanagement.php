@@ -91,10 +91,6 @@
                             <label for="emailInput" class="form-label">Email address</label>
                             <input type="email" required class="form-control" id="emailInput">
                         </div>
-                        <div class="mb-3">
-                            <label for="passwordInput" class="form-label">Password (must be 8+ characters)</label>
-                            <input type="password" required class="form-control" id="passwordInput">
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
