@@ -1,6 +1,6 @@
 <?php
-    $currentPage="index";
-    $title="Home | VD Training";
+    $currentPage="coursemanagement";
+    $title="Course Management | VD Training";
     include("res/php/_connect.php");
     // include("res/php/_authcheck.php");
     include("res/php/header.php"); 
