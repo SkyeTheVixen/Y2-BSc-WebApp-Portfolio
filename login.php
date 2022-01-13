@@ -72,32 +72,6 @@
         <!-- End Login Form -->
 
         <!-- Modals -->
-
-        <!-- <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="forgotUserModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="emailInput" class="form-label">Email address</label>
-                                    <input type="email" required class="form-control" id="emailInput">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="addUserBtn">Send reset Link</button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-        <!-- Password Reset Modal -->
         <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="addUserModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -123,50 +97,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Password Reset Modal -->
-
-
-        <!-- Sign Up Modal -->
-        <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form id="signupForm">
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="signupInputFirstName" class="form-label">First Name</label>
-                                <input type="text" required class="form-control" id="signupInputFirstName">
-                                <label for="signupInputLastName" class="form-label">Last Name</label>
-                                <input type="text" required class="form-control" id="signupInputLastName">
-                                <label for="signupInputEmail" class="form-label">Email address</label>
-                                <input type="email" required class="form-control" id="signupInputEmail">
-                                <label for="signupInputPassword" class="form-label">Password</label>
-                                <input type="password" required class="form-control" id="signupInputPassword">
-                                <label for="signupInputPassword" class="form-label">Password Confirm</label>
-                                <input type="password" required class="form-control" id="signupInputPasswordConfirm">
-                            </div>
-                            <div class="form-group pb-2">
-                                <label for="suInputCaptcha">Are You Human?</label>
-                                <img id="suimgCaptcha" src="res/jCaptcha/generate.php" class="card-img-top h-25"
-                                    alt="jCaptchaText">
-                                <input type="text" name="sutxtCaptcha" required class="form-control" id="suInputCaptcha"
-                                    placeholder="A9F8G7">
-                                <small><a href="#" id="btnsuNewCaptcha">Regenerate CAPTCHA</a></small>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary" id="joinBtn">Join</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-        <!-- End Password Reset Modal -->
 
         <!-- End Modals -->
     </div>
