@@ -61,9 +61,7 @@
                         <div class="form-group pt-2 text-center">
                             <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
                             <button type="button" id="forgotBtn" data-bs-toggle="modal"
-                                data-bs-target="#forgotPassModal" class="btn btn-secondary">Forgot Password?</button>
-                            <button type="button" id="signUpBtn" data-bs-toggle="modal" data-bs-target="#signUpModal"
-                                class="btn btn-secondary">Sign Up</button>
+                                data-bs-target="#forgotPassModal" class="btn btn-secondary">Forgot Password?</button>          
                         </div>
                     </form>
                 </div>
