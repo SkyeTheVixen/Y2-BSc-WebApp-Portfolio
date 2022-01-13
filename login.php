@@ -173,8 +173,4 @@
     <!-- End Main Page Content -->
 
 
-
-
-</body>
-
-</html>
+<?php include_once("res/php/login_footer.php"); ?>
