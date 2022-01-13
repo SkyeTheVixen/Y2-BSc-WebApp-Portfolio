@@ -5,6 +5,7 @@ body{
     background-size: 2600% 2600%;
     -webkit-animation: loginbg 60s ease infinite;
     animation: loginbg 60s ease infinite;
+    overflow-x: hidden;
 }
 
 .loginform{
