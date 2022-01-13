@@ -5,6 +5,7 @@
     // include("res/php/_authcheck.php");
     include("res/php/header.php"); 
     include("res/php/navbar.php");
+    include("res/php/functions.inc.php");
     $user=getLoggedInUser($mysqli);
 ?>
 
