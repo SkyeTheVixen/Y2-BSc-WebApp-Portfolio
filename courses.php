@@ -50,7 +50,7 @@
                             <?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?><br><progress
                                 id="progress-<?=$rows["CUID"];?>" max="<?=$rows['MaxParticipants']; ?>"
                                 value="<?=$rows['CurrentParticipants']?>"></progress></li>
-                        <?php if(($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == "on"){?>
+                        <?php if(($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == 1){?>
                             <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
                                 <li class="list-group-item"><a class="btn btn-success">✅ Enrolled!</a></li>
                             <?php } else { ?>

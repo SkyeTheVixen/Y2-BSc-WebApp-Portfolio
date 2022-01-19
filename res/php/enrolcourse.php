@@ -30,7 +30,7 @@
         echo json_encode(array("statuscode"=>203)); //Added a return as some one could possibly submit bad data
         exit();
     }
-    if($course["SelfEnrol"] == "0"){
+    if($course["SelfEnrol"] == 0){
         $mysqli->rollback();
         echo json_encode(array("statuscode"=>204)); //Added a return as some one could possibly submit bad data
         exit();
