@@ -11,7 +11,7 @@
 
     $mysqli->autocommit(FALSE);
     //Escape the course ID, just in case
-    $course_id = $mysqli->real_escape_string($_POST['course_id']);
+    $course_id = $mysqli->real_escape_string($_POST['courseID']);
     $sql = "INSERT INTO `tblUserCourses` (`UUID`, `CUID`) VALUES ('?', '?');";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ss", $_SESSION['UserID'], $course_id);
