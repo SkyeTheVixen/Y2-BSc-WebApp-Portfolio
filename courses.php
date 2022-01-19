@@ -53,6 +53,8 @@
                                 <?php } else { ?>
                                     <li class="list-group-item"><a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-primary">Register</a></li>
                                 <?php } ?>
+                            <?php } else { ?>
+                                <li class="list-group-item"><a class="enrol-btn btn btn-disabled" disabled title="Please speak to your admin to request access to this course">Register</a></li>
                             <?php } ?>
                         </ul>
                     </div>
