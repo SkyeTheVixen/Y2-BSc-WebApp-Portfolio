@@ -46,7 +46,7 @@
                             <li class="list-group-item">Start Date: <?= $rows['StartDate']; ?></li>
                             <li class="list-group-item">End Date: <?=$rows['EndDate']; ?></li>
                             <li class="list-group-item">Delivery Method: <?=$rows['DeliveryMethod']; ?></li>
-                            <li class="list-group-item">Participants: <?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?><br><progress max="<?=$rows['MaxParticipants']; ?>" value="<?=$rows['CurrentParticipants']?>"></progress></li>
+                            <li class="list-group-item">Participants: <?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?><br><progress id="progress-<?=$rows["CUID"];?>" max="<?=$rows['MaxParticipants']; ?>" value="<?=$rows['CurrentParticipants']?>"></progress></li>
                             <?php if(($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == "on"){?>
                                 <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){?>
                                     <li class="list-group-item"><a class="btn btn-success">✅ Enrolled!</a></li>
@@ -54,7 +54,7 @@
                                     <li class="list-group-item"><a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-primary">Register</a></li>
                                 <?php } ?>
                             <?php } else { ?>
-                                <li class="list-group-item"><a class="enrol-btn btn btn-secondary btn-disabled" disabled title="Please speak to your admin to request access to this course">Register</a></li>
+                                <li class="list-group-item"><a class="enrol-btn btn btn-secondary disabled" disabled title="Please speak to your admin to request access to this course">Register</a></li>
                             <?php } ?>
                         </ul>
                     </div>

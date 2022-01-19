@@ -19,6 +19,7 @@ $(document).ready(function () {
                     }).then(function () {
                         $("a[data-courseid='"+courseID+"']").removeClass("btn-primary").removeClass("enrol-btn").addClass("btn-success").text("\u2705 Enrolled!");
                         $("a[data-courseid='"+courseID+"']").removeAttr("data-courseid");
+                        $("#progress-"+courseID).attr("Value", ($("#progress-"+courseID).attr("Value")+1));
                     });
                 }
             }
