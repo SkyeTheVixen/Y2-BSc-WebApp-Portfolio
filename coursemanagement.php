@@ -47,10 +47,11 @@
                     <td><?=$result["DeliveryMethod"]?></td>
                     <td><?=$result["SelfEnrol"]?></td>
                     <td><?=$result["MaxParticipants"]?></td>
-                    <td><a data-id="<?=$result["CUID"]?>" class="viewCourse"><i class="fa fa-eye"></i></a></td>
-                    <td><a data-id="<?=$result["CUID"]?>" class="editCourse"><i class="fa fa-pencil"></i></a></td>
-                    <td><a data-id="<?=$result["CUID"]?>" class="delCourse" data-bs-toggle="modal"
-                            data-bs-target="#delCourseModal"><i class="fas fa-trash-alt"></i></a>
+                    <td><a data-id="<?=$result["CUID"]?>" class="viewCourse" data-bs-toggle="modal"
+                            data-bs-target="#viewCourseModal"><i class="fa fa-eye"></i></a></td>
+                    <td><a data-id="<?=$result["CUID"]?>" class="editCourse" data-bs-toggle="modal"
+                            data-bs-target="#editCourseModal"><i class="fa fa-pencil"></i></a></td>
+                    <td><a data-id="<?=$result["CUID"]?>" class="delCourse"><i class="fas fa-trash-alt"></i></a>
                     </td>
                     <?php
                             }
