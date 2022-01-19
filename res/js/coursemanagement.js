@@ -4,7 +4,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             type: "post",
-            url: "php/addcourse.php",
+            url: "res/php/addcourse.php",
             data: data,
             cache: false,
             success: function (result) {
@@ -14,12 +14,14 @@ $(document).ready(function () {
                     let timerInterval
                     Swal.fire({
                         title: 'Course Added!',
-                        html: 'Please reload to see changes.',
+                        html: 'Reloading page for changes to become visible.',
                         timer: 2000,
                         willClose: () => {
                             clearInterval(timerInterval)
                         }
-                    })
+                    }).then(function(){
+                        window.location.reload();
+                    });
                 } else if (Data.statuscode === 201) {
                     let timerInterval;
                     Swal.fire({
@@ -40,7 +42,7 @@ $(document).ready(function () {
     function delCourse(cuid) {
         $.ajax({
             type: "post",
-            url: "php/delcourse.php",
+            url: "res/php/delcourse.php",
             data: {
                 cuid: cuid
             },
@@ -53,7 +55,9 @@ $(document).ready(function () {
                         'Deleted!',
                         'Course has been deleted.',
                         'success'
-                    )
+                    ).then(function(){
+                        window.location.reload();
+                    })
                 } else if (Data.statuscode === 201) {
                     let timerInterval;
                     Swal.fire({

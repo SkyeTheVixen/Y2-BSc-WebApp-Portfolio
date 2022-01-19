@@ -27,11 +27,13 @@ $(document).ready(function () {
                     let timerInterval;
                     Swal.fire({
                         title: 'User Added!',
-                        html: 'Please reload to see changes.',
+                        html: 'Reloading page for changes to become visible.',
                         timer: 2000,
                         willClose: () => {
                             clearInterval(timerInterval)
                         }
+                    }).then(function(){
+                        window.location.reload();
                     })
                 } else if (Data.statuscode === 201) {
                     let timerInterval;
@@ -53,7 +55,7 @@ $(document).ready(function () {
     function delUser(uuid) {
         $.ajax({
             type: "post",
-            url: "../../php/deluser.php",
+            url: "res/php/deluser.php",
             data: {
                 uuid: uuid
             },
@@ -65,7 +67,9 @@ $(document).ready(function () {
                         'Deleted!',
                         'User has been deleted.',
                         'success'
-                    )
+                    ).then(function(){
+                        window.location.reload();
+                    })
                 } else if (Data.statuscode === 201) {
                     let timerInterval;
                     Swal.fire({
@@ -94,7 +98,6 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 delUser($(this).attr('data-id'));
-                window.location.reload();
             }
         })
     });
