@@ -85,7 +85,7 @@
                 }
                 else{
                     //Return success
-                    $_SESSION["UserID"] = $User["UserID"];
+                    $_SESSION["UserID"] = $User["UUID"];
                     $sql = "DELETE FROM `tblBFA` WHERE `tblBFA`.`ID` = ?";
                     $stmt = $mysqli -> prepare($sql);
                     $stmt -> bind_param('s', $id);
