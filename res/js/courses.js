@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".enrol-btn").click(function (event) {
+        event.preventDefault();
         var courseID = $(this).attr("data-courseid");
         $.ajax({
             type: "post",
