@@ -63,7 +63,7 @@
                             <button type="button" id="forgotBtn" data-bs-toggle="modal"
                                 data-bs-target="#forgotPassModal" class="btn btn-secondary">Forgot Password?</button>          
                         </div>
-                        <?= var_dump($_SESSION); ?>
+                        <?= session_start(); var_dump($_SESSION); ?>
                     </form>
                 </div>
             </div>
