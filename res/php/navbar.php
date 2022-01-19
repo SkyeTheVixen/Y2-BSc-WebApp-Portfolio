@@ -2,7 +2,7 @@
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="<?=$pageredirect;?>index">
+            <a class="navbar-brand text-light" href="<?=$pageRedirect;?>index">
                 <img src="<?=$pathHead;?>img/vdLogoFull.png" alt="VD Training Logo" width="30" height="24"
                     class="d-inline-block align-text-top">
                 Training
@@ -15,10 +15,10 @@
             <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="<?=$pageredirect;?>index" <?= $currentPage=="index" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-home"></i> Home</a>
+                        <a href="<?=$pageRedirect;?>index" <?= $currentPage=="index" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=$pageredirect;?>courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-graduation-cap"></i>Courses</a>
+                        <a href="<?=$pageRedirect;?>courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a <?= ($currentPage=="coursemanagement") || ($currentPage=="usermanagement") ? "class=\"nav-link dropdown-toggle link-light active\"" : "class=\"nav-link dropdown-toggle  link-light\"";?>href="#" id="navbarDropdownMenuLink"
@@ -27,15 +27,15 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a href="<?=$pageredirect;?>usermanagement" <?=$currentPage=="usermanagement" ? "class=\"droptdown-item\" aria-current=\"page\"" : "class=\"dropdown-item\"";?> id="navddUserMgt"><i class="fas fa-users"></i> User Management</a>
+                                <a href="<?=$pageRedirect;?>usermanagement" <?=$currentPage=="usermanagement" ? "class=\"droptdown-item\" aria-current=\"page\"" : "class=\"dropdown-item\"";?> id="navddUserMgt"><i class="fas fa-users"></i> User Management</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="<?= $pageredirect;?>coursemanagement"><i class="fas fa-chalkboard-teacher"></i> Course Management</a>
+                                <a class="dropdown-item" href="<?= $pageRedirect;?>coursemanagement"><i class="fas fa-chalkboard-teacher"></i> Course Management</a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=$pageredirect;?>account" <?= $currentPage=="account" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-user"></i> Account</a>
+                        <a href="<?=$pageRedirect;?>account" <?= $currentPage=="account" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-user"></i> Account</a>
                     </li>
                     <li class="nav-item right" id="logoutBtn">
                         <a href="<?=$pathHead;?>php/logout" class="nav-link link-light"><i class="fas fa-door-open"></i>Logout</a>

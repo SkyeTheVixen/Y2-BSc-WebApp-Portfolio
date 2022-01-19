@@ -4,14 +4,14 @@
     <footer class="py-3 mt-3 bg-dark" style="bottom: 0;">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item">
-                <a href="<?=$pageredirect;?>index"
+                <a href="<?=$pageRedirect;?>index"
                     <?= $currentPage=="index" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>>Home</a>
             </li>
             <li class="nav-item">
-                <a href="<?=$pageredirect;?>courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>> Courses</a>
+                <a href="<?=$pageRedirect;?>courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>> Courses</a>
             </li>
             <li class="nav-item">
-                <a href="<?=$pageredirect;?>account" <?=$currentPage=="account" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>>My Account</a>
+                <a href="<?=$pageRedirect;?>account" <?=$currentPage=="account" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>>My Account</a>
             </li>
             <li class="nav-item right" id="logoutBtn">
                 <a href="<?= $pathHead;?>php/logout" class="nav-link link-light">Logout</a>
