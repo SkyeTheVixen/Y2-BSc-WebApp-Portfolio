@@ -47,7 +47,7 @@
                             <li class="list-group-item">Delivery Method: <?=$rows['DeliveryMethod']; ?></li>
                             <li class="list-group-item">Participants: <?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?><br><progress max="<?=$rows['MaxParticipants']; ?>" value="<?=$rows['CurrentParticipants']?>"></progress></li>
                             <?php if(($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == "on"){?>
-                                <li class="list-group-item"><a data-courseid="<?=$rows['CourseID']; ?>" class="enrol-btn btn btn-primary">Register</a></li>
+                                <li class="list-group-item"><a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-primary">Register</a></li>
                             <?php } ?>
                         </ul>
                     </div>
