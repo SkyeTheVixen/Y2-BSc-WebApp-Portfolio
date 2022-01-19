@@ -38,8 +38,7 @@ $(document).ready(function () {
                             console.log(dataResult);
                             var DataResult = JSON.parse(dataResult);
                             if (DataResult.statusCode === 200) {
-                                window.location.href = "index";
-            
+                                location.href = "index";
                             } else if (DataResult.statusCode === 201) {
                                 Swal.fire({
                                     icon: 'error',
