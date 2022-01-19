@@ -10,7 +10,7 @@
     // }else if(file_exists("../../vendor/autoload.php")){
     //     require '../../vendor/autoload.php';
     // }
-    require __DIR__ . '/../vendor/autoload.php';
+    require __DIR__ . '../../../vendor/autoload.php';
 
     return Dotenv\Dotenv::createImmutable(__DIR__);
 ?>
