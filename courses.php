@@ -32,7 +32,6 @@
     <!-- Classes cards -->
     <div class="row">
         <?php while($rows = $result->fetch_array(MYSQLI_ASSOC)) { ?>
-            <?= var_dump($rows); ?>
             <div class="col-sm-3 mb-4">
                 <div class="card h-100">
                     <div class="card-header bg-dark text-light">
@@ -47,7 +46,7 @@
                             <li class="list-group-item">End Date: <?=$rows['EndDate']; ?></li>
                             <li class="list-group-item">Delivery Method: <?=$rows['DeliveryMethod']; ?></li>
                             <li class="list-group-item">Participants: <?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?><br><progress max="<?=$rows['MaxParticipants']; ?>" value="<?=$rows['CurrentParticipants']?>"></progress></li>
-                            <?php if(($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $row['SelfEnrol'] == "on"){?>
+                            <?php if(($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $row['SelfEnrol'] != "0"){?>
                                 <li class="list-group-item"><a data-courseid="<?=$rows['CourseID']; ?>" class="enrol-btn btn btn-primary">Register</a></li>
                             <?php } ?>
                         </ul>
