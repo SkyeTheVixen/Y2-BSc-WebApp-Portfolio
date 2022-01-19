@@ -45,7 +45,7 @@
                     <td><?=$result["StartDate"]?></td>
                     <td><?=$result["EndDate"]?></td>
                     <td><?=$result["DeliveryMethod"]?></td>
-                    <td><?=$result["SelfEnrol"]?></td>
+                    <td><?=$result["SelfEnrol"] == 1 ? "Y" : "N"?></td>
                     <td><?=$result["MaxParticipants"]?></td>
                     <td><a data-id="<?=$result["CUID"]?>" class="viewCourse" data-bs-toggle="modal"
                             data-bs-target="#viewCourseModal"><i class="fa fa-eye"></i></a></td>
