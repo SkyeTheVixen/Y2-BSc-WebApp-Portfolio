@@ -45,7 +45,7 @@
                             <li class="list-group-item">Start Date: <?= $rows['StartDate']; ?></li>
                             <li class="list-group-item">End Date: <?=$rows['EndDate']; ?></li>
                             <li class="list-group-item">Delivery Method: <?=$rows['DeliveryMethod']; ?></li>
-                            <li class="list-group-item">Participants: <progress max="<?=$rows['MaxParticipants']; ?>" value="<?=$rows['CurrentParticipants']?>"><?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?></progress></li>
+                            <li class="list-group-item">Participants: <?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?><br><progress max="<?=$rows['MaxParticipants']; ?>" value="<?=$rows['CurrentParticipants']?>"></progress></li>
                         </ul>
                     </div>
                 </div>
