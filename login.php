@@ -40,7 +40,7 @@
         <div class="row h-100 align-content-center justify-content-center">
             <div id="formcol" class="col-auto loginform align-items-center shadow">
                 <div class="row pt-4">
-                    <h1 class="text-center w-100">Login to VD BastePin</h1>
+                    <h1 class="text-center w-100">Login to VD Training</h1>
                 </div>
                 <div class="row pb-4">
                     <form id="loginForm" method="POST" autocomplete="off">
