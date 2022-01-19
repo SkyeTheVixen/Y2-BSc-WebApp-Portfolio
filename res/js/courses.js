@@ -16,8 +16,8 @@ $(document).ready(function () {
                         title: 'Enrolled!',
                         text: 'You have successfully enrolled in this course.',
                     }).then(function () {
-                        $("a[data-courseid="+courseID+"]").removeClass("btn-primary").removeClass("enrol-btn").addClass("btn-success").text("Enrolled");
-                        $("a[data-courseid="+courseID+"]").removeAttr("data-courseid");
+                        $("a[data-courseid='"+courseID+"']").removeClass("btn-primary").removeClass("enrol-btn").addClass("btn-success").text("Enrolled");
+                        $("a[data-courseid='"+courseID+"']").removeAttr("data-courseid");
                     });
                 }
             }
