@@ -76,4 +76,23 @@
         $mysqli->commit();
         return $user;
     }
+
+
+    //Function to check if user is enrolled
+    function UserIsEnrolled($mysqli, $CourseID){
+        $mysqli->autocommit(false);
+        $sql="SELECT * FROM `tblUserCourses` WHERE `UUID`=? AND `CUID`=?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("ss", $_SESSION["UUID"], $CourseID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows <= 0){
+            $mysqli->rollback();
+            $stmt->close();
+            return false;
+        }
+        $mysqli->commit();
+        $stmt->close();
+        return true;
+    }
 ?>
