@@ -33,7 +33,7 @@
             <tbody>
                 <?php
                         $sql = "SELECT * FROM `tblCourses` ORDER BY `tblCourses`.`CreatedAt` DESC";
-                        $run = mysqli_query($connect, $sql);
+                        $run = mysqli_query($mysqli, $sql);
 
                         while($result = mysqli_fetch_assoc($run))
                         {
