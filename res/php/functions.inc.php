@@ -83,7 +83,7 @@
         $mysqli->autocommit(false);
         $sql="SELECT * FROM `tblUserCourses` WHERE `UUID`=? AND `CUID`=?";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("ss", $_SESSION["UUID"], $CourseID);
+        $stmt->bind_param("ss", $_SESSION["UserID"], $CourseID);
         $stmt->execute();
         $result = $stmt->get_result();
         if($result->num_rows <= 0){
