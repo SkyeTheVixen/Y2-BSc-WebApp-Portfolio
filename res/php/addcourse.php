@@ -7,8 +7,8 @@
     include("functions.inc.php");
 
     $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
-    $stmt = mysqli_prepare($mysqli, $sql);
-    mysqli_stmt_bind_param($stmt, 's', $_SESSION["UserID"]);
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('s', $_SESSION["UserID"]);
     $stmt -> execute();
     $result = $stmt->get_result();
     if($result -> num_rows === 1){
@@ -18,13 +18,13 @@
         }
     }
 
-    $courseName= mysqli_real_escape_string($mysqli, $_POST["courseNameInput"]);
-    $courseDescription= mysqli_real_escape_string($mysqli, $_POST["courseDescriptionInput"]);
-    $courseStartDate= mysqli_real_escape_string($mysqli, $_POST["courseStartDateInput"]);
-    $courseEndDate= mysqli_real_escape_string($mysqli, $_POST["courseEndDateInput"]);
-    $courseDeliveryMethod= mysqli_real_escape_string($mysqli, $_POST["courseDeliveryMethod"]);
-    $CourseMaxParticipants= mysqli_real_escape_string($mysqli, $_POST["courseMaxParticipants"]);
-    $CourseSelfEnrol= mysqli_real_escape_string($mysqli, $_POST["courseSelfEnrol"]);
+    $courseName= $mysqli->real_escape_string($_POST["courseNameInput"]);
+    $courseDescription= $mysqli->real_escape_string($_POST["courseDescriptionInput"]);
+    $courseStartDate= $mysqli->real_escape_string($_POST["courseStartDateInput"]);
+    $courseEndDate= $mysqli->real_escape_string($_POST["courseEndDateInput"]);
+    $courseDeliveryMethod= $mysqli->real_escape_string($_POST["courseDeliveryMethod"]);
+    $CourseMaxParticipants= $mysqli->real_escape_string($_POST["courseMaxParticipants"]);
+    $CourseSelfEnrol= $mysqli->real_escape_string($_POST["courseSelfEnrol"]);
     $CourseSelfEnrol == "on" ? $CourseSelfEnrol = 1 : $CourseSelfEnrol = 0;
     $CUID= GenerateID();
 
@@ -34,8 +34,8 @@
 
 
     
-    $stmt = mysqli_prepare($mysqli, $sql);
-    mysqli_stmt_bind_param($stmt, "ssssssss", $CUID, $courseName, $courseDescription, $courseStartDate, $courseEndDate, $courseDeliveryMethod, $CourseSelfEnrol, $CourseMaxParticipants);
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("ssssssss", $CUID, $courseName, $courseDescription, $courseStartDate, $courseEndDate, $courseDeliveryMethod, $CourseSelfEnrol, $CourseMaxParticipants);
     if($stmt -> execute()){
         $to = $User["email"];
         $subject = "Course Creation";
