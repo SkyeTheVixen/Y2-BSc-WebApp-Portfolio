@@ -14,7 +14,7 @@
     $course_id = $mysqli->real_escape_string($_POST['course_id']);
     $sql = "INSERT INTO `tblUserCourses` (`UUID`, `CUID`) VALUES ('?', '?');";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("ss", $_SESSION['UUID'], $course_id);
+    $stmt->bind_param("ss", $_SESSION['UserID'], $course_id);
     if($stmt->execute()){
         $mysqli->commit();
         echo json_encode(array("statuscode"=>200)); //Only one return as no one could possibly submit bad data
