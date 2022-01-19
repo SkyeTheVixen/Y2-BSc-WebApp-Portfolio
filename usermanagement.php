@@ -1,6 +1,8 @@
 <?php
     $currentPage="usermanagement";
     $title="User Management | VD Training";
+    $pathHead="res/";
+    $pageRedirect="";
     include("res/php/_connect.php");
     include("res/php/_authcheck.php");
     include("res/php/header.php"); 
