@@ -25,6 +25,7 @@
     $courseDeliveryMethod= mysqli_real_escape_string($mysqli, $_POST["courseDeliveryMethod"]);
     $CourseMaxParticipants= mysqli_real_escape_string($mysqli, $_POST["courseMaxParticipants"]);
     $CourseSelfEnrol= mysqli_real_escape_string($mysqli, $_POST["courseSelfEnrol"]);
+    $CourseSelfEnrol == "on" ? $CourseSelfEnrol = 1 : $CourseSelfEnrol = 0;
     $CUID= GenerateID();
 
     //SQL Prepped Statement
