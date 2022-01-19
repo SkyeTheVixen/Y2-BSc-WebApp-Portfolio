@@ -13,7 +13,7 @@
         if($currentPage != "login"){
             $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
             $stmt = $mysqli->prepare($sql);
-            $stmt -> bind_param('s', $_SESSION["userID"]);
+            $stmt -> bind_param('s', $_SESSION["UserID"]);
             $stmt -> execute();
             $result = $stmt->get_result();
             if($result -> num_rows === 1){
