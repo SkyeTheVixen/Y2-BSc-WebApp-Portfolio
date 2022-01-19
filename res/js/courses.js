@@ -15,11 +15,9 @@ $(document).ready(function () {
                         icon: 'success',
                         title: 'Enrolled!',
                         text: 'You have successfully enrolled in this course.',
-                        timer: 2000,
-                        willClose: () => {
-                            $(this).removeClass("btn-primary").addClass("btn-success").text("Enrolled");
-                            $(this).removeAttr("data-courseid");
-                        }
+                    }).then(function () {
+                        $(this).removeClass("btn-primary").addClass("btn-success").text("Enrolled");
+                        $(this).removeAttr("data-courseid");
                     });
                 }
             }
