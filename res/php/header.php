@@ -1,9 +1,6 @@
 <?php
-    include_once("headerfuncs.inc.php");
     include("_connect.php");
-    //Set the right paths
-    $currentPage == "account" ? $pathHead = "../res/" : $pathHead = "res/";
-
+    include_once("headerfuncs.inc.php");
     //If visiting account page with no slash at the end, redirect to account/
     if($currentPage == "account" && (!endsWith($_SERVER['REQUEST_URI'], "/"))){
         header("Location: account/");

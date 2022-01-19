@@ -1,8 +1,3 @@
-<?php 
-    $currentPage == "account" ? $pageredirect = "../" : $pageredirect = "";
-    $currentPage == "account" ? $pathHead = "../res/" : $pathHead = "res/";
-?>
-
 <body style="min-height: 100%;">
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">

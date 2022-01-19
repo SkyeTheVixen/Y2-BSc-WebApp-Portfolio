@@ -1,6 +1,10 @@
-<?php $title="Login | VD Training"; ?>
-<?php $currentPage="login"; ?>
-<?php include_once("res/php/header.php"); ?>
+<?php 
+    $title="Login | VD Training";
+    $currentPage="login";
+    $pathHead="res/";
+    $pageRedirect="";
+    include_once("res/php/header.php"); 
+?>
 
 <body>
     <?php

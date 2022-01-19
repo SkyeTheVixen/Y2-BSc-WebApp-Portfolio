@@ -1,6 +1,3 @@
-    <?=$currentPage == "account" ? $pathHead = "../res/" : $pathHead = "res/";?>
-    <?=$currentPage == "account" ? $pageredirect = "../" : $pageredirect = "";?>
-
     <div class="row mb-5"></div>
     <div class="row mb-5"></div>
 
