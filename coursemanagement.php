@@ -179,7 +179,7 @@
                             <input class="form-check-input" type="checkbox" role="switch" id="viewCourseSelfEnrol">
                         </div>
                         <div class="mb-3">
-                            <label for="courseMaxParticipants" class="form-label">Current Participants</label>
+                            <label for="courseCurrentParticipants" class="form-label">Current Participants</label>
                             <p class="form-control" id="viewCourseCurrentParticipants"><p>
                         </div>
                         <div class="mb-3">

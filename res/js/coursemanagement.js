@@ -104,6 +104,16 @@ $(document).ready(function () {
             success: function (result) {
                 var data = JSON.parse(result);
                 console.log(result);
+                $("#viewCourseName").text(data.CourseTitle);
+                $("#viewCourseDescription").text(data.CourseDescription);
+                $("#viewCourseStartDate").text(data.StartDate);
+                $("#viewCourseEndDate").text(data.EndDate);
+                $("#viewCourseDeliveryMethod").text(data.DeliveryMethod);
+                $("#viewCourseCurrentParticipants").text(data.CurrentParticipants);
+                $("#viewCourseMaxParticipants").text(data.MaxParticipants);
+                if(data.SelfEnrol == 1){
+                    $("#viewCourseSelfEnrol").attr('checked', true);
+                }
             }
         });
     });
