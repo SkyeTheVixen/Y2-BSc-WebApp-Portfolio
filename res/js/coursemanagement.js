@@ -112,7 +112,7 @@ $(document).ready(function () {
                 $("#viewCourseCurrentParticipants").text(data.CurrentParticipants);
                 $("#viewCourseMaxParticipants").text(data.MaxParticipants);
                 if(data.SelfEnrol == 1){
-                    $("#viewCourseSelfEnrol").attr('checked', true);
+                    $("#viewCourseSelfEnrol").prop('checked', true);
                 }
             }
         });
