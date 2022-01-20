@@ -132,9 +132,9 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="editCourseModalLabel">Edit Course</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>  
+                    </div>
                     <div class="modal-body">
-                        
+
                     </div>
                 </form>
             </div>
@@ -143,7 +143,8 @@
     <!-- End Edit Course Modal -->
 
     <!-- View Course Modal -->
-    <div class="modal fade" id="viewCourseModal" tabindex="-1" aria-labelledby="viewCourseModalLabel" aria-hidden="true">
+    <div class="modal fade" id="viewCourseModal" tabindex="-1" aria-labelledby="viewCourseModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <form autocomplete="off" id="viewCourseForm">
@@ -152,6 +153,42 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="courseNameInput" class="form-label">Course Name</label>
+                            <p class="form-control" id="viewCourseName"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseDescriptionInput" class="form-label">Course Description</label>
+                            <p class="form-control" id="viewCourseDescription"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseStartDateInput" class="form-label">Start Date</label>
+                            <p class="form-control" id="viewCourseStartDate">
+                                <p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseEndDateInput" class="form-label">End Date</label>
+                            <p class="form-control" id="viewCourseEndDate"><p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseDeliveryMethod" class="form-label">Delivery Method</label>
+                            <p class="form-control" id="viewCourseDeliveryMethod"><p>
+                        </div>
+                        <div class="mb-3 form-check form-switch">
+                            <label for="courseSelfEnrol" class="form-label">Allow Self Enrolment?</label>
+                            <input class="form-check-input" type="checkbox" role="switch" id="viewCourseSelfEnrol">
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseMaxParticipants" class="form-label">Current Participants</label>
+                            <p class="form-control" id="viewCourseCurrentParticipants"><p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
+                            <p class="form-control" id="viewCourseMaxParticipants"><p>
+                        </div>
+                        <div class="mb-3">
+                            <a class="btn btn-primary" id="enrolMemberBtn">Enrol Staff Member</a>
+                        </div>
 
                     </div>
                 </form>
