@@ -176,7 +176,7 @@
                         </div>
                         <div class="mb-3 form-check form-switch">
                             <label for="courseSelfEnrol" class="form-label">Allow Self Enrolment?</label>
-                            <input class="form-check-input" type="checkbox" role="switch" id="viewCourseSelfEnrol">
+                            <p class="form-check-input" type="checkbox" role="switch" id="viewCourseSelfEnrol"></p>
                         </div>
                         <div class="mb-3">
                             <label for="courseCurrentParticipants" class="form-label">Current Participants</label>
