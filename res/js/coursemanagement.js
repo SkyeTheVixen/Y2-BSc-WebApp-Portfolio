@@ -91,4 +91,20 @@ $(document).ready(function () {
     });
 
     $("#courseTable").DataTable();
+
+    $(".viewCourse").click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "post",
+            url: "res/php/getcourse.php",
+            data: {
+                CUID: $(this).attr('data-id')
+            },
+            cache: false,
+            success: function (result) {
+                var data = JSON.parse(result);
+                console.log(result);
+            }
+        });
+    });
 })
