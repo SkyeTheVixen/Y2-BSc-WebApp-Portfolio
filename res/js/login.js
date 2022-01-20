@@ -1,7 +1,6 @@
 $(document).ready(function () {
     let regenCount = 1;
     let suregenCount = 1;
-
     $("#loginForm").submit(function (event) {
         event.preventDefault();
         $.ajax({
@@ -35,7 +34,6 @@ $(document).ready(function () {
                         },
                         cache: false,
                         success: function (dataResult) {
-                            console.log(dataResult);
                             var DataResult = JSON.parse(dataResult);
                             if (DataResult.statusCode === 200) {
                                 location.href = "index";
@@ -166,7 +164,16 @@ $(document).ready(function () {
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown, jqXHR);
+                $.ajax({
+                    type: "post",
+                    url: "res/php/logger.php",
+                    data: {
+                        jqXHR: jqXHR,
+                        textStatus: textStatus,
+                        errorThrown: errorThrown
+                    },
+                    cache: false
+                });
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
