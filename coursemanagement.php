@@ -122,6 +122,42 @@
         </div>
     </div>
     <!-- End Add Course Modal -->
+
+    <!-- Edit Course Modal -->
+    <div class="modal fade" id="editCourseModal" tabindex="-1" aria-labelledby="editCourseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <form autocomplete="off" id="editCourseForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editCourseModalLabel">Edit Course</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>  
+                    <div class="modal-body">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Edit Course Modal -->
+
+    <!-- View Course Modal -->
+    <div class="modal fade" id="viewCourseModal" tabindex="-1" aria-labelledby="viewCourseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <form autocomplete="off" id="viewCourseForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="viewCourseModalLabel">View Course</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- End Main Content -->
 
