@@ -11,8 +11,7 @@
     $result = $stmt->get_result();
     while($row = $result->fetch_assoc())
     {
-        $users[$i] = $row;
-        $i++;
+        array_push($users, $row["UUID"]);
     }
     $stmt->close();
     $mysqli->close();
