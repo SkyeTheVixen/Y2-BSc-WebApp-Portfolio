@@ -93,12 +93,13 @@ $(document).ready(function () {
     $("#courseTable").DataTable();
 
     $(".viewCourse").click(function (event) {
+        var CUID = $(this).attr('data-id');
         event.preventDefault();
         $.ajax({
             type: "post",
             url: "res/php/getcourse.php",
             data: {
-                CUID: $(this).attr('data-id')
+                CUID: CUID
             },
             cache: false,
             success: function (result) {
@@ -117,12 +118,12 @@ $(document).ready(function () {
                     type: "post",
                     url: "res/php/getenrolled.php",
                     data: {
-                        CUID: $(this).attr('data-id')
+                        CUID: CUID
                     },
                     cache: false,
                     success: function (result) {
                         var data = JSON.parse(result);
-                        console.log(result);
+                        console.log(data);
                     }
                 });
                 $("#viewCourseEnrolledMembers").text()
