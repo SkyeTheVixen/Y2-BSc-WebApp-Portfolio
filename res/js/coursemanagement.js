@@ -103,7 +103,6 @@ $(document).ready(function () {
             cache: false,
             success: function (result) {
                 var data = JSON.parse(result);
-                console.log(result);
                 $("#viewCourseName").text(data.CourseTitle);
                 $("#viewCourseDescription").text(data.CourseDescription);
                 $("#viewCourseStartDate").text(data.StartDate);
