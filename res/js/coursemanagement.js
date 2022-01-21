@@ -125,7 +125,7 @@ $(document).ready(function () {
                         var data = JSON.parse(result);
                         console.log(data);
                         for (var i = 0; i < data.length; i++) {
-                            $("#viewCourseEnrolledMembers").append($data[i] + "<br>");
+                            $("#viewCourseEnrolledMembers").append(data[i] + "<br>");
                         }
                     }
                 });
