@@ -6,11 +6,17 @@
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $CUID);
     $stmt->execute();
+    $users = [];
+    $i = 0;
     $result = $stmt->get_result();
-    $rows = $result->fetch_array(MYSQLI_ASSOC);
+    while($row = $result->fetch_assoc())
+    {
+        $users[$i] = $row;
+        $i++;
+    }
     $stmt->close();
     $mysqli->close();
-    echo json_encode($rows);
+    echo json_encode($users);
 
 
 ?>
