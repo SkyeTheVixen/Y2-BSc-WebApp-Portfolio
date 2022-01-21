@@ -123,7 +123,6 @@ $(document).ready(function () {
                     cache: false,
                     success: function (result) {
                         var data = JSON.parse(result);
-                        console.log(data);
                         for (var i = 0; i < data.length; i++) {
                             $("#viewCourseEnrolledMembers").append("<a class='unenrol-btn' data-unenrol-uuid='" + data[i] + "'>" + data[i+1] + "</a><br>");
                             i++; //Fix for the weird array i passed back
@@ -137,5 +136,12 @@ $(document).ready(function () {
     $("#viewCourseModal").on("hidden.bs.modal", function (event) {
         event.preventDefault();
         $("#viewCourseEnrolledMembers").empty();
+        $("#viewCourseName").text("");
+        $("#viewCourseDescription").text("");
+        $("#viewCourseStartDate").text("");
+        $("#viewCourseEndDate").text("");
+        $("#viewCourseDeliveryMethod").text("");
+        $("#viewCourseCurrentParticipants").text("");
+        $("#viewCourseMaxParticipants").text("");
     });
 })
