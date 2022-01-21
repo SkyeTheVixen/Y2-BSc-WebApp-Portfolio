@@ -125,7 +125,8 @@ $(document).ready(function () {
                         var data = JSON.parse(result);
                         console.log(data);
                         for (var i = 0; i < data.length; i++) {
-                            $("#viewCourseEnrolledMembers").append(data[i] + "<br>");
+                            $("#viewCourseEnrolledMembers").append("<a class='unenrol-btn' data-unenrol-uuid='" + data[i] + "'>" + data[i+1] + "</a><br>");
+                            i++; //Fix for the weird array i passed back
                         }
                     }
                 });
