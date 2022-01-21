@@ -19,7 +19,7 @@ $(document).ready(function () {
                         willClose: () => {
                             clearInterval(timerInterval)
                         }
-                    }).then(function(){
+                    }).then(function () {
                         window.location.reload();
                     });
                 } else if (Data.statuscode === 201) {
@@ -55,7 +55,7 @@ $(document).ready(function () {
                         'Deleted!',
                         'Course has been deleted.',
                         'success'
-                    ).then(function(){
+                    ).then(function () {
                         window.location.reload();
                     })
                 } else if (Data.statuscode === 201) {
@@ -111,9 +111,22 @@ $(document).ready(function () {
                 $("#viewCourseDeliveryMethod").text(data.DeliveryMethod);
                 $("#viewCourseCurrentParticipants").text(data.CurrentParticipants);
                 $("#viewCourseMaxParticipants").text(data.MaxParticipants);
-                if(data.SelfEnrol == 1){
+                if (data.SelfEnrol == 1) {
                     $("#viewCourseSelfEnrol").prop('checked', true);
                 }
+                $.ajax({
+                    type: "post",
+                    url: "res/php/getenrolled.php",
+                    data: {
+                        CUID: $(this).attr('data-id')
+                    },
+                    cache: false,
+                    success: function (result) {
+                        var data = JSON.parse(result);
+                        console.log(data);
+                    }
+                });
+                $("#viewCourseEnrolledMembers").text()
             }
         });
     });
