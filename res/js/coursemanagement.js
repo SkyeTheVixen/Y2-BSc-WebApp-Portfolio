@@ -124,9 +124,11 @@ $(document).ready(function () {
                     success: function (result) {
                         var data = JSON.parse(result);
                         console.log(data);
+                        for (var i = 0; i < data.length; i++) {
+                            $("#viewCourseEnrolledMembers").append($data[i] + "<br>");
+                        }
                     }
                 });
-                $("#viewCourseEnrolledMembers").text()
             }
         });
     });
