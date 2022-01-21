@@ -133,4 +133,9 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#viewCourseModal").on("hidden.bs.modal", function (event) {
+        event.preventDefault();
+        $("#viewCourseEnrolledMembers").empty();
+    });
 })
