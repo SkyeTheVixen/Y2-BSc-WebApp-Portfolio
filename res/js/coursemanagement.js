@@ -122,7 +122,7 @@ $(document).ready(function () {
                     cache: false,
                     success: function (result) {
                         var data = JSON.parse(result);
-                        console.log(data);
+                        console.log(result);
                     }
                 });
                 $("#viewCourseEnrolledMembers").text()

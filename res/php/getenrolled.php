@@ -10,7 +10,7 @@
     $rows = $result->fetch_array(MYSQLI_ASSOC);
     $stmt->close();
     $mysqli->close();
-    echo json_encode($row);
+    echo json_encode($rows);
 
 
 ?>
