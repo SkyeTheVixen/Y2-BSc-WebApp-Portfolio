@@ -189,7 +189,7 @@
                         <div class="mb-3">
                             <label for="courseEnrolledMembers" class="form-label">Enrolled Members</label>
                             <div class="form-control" id="viewCourseEnrolledMembers"></div>
-                        <div class="mb-3">
+                        <div class="my-3">
                             <a class="btn btn-primary" id="enrolMemberBtn">Enrol Staff Member</a>
                         </div>
 
