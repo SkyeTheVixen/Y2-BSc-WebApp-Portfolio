@@ -20,8 +20,9 @@ $(document).ready(function () {
                         $("a[data-courseid='"+courseID+"']").removeClass("btn-primary").removeClass("enrol-btn").addClass("btn-success").text("\u2705 Enrolled!");
                         $("a[data-courseid='"+courseID+"']").removeAttr("data-courseid");
                         $("#progress-"+courseID).attr("Value", ($("#progress-"+courseID).attr("Value")+1));
-                        var CurrentValue = $("#participantCount-" + courseID).text().split(" ").split("/").slice(1);
-                        console.log(CurrentValue);
+                        var CurrentValue = $("#participantCount-" + courseID).text();
+                        let CurrentValues = CurrentValue.split(" ").split("/").slice(1);
+                        console.log(CurrentValues);
                     });
                 }
             }
