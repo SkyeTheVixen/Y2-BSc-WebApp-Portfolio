@@ -20,10 +20,9 @@ $(document).ready(function () {
                         $("a[data-courseid='"+courseID+"']").removeClass("btn-primary").removeClass("enrol-btn").addClass("btn-success").text("\u2705 Enrolled!");
                         $("a[data-courseid='"+courseID+"']").removeAttr("data-courseid");
                         $("#progress-"+courseID).attr("Value", ($("#progress-"+courseID).attr("Value")+1));
-                        var CurrentValue = String($("#participantCount-" + courseID).text());
-                        console.log(CurrentValue);
-                        let CurrentValues = CurrentValue.split(" ").slice(1).join("");
-                        console.log(CurrentValues);
+                        var CurrentValue = String($("#participantCount-" + courseID).text()).split(" ").slice(1).join("").split("/");
+                        var NewValue = [CurrentValue[0]+1, CurrentValue[1]];
+                        $("#participantCount-" + courseID).text("Participants: " + NewValue[0] + "/" + NewValue[1]);
                     });
                 }
             }
