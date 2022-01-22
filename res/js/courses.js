@@ -22,7 +22,7 @@ $(document).ready(function () {
                         $("#progress-"+courseID).attr("Value", ($("#progress-"+courseID).attr("Value")+1));
                         var CurrentValue = String($("#participantCount-" + courseID).text());
                         console.log(CurrentValue);
-                        let CurrentValues = CurrentValue.split(" ").split("/").slice(1);
+                        let CurrentValues = CurrentValue.split(" ").slice(1).join("");
                         console.log(CurrentValues);
                     });
                 }
