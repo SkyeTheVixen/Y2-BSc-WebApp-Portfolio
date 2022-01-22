@@ -17,12 +17,12 @@ $(document).ready(function () {
                         title: 'Enrolled!',
                         text: 'You have successfully enrolled in this course.',
                     }).then(function () {
-                        $("a[data-courseid='"+courseID+"']").removeClass("btn-primary").removeClass("enrol-btn").addClass("btn-success").text("\u2705 Enrolled!");
-                        $("a[data-courseid='"+courseID+"']").removeAttr("data-courseid");
-                        $("#progress-"+courseID).attr("Value", ($("#progress-"+courseID).attr("Value")+1));
                         var CurrentValue = String($("#participantCount-" + courseID).text()).split(" ").slice(1).join("").split("/");
                         var NewValue = [parseInt(CurrentValue[0])+1, CurrentValue[1]];
+                        $("a[data-courseid='"+courseID+"']").removeClass("btn-primary").removeClass("enrol-btn").addClass("btn-success").text("\u2705 Enrolled!");
+                        $("a[data-courseid='"+courseID+"']").removeAttr("data-courseid");
                         $("#participantCount-" + courseID).text("Participants: " + NewValue[0] + "/" + NewValue[1]);
+                        $("#progress-"+courseID).attr("Value", (parseInt($("#progress-"+courseID).attr("Value"))+1));
                     });
                 }
             }
