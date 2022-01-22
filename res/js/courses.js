@@ -21,6 +21,7 @@ $(document).ready(function () {
                         $("a[data-courseid='"+courseID+"']").removeAttr("data-courseid");
                         $("#progress-"+courseID).attr("Value", ($("#progress-"+courseID).attr("Value")+1));
                         var CurrentValue = String($("#participantCount-" + courseID).text());
+                        console.log(CurrentValue);
                         let CurrentValues = CurrentValue.split(" ").split("/").slice(1);
                         console.log(CurrentValues);
                     });
