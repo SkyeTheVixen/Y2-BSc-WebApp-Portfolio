@@ -104,8 +104,7 @@ $(document).ready(function () {
 
     $("#userTable").DataTable();
 
-    $("#userPassReset").click(function (event) {
-        event.preventDefault();
+    $("#userPassReset").change(function (event) {
         if($("#userPassReset").prop('checked')){
             $.ajax({
                 type: "post",
