@@ -57,6 +57,10 @@
 
     <button class="px-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
 
+    <form id="TogglePassReset">
+        <input class="form-check-input" type="checkbox" role="switch" id="userPassReset" name="userPassReset">
+        <label for="togglePassReset">Allow Password Reset</label>
+    </form>
 
     <!-- Add User Modal -->
     <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">

@@ -61,8 +61,10 @@
                             <!-- Buttons -->
                             <div class="form-group pt-2 text-center">
                                 <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
+                                <?php $data = file_get_contents("res/php/data.txt"); if($data == "true") {?>
                                 <button type="button" id="forgotBtn" class="btn btn-secondary" data-bs-toggle="modal"
                                     data-bs-target="#forgotPassModal">Forgot Password?</button>
+                                <?php } ?>
                             
                             </div>
                             <!-- End Buttons -->

@@ -103,4 +103,25 @@ $(document).ready(function () {
     });
 
     $("#userTable").DataTable();
+
+    $("#userPassReset").click(function (event) {
+        event.preventDefault();
+        if($("#userPassReset").prop('checked')){
+            $.ajax({
+                type: "post",
+                url: "res/php/enableuserpasswordreset.php",
+                success: function (result) {
+                    console.log("Done");
+                }
+            })
+        } else {
+            $.ajax({
+                type: "post",
+                url: "res/php/disableuserpasswordreset.php",
+                success: function (result) {
+                    console.log("Done");
+                }
+            })
+        }
+    });
 });
