@@ -63,8 +63,7 @@
                                 <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
                                 <button type="button" id="forgotBtn" class="btn btn-secondary" data-bs-toggle="modal"
                                     data-bs-target="#forgotPassModal">Forgot Password?</button>
-                                <button type="button" id="signUpBtn" class="btn btn-secondary" data-bs-toggle="modal"
-                                    data-bs-target="#signUpModal">Sign Up</button>
+                            
                             </div>
                             <!-- End Buttons -->
                         </form>
