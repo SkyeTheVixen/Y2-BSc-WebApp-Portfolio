@@ -75,7 +75,7 @@
         </div>
         <!-- End Login Form -->
 
-
+        <?php $data = file_get_contents("res/php/data.txt"); if($data == "true") {?>
         <!-- Password Reset Modal -->
         <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="addUserModalLabel"
             aria-hidden="true">
@@ -103,6 +103,7 @@
             </div>
         </div>
         <!-- End Password Reset Modal -->
+        <?php } ?>
 
     </div>
     <!-- End Main Page Content -->
