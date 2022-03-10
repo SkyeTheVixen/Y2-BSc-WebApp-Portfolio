@@ -16,7 +16,7 @@
 <div class="container">
 
     <!-- Title -->
-    <div class="row my-5">
+    <div class="row mt-5 mb-1">
         <div class="col-12">
             <h1 class="text-center">Courses</h1>
         </div>
