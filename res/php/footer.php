@@ -17,7 +17,7 @@
                 <a href="<?= $pathHead;?>php/logout" class="nav-link link-light">Logout</a>
             </li>
         </ul>
-        <p class="text-center text-muted pb-3">© 2021 - <?php date("Y");?> Vixendev</p>
+        <p class="text-center text-muted pb-3">© 2021 - <?= date("Y");?> Vixendev</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" defer="defer" crossorigin="anonymous"></script>
