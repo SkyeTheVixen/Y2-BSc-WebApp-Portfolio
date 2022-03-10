@@ -19,7 +19,6 @@
     <div class="row my-5">
         <div class="col-12">
             <h1 class="text-center">Courses</h1>
-            <hr>
         </div>
     </div>
     <!-- End Title -->
