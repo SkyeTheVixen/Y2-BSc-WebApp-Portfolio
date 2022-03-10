@@ -1,41 +1,25 @@
 body{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background: linear-gradient(270deg, #0055ff, #1166bb, #2277aa, #224faa, #2b22aa, #5b22aa, #8522aa, #5b22aa, #2b22aa, #224faa, #2277aa, #1166bb, #0055ff);
-    background-size: 2600% 2600%;
-    -webkit-animation: loginbg 60s ease infinite;
-    animation: loginbg 60s ease infinite;
-    overflow-x: hidden;
+    background: #000 url("../img/login.jpg") no-repeat center fixed;
 }
 
 .loginform{
-    background-color: aliceblue;
+    background-color: #fff;
     width: 100%;
-    border-radius: 5px;
 }
 
 #formcol{
-    width: 35%;
+    width: 30%;
 }
 
-@-webkit-keyframes loginbg {
-    0%{background-position:0% 13%}
-    50%{background-position:100% 88%}
-    100%{background-position:0% 13%}
-}
-@-moz-keyframes loginbg {
-    0%{background-position:0% 13%}
-    50%{background-position:100% 88%}
-    100%{background-position:0% 13%}
-}
-@keyframes loginbg {
-    0%{background-position:0% 13%}
-    50%{background-position:100% 88%}
-    100%{background-position:0% 13%}
+@media only screen and (max-width: 1110px) {
+    #formcol{
+        width: 60%;
+    }
 }
 
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 568px) {
     #formcol{
         width: 100%;
     }

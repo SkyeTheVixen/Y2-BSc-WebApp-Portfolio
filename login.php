@@ -37,43 +37,45 @@
     <!-- Main Page Content -->
     <div class="container-fluid h-100">
         <!-- Login Form -->
-        <div class="row h-100 align-content-center justify-content-center">
-            <div id="formcol" class="col-auto loginform align-items-center shadow">
-                <div class="row pt-4">
-                    <h1 class="text-center w-100">Login to VD Training</h1>
-                </div>
-                <div class="row pb-4">
-                    <form id="loginForm" method="POST" autocomplete="off">
-                        <div class="form-group py-2">
-                            <label for="InputEmail">Email address</label>
-                            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp"
-                                placeholder="joe@somedomain.com" name="txtUser">
-                        </div>
-                        <div class="form-group pb-2">
-                            <label for="InputPassword">Password</label>
-                            <input type="password" name="txtPassword" class="form-control" id="InputPassword"
-                                placeholder="P4s5w0Rd">
-                        </div>
-                        <div class="form-group pb-2">
-                            <label for="InputCaptcha">Are You Human?</label>
-                            <img id="imgCaptcha" src="res/jCaptcha/generate.php" class="card-img-top h-25"
-                                alt="jCaptchaText">
-                            <input type="text" name="txtCaptcha" required class="form-control" id="InputCaptcha"
-                                placeholder="A9F8G7">
-                            <small><a href="#" id="btnNewCaptcha">Regenerate CAPTCHA</a></small>
-                        </div>
-                        <div class="form-group pt-2 text-center">
-                            <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
-                            <button type="button" id="forgotBtn" data-bs-toggle="modal"
-                                data-bs-target="#forgotPassModal" class="btn btn-secondary">Forgot Password?</button>          
-                        </div>
-                    </form>
+        <div class="row h-100 justify-content-end">
+            <div id="formcol" class="col-auto h-100 loginform shadow d-flex">
+                <div class="pb-5 my-auto w-100">
+                    <div class="row pt-4">
+                        <h2 class="text-center w-100">VD Training Login</h2>
+                    </div>
+                    <div class="row pb-4 align-middle">
+                        <form id="loginForm" class="align-middle" method="POST" autocomplete="off">
+                            <!-- Inputs -->
+                            <div class="form-group form-inline py-2">
+                                <label for="InputEmail">Email address:</label>
+                                <input type="email" autocomplete="username" class="form-control" id="InputEmail"
+                                    aria-describedby="emailHelp" placeholder="joe@somedomain.com" name="txtUser">
+                            </div>
+                            <div class="form-group form-inline pb-2">
+                                <label for="InputPassword">Password</label>
+                                <input type="password" autocomplete="current-password" name="txtPassword"
+                                    class="form-control" id="InputPassword" placeholder="P4s5w0Rd">
+                            </div>
+                            <!-- End Inputs -->
+
+                            <!-- Buttons -->
+                            <div class="form-group pt-2 text-center">
+                                <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
+                                <button type="button" id="forgotBtn" class="btn btn-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#forgotPassModal">Forgot Password?</button>
+                                <button type="button" id="signUpBtn" class="btn btn-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#signUpModal">Sign Up</button>
+                            </div>
+                            <!-- End Buttons -->
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- End Login Form -->
 
-        <!-- Modals -->
+
+        <!-- Password Reset Modal -->
         <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="addUserModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -99,10 +101,8 @@
                 </div>
             </div>
         </div>
+        <!-- End Password Reset Modal -->
 
-        <!-- End Modals -->
     </div>
     <!-- End Main Page Content -->
-
-
-<?php include_once("res/php/login_footer.php"); ?>
+    <?php include_once("res/php/login_footer.php"); ?>
