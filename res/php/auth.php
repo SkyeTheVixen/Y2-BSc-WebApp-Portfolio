@@ -5,6 +5,14 @@
     $mysqli -> autocommit(false);
 
 
+    $captcha = $_POST['token'];
+    $secretKey = $_ENV["GRECAPTCHA_SECRET"];
+    $reCAPTCHA = json_decode(file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha)));
+    if ($reCAPTCHA->score <= 0.5){
+        echo json_encode(array("statusCode" => 207));
+        return;
+    }
+
 
     //Create ID string based off IP And remote Address
     $id = "{$_SERVER['SERVER_NAME']}~login:{$_SERVER['REMOTE_ADDR']}";
