@@ -5,7 +5,7 @@
     <script src="https://kit.fontawesome.com/93e867abff.js" crossorigin="anonymous" defer="defer"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" defer="defer"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js" defer="defer"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Ldh57IeAAAAABHfJ3uN3Zxp_1c-zTEbB3sVuk98"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ldh57IeAAAAABHfJ3uN3Zxp_1c-zTEbB3sVuk98" defer="defer"></script>
 </body>
 
 
