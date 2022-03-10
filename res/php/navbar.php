@@ -27,7 +27,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a href="<?=$pageRedirect;?>usermanagement" <?=$currentPage=="usermanagement" ? "class=\"droptdown-item\" aria-current=\"page\"" : "class=\"dropdown-item\"";?> id="navddUserMgt"><i class="fas fa-users"></i> User Management</a>
+                                <a href="<?=$pageRedirect;?>usermanagement" class="droptdown-item" id="navddUserMgt"><i class="fas fa-users"></i> User Management</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?= $pageRedirect;?>coursemanagement"><i class="fas fa-chalkboard-teacher"></i> Course Management</a>
