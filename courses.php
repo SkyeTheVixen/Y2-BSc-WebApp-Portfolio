@@ -39,7 +39,7 @@
     <!-- End Tab List -->
 
     <!-- Upcoming Courses -->
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content pt-5" id="myTabContent">
 
         <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
             <?php
@@ -114,7 +114,7 @@
                 <div class="col-sm-3 mb-4">
                     <div class="card h-100">
                         <div class="card-header bg-dark text-light">
-                            <?=$rows['CourseTitle']; ?>
+                            <?=$rows['CourseTitle']; ?> - [EXPIRED]
                         </div>
                         <div class="card-body">
                             <p class="card-text"><?=$rows['CourseDescription'] ?></p>
@@ -134,7 +134,7 @@
                                 <li class="list-group-item"><a class="btn btn-success">✅ Enrolled!</a></li>
                                 <?php } else { ?>
                                 <li class="list-group-item"><a data-courseid="<?=$rows['CUID']; ?>"
-                                        class="enrol-btn btn btn-primary">Register</a></li>
+                                        class="enrol-btn btn btn-primary" disabled>Expired</a></li>
                                 <?php } ?>
                                 <?php } else { ?>
                                 <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
@@ -142,7 +142,7 @@
                                 </li>
                                 <?php } else { ?>
                                 <li class="list-group-item"><a class="enrol-btn btn btn-secondary disabled" disabled
-                                        title="Please speak to your admin to request access to this course">Register</a>
+                                        title="Please speak to your admin to request access to this course">Expired</a>
                                 </li>
                                 <?php } ?>
                                 <?php } ?>
