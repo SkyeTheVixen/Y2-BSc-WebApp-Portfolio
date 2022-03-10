@@ -27,7 +27,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a href="<?=$pageRedirect;?>usermanagement" class="droptdown-item" id="navddUserMgt"><i class="fas fa-users"></i> User Management</a>
+                                <a href="<?=$pageRedirect;?>usermanagement" class="dropdown-item" id="navddUserMgt"><i class="fas fa-users"></i> User Management</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?= $pageRedirect;?>coursemanagement"><i class="fas fa-chalkboard-teacher"></i> Course Management</a>
@@ -37,7 +37,7 @@
                     <li class="nav-item">
                         <a href="<?=$pageRedirect;?>account" <?= $currentPage=="account" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-user"></i> Account</a>
                     </li>
-                    <li class="nav-item right" id="logoutBtn">
+                    <li class="nav-item align-right" id="logoutBtn">
                         <a href="<?=$pathHead;?>php/logout" class="nav-link link-light"><i class="fas fa-door-open"></i>Logout</a>
                     </li>
                 </ul>
