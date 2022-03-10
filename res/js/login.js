@@ -74,7 +74,7 @@ $(document).ready(function () {
     $("#loginForm").submit(function (event) {
         event.preventDefault();
         grecaptcha.ready(function () {
-            grecaptcha.execute('6LdvS8AeAAAAAN5SGsRA9MdxgpPCpeGh1zwPL2VG', {
+            grecaptcha.execute('6Ldh57IeAAAAABHfJ3uN3Zxp_1c-zTEbB3sVuk98', {
                 action: 'create_comment'
             }).then(function (token) {
                 login(token);
