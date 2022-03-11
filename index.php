@@ -39,14 +39,14 @@
                             <tr>
                                 <th>Starts on</th>
                                 <th>Course</th>
-                                <th>Time</th>
+                                <th>Delivery</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <?php
                                 
-                                $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` = ?) ORDER BY `StartDate` ASC";
+                                $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` = ?) LIMIT 3 ORDER BY `StartDate` ASC";
                                 $stmt = $mysqli->prepare($sql);
                                 $stmt->bind_param("s", $_SESSION['UserID']);
                                 $stmt->execute();
