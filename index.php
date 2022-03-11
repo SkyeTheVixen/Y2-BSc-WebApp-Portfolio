@@ -37,7 +37,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Starts on</th>
                                 <th>Course</th>
                                 <th>Time</th>
                             </tr>
