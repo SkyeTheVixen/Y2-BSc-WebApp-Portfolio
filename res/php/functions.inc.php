@@ -30,6 +30,14 @@
     }
 
 
+    function getFriendlyDate($date){
+        $day = explode("-", $date)[2];
+        $month = explode("-", $date)[1];
+        $months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+        return str_split($months[$month - 1], 3) . " " . $day;
+    }
+
+
     //Function to send an email to a user
     function sendMail($email, $userName,  $subject, $message, $altMessage){
         $mail = new PHPMailer(true);

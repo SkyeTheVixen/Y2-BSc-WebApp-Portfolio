@@ -8,6 +8,7 @@
     include("res/php/_authcheck.php");
     include("res/php/header.php"); 
     include("res/php/navbar.php");
+    include("res/php/functions.inc.php");
 ?>
 
 
@@ -51,7 +52,7 @@
                                 $stmt->execute();
                                 $result = $stmt->get_result();
                                 while($row = $result->fetch_assoc()) {
-                                    echo "<td>" . $row['StartDate'] . "</td>";
+                                    echo "<td>" . getFriendlyDate($row['StartDate']) . "</td>";
                                     echo "<td>" . $row['CourseTitle'] . "</td>";
                                     echo "<td>" . $row['DeliveryMethod'] . "</td>";
                                 }
