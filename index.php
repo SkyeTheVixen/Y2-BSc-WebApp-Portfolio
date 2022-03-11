@@ -38,8 +38,9 @@
                             <tr>
                                 <?php
                                 
-                                $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` =" . $_SESSION['UserID'] . ") ORDER BY `StartDate` ASC";
+                                $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` = ?) ORDER BY `StartDate` ASC";
                                 $stmt = $mysqli->prepare($sql);
+                                $stmt->bind_param("s", $_SESSION['UserID']);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
                                 while($row = $result->fetch_assoc()) {
