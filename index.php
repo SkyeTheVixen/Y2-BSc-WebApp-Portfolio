@@ -38,7 +38,7 @@
                             <tr>
                                 <?php
                                 
-                                $sql = "SELECT * FROM `tblcourses` WHERE `date` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` =" . $_SESSION['UUID'] . ") ORDER BY `date` ASC";
+                                $sql = "SELECT * FROM `tblcourses` WHERE `date` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` =" . $_SESSION['UserID'] . ") ORDER BY `date` ASC";
                                 $stmt = $mysqli->prepare($sql);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
