@@ -34,7 +34,7 @@
         $day = explode("-", $date)[2];
         $month = explode("-", $date)[1];
         $months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
-        return str_split($months[$month - 1], 3) . " " . $day;
+        return $months[$month - 1] . " " . $day;
     }
 
 
