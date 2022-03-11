@@ -14,7 +14,7 @@
 <!-- Main Content -->
 <div class="container">
 
-<div class="row text-center">
+<div class="row text-center pt-5">
     <div class="col-md-12 text-center">
         <h1>Welcome to VD Training</h1>
         <p>
