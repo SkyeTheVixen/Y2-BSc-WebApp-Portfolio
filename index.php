@@ -14,12 +14,20 @@
 <!-- Main Content -->
 <div class="container">
 
+<div class="row">
+    <div class="col-md-12">
+        <h1>Welcome to VD Training</h1>
+        <p>
+            A CPD Enrollment platform.
+        </p>
+    </div>
+</div>
     <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-12 col-md-6 col-lg-6 pt-4">
         </div>
 
         <!-- Upcoming Courses -->
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-12 col-md-6 col-lg-6 pt-4">
             <div class="card">
                 <div class="card-header">
                     <h4>My Upcoming Courses</h4>
@@ -28,10 +36,9 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Course</th>
                                 <th>Date</th>
+                                <th>Course</th>
                                 <th>Time</th>
-                                <th>Location</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,7 +53,7 @@
                                 while($row = $result->fetch_assoc()) {
                                     echo "<td>" . $row['StartDate'] . "</td>";
                                     echo "<td>" . $row['CourseTitle'] . "</td>";
-                                    echo "<td>" . $row['Delivery Method'] . "</td>";
+                                    echo "<td>" . $row['DeliveryMethod'] . "</td>";
                                 }
                             ?>
                             </tr>
