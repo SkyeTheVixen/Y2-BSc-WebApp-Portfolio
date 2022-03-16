@@ -44,19 +44,19 @@
                         <tbody>
                             <tr>
                                 <?php
-                                
-                                $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` = ?) LIMIT 3 ORDER BY `StartDate` ASC";
-                                $stmt = $mysqli->prepare($sql);
-                                $loggedInUser = getLoggedInUser($mysqli);
-                                $stmt->bind_param("s", $loggedInUser->uuid);
-                                $stmt->execute();
-                                $result = $stmt->get_result();
-                                while($row = $result->fetch_assoc()) {
-                                    echo "<td>" . getFriendlyDate($row['StartDate']) . "</td>";
-                                    echo "<td>" . $row['CourseTitle'] . "</td>";
-                                    echo "<td>" . $row['DeliveryMethod'] . "</td>";
-                                }
-                            ?>
+                                var_dump($mysqli);
+                                    $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` = ?) LIMIT 3 ORDER BY `StartDate` ASC";
+                                    $stmt = $mysqli->prepare($sql);
+                                    $loggedInUser = getLoggedInUser($mysqli);
+                                    $stmt->bind_param("s", $loggedInUser->uuid);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    while($row = $result->fetch_object()) {
+                                        echo "<td>" . getFriendlyDate($row->StartDate) . "</td>";
+                                        echo "<td>" . $row->CourseTitle . "</td>";
+                                        echo "<td>" . $row->DeliveryMethod . "</td>";
+                                    }
+                                ?>
                             </tr>
                         </tbody>
                     </table>
