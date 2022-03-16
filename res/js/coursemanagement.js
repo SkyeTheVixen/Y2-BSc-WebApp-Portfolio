@@ -90,7 +90,8 @@ $(document).ready(function () {
         })
     });
 
-    $("#courseTable").DataTable();
+    $("#pastCourseTable").DataTable();
+    $("#futureCourseTable").DataTable();
 
     $(".viewCourse").click(function (event) {
         var CUID = $(this).attr('data-id');
