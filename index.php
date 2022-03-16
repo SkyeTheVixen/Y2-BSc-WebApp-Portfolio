@@ -1,4 +1,5 @@
 <?php
+
     $currentPage="index";
     $title="Home | VD Training";
     $pathHead="res/";
@@ -8,6 +9,8 @@
     include("res/php/functions.inc.php");
     include("res/php/header.php"); 
     include("res/php/navbar.php");
+    $mysqli->autocommit(false);
+
 ?>
 
 
@@ -17,14 +20,11 @@
     <div class="row text-center pt-5">
         <div class="col-md-12 text-center">
             <h1>Welcome to VD Training</h1>
-            <p>
-                A CPD Enrollment platform.
-            </p>
+            <p>A CPD Enrollment platform.</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 pt-4">
-        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 pt-4"></div>
 
         <!-- Upcoming Courses -->
         <div class="col-sm-12 col-md-6 col-lg-6 pt-4">
@@ -47,7 +47,8 @@
                                 
                                 $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` = ?) LIMIT 3 ORDER BY `StartDate` ASC";
                                 $stmt = $mysqli->prepare($sql);
-                                $stmt->bind_param("s", getLoggedInUser($mysqli)['UUID']);
+                                $loggedInUser = getLoggedInUser($mysqli);
+                                $stmt->bind_param("s", $loggedInUser->uuid);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
                                 while($row = $result->fetch_assoc()) {
