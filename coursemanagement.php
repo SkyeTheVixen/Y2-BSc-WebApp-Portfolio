@@ -35,7 +35,6 @@
                 <table class="mt-5 table table-striped table-hover" id="futureCourseTable">
                     <thead>
                         <tr>
-                            <th>Course ID</th>
                             <th>Course Name</th>
                             <th>Description</th>
                             <th>Start Date</th>
@@ -57,7 +56,6 @@
                         {
                     ?>
                         <tr>
-                            <td><?=$result["CUID"]?></td>
                             <td><?=$result["CourseTitle"]?></td>
                             <td><?=$result["CourseDescription"]?></td>
                             <td><?=$result["StartDate"]?></td>
@@ -90,7 +88,6 @@
                 <table class="mt-5 table table-striped table-hover" id="pastCourseTable">
                     <thead>
                         <tr>
-                            <th>Course ID</th>
                             <th>Course Name</th>
                             <th>Description</th>
                             <th>Start Date</th>
@@ -112,7 +109,6 @@
                         {
                     ?>
                         <tr>
-                            <td><?=$result["CUID"]?></td>
                             <td><?=$result["CourseTitle"]?></td>
                             <td><?=$result["CourseDescription"]?></td>
                             <td><?=$result["StartDate"]?></td>

@@ -90,8 +90,18 @@ $(document).ready(function () {
         })
     });
 
-    $("#pastCourseTable").DataTable();
-    $("#futureCourseTable").DataTable();
+    $("#pastCourseTable").DataTable({
+        columnDefs: [{
+            targets: [1, 4, 5, 6, 7, 8, 9],
+            orderable: false
+        }]
+    });
+    $("#futureCourseTable").DataTable({
+        columnDefs: [{
+            targets: [1, 4, 5, 6, 7, 8, 9],
+            orderable: false
+        }]
+    });
 
     $(".viewCourse").click(function (event) {
         var CUID = $(this).attr('data-id');
