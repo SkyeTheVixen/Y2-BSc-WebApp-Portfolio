@@ -42,21 +42,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <?php
-                                    $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` = ?) ORDER BY `StartDate` ASC LIMIT 3 ";
-                                    $stmt = $mysqli->prepare($sql);
-                                    $loggedInUser = getLoggedInUser($mysqli);
-                                    $stmt->bind_param("s", $loggedInUser->UUID);
-                                    $stmt->execute();
-                                    $result = $stmt->get_result();
-                                    while($row = $result->fetch_object()) {
-                                        echo "<td>" . getFriendlyDate($row->StartDate) . "</td>";
-                                        echo "<td>" . $row->CourseTitle . "</td>";
-                                        echo "<td>" . $row->DeliveryMethod . "</td>";
-                                    }
-                                ?>
-                            </tr>
+                            <?php
+                                //Fetch Users course ID's
+                                $sql = "SELECT * FROM `tblUserCourses` WHERE `UUID` = ?";
+                                $stmt = $mysqli->prepare($sql);
+                                $loggedInUser = getLoggedInUser($mysqli);
+                                $stmt->bind_param("s", $loggedInUser->UUID);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                for($i=0; $i<$result->num_rows; $i++){
+                                    //Fetch each course descriptor
+                                    $row = $result->fetch_object();
+                                    $sql2 = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = ? ORDER BY `StartDate` ASC LIMIT 3";
+                                    $stmt2 = $mysqli->prepare($sql2);
+                                    $stmt2->bind_param("s", $row->CUID);
+                                    $stmt2->execute();
+                                    $result2 = $stmt2->get_result();
+                                    $row2 = $result2->fetch_object();
+                                    echo "<tr>";
+                                    echo "<td>" . getFriendlyDate($row2->StartDate) . "</td>";
+                                    echo "<td>" . $row2->CourseTitle . "</td>";
+                                    echo "<td>" . $row2->DeliveryMethod . "</td>";
+                                    echo "</tr>";
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
