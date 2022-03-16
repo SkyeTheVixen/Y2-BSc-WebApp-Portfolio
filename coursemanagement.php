@@ -189,10 +189,11 @@
                         <div class="mb-3">
                             <label for="courseEnrolledMembers" class="form-label">Enrolled Members</label>
                             <div class="form-control" id="viewCourseEnrolledMembers"></div>
-                        <div class="my-3">
-                            <a class="btn btn-primary" id="enrolMemberBtn">Enrol Staff Member</a>
                         </div>
-
+                        <div class="my-3">
+                            <button class="btn btn-primary" id="enrolMemberBtn">Enrol Staff Member</button>
+                            <button class="btn btn-primary" id="generateAttendanceBtn">Generate Attendance List</button>
+                        </div>
                     </div>
                 </form>
             </div>

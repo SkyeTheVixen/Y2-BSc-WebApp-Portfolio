@@ -111,6 +111,7 @@ $(document).ready(function () {
                 $("#viewCourseDeliveryMethod").text(data.DeliveryMethod);
                 $("#viewCourseCurrentParticipants").text(data.CurrentParticipants);
                 $("#viewCourseMaxParticipants").text(data.MaxParticipants);
+                $("#generateAttendanceBtn").attr('data-id', CUID);
                 if (data.SelfEnrol == 1) {
                     $("#viewCourseSelfEnrol").prop('checked', true);
                 }
@@ -143,5 +144,59 @@ $(document).ready(function () {
         $("#viewCourseDeliveryMethod").text("");
         $("#viewCourseCurrentParticipants").text("");
         $("#viewCourseMaxParticipants").text("");
+        $("#generateAttendanceBtn").attr('data-id', "");
+    });
+
+    $("#generateAttendanceBtn").click(function (event) {
+        event.preventDefault();
+        var names = [];
+        $.ajax({
+            type: "post",
+            url: "res/php/getenrolled.php",
+            data: {
+                CUID: $(this).attr('data-id')
+            },
+            cache: false,
+            success: function (result) {
+                var data = JSON.parse(result);
+                for (var i = 0; i < data.length; i++) {
+                    names = names.concat(data[i+1]);
+                    i++; //Fix for the weird array i passed back
+                }
+                $.ajax({
+                    type: "post",
+                    url: "res/php/generateRegister.php",
+                    data: {
+                        courseName: $("#viewCourseName").text(),
+                        names: names
+                    },
+                    cache: false,
+                    success: function (result) {
+                        var data = JSON.parse(result);
+                        if (data.statusCode === 200) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Generated!',
+                                html: 'Register has been generated. <a download="' + data.URL + '" href="registers/' + data.URL + '">Download</a>',
+                                heightAuto: false
+                            }).then( function () {
+                                $.ajax({
+                                    type: "post",
+                                    url: "res/php/deleteRegister.php",
+                                    data: {
+                                        URL: 'registers/' + data.URL
+                                    },
+                                    cache: false,
+                                    success: function (result) {
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+            }
+        });
+        
+
     });
 })
