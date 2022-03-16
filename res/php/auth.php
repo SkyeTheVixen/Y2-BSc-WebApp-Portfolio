@@ -99,7 +99,6 @@
                     $stmt -> bind_param('s', $id);
                     $stmt -> execute();
                     $mysqli -> commit();
-                    $stmt -> close();
                     echo json_encode(array("statusCode" => 200));
                     return;
                 }
