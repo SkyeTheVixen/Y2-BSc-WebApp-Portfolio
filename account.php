@@ -18,10 +18,10 @@
         <div class="col-12">
             <div class="row h-25">
                 <div class="col-8">
-                    <h1><?=htmlspecialchars($user["FirstName"]." ".$user["LastName"]); ?></h1>
+                    <h1><?=htmlspecialchars($user->FirstName." ".$user->LastName); ?></h1>
                 </div>
                 <div class="col-4">
-                        <img src="https://proficon.stablenetwork.uk/api/identicon/<?=$user["UUID"];?>.svg" alt="Profile Icon" class="h-50">
+                        <img src="https://proficon.stablenetwork.uk/api/identicon/<?=$user->UUID;?>.svg" alt="Profile Icon" class="h-50">
                 </div>
             </div>
         </div>

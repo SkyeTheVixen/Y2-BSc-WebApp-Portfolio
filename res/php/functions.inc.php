@@ -80,7 +80,7 @@
             $mysqli->rollback();
             return false;
         }
-        $user = $result->fetch_array(MYSQLI_ASSOC);
+        $user = $result->fetch_object();
         $mysqli->commit();
         return $user;
     }
