@@ -47,7 +47,7 @@
                                     $sql = "SELECT * FROM `tblCourses` WHERE `EndDate` >= CURDATE() AND `CUID` = (SELECT `CUID` FROM `tblUserCourses` WHERE `UUID` = ?) ORDER BY `StartDate` ASC LIMIT 3 ";
                                     $stmt = $mysqli->prepare($sql);
                                     $loggedInUser = getLoggedInUser($mysqli);
-                                    $stmt->bind_param("s", $loggedInUser->uuid);
+                                    $stmt->bind_param("s", $loggedInUser->UUID);
                                     $stmt->execute();
                                     $result = $stmt->get_result();
                                     while($row = $result->fetch_object()) {
