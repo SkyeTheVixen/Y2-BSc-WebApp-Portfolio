@@ -58,7 +58,18 @@
     <button class="px-3 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
 
     <form id="TogglePassReset">
-        <input class="form-check-input" type="checkbox" role="switch" id="userPassReset" name="userPassReset">
+        <?php
+            $allowReset = file_get_contents("res/php/data.txt");
+            if($allowReset == "true")
+            {
+                echo "<input class=\"form-check-input\" type=\"checkbox\" checked role=\"switch\" id=\"userPassReset\" name=\"userPassReset\">";
+            }
+            else
+            {
+                echo "<input class=\"form-check-input\" type=\"checkbox\" role=\"switch\" id=\"userPassReset\" name=\"userPassReset\" checked>";
+            }
+
+        ?>
         <label for="togglePassReset">Allow Password Reset</label>
     </form>
 
@@ -67,7 +78,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
+                    <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="addUserForm">
