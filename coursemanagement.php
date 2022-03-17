@@ -58,8 +58,8 @@
                         <tr>
                             <td><?=$result["CourseTitle"]?></td>
                             <td><?=$result["CourseDescription"]?></td>
-                            <td><?=date("d/m/y", strtotime($result["StartDate"]) )?></td>
-                            <td><?=$result["EndDate"]?></td>
+                            <td><?=date("d/m/Y", strtotime($result["StartDate"]))?></td>
+                            <td><?=date("d/m/Y", strtotime($result["EndDate"]))?></td>
                             <td><?=$result["DeliveryMethod"]?></td>
                             <td><?=$result["SelfEnrol"] == 1 ? "Y" : "N"?></td>
                             <td><?=$result["MaxParticipants"]?></td>
