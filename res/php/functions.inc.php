@@ -87,6 +87,24 @@
     }
 
 
+
+    //Function to check if user is admin
+    function isAdmin($mysqli){
+        $mysqli->autocommit(false);
+        $sql="SELECT * FROM `tblUsers` WHERE `UUID`=?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("s", $_SESSION["UserID"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows < 0){
+            $mysqli->rollback();
+            return false;
+        }
+        $user = $result->fetch_object();
+        $mysqli->commit();
+        return $user->AccessLevel;
+    }
+
     //Function to check if user is enrolled
     function UserIsEnrolled($mysqli, $CourseID){
         $mysqli->autocommit(false);
