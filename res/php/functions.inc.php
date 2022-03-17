@@ -102,7 +102,10 @@
         }
         $user = $result->fetch_object();
         $mysqli->commit();
-        return $user->AccessLevel;
+        if($user->AccessLevel == "admin"){
+            return true;
+        }
+        return false;
     }
 
     //Function to check if user is enrolled
