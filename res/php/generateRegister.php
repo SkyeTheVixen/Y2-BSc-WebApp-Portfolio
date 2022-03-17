@@ -13,7 +13,7 @@
     $register->Ln();
     $register->SetFont('DejaVu','',16);
     foreach ($names as $name) {
-        $register->Cell(40,10,$name . "  ☐");
+        $register->Cell(40,10, "☐    " . $name);
         $register->Ln();
     }
     $register->Output('F', '../../registers/AttendanceRegister'.date('dmy').'.pdf');
