@@ -1,3 +1,7 @@
+<?php
+    include_once("_connect.php");
+    include_once("functions.inc.php");
+?>
 <body style="min-height: 100%;">
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark navbar-expand-lg">
@@ -20,6 +24,7 @@
                     <li class="nav-item">
                         <a href="<?=$pageRedirect;?>courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-graduation-cap"></i>Courses</a>
                     </li>
+                    <?php if(getLoggedInUser($mysqli)->AccessLevel == "admin") {?>
                     <li class="nav-item dropdown" id="mgtDrop">
                         <a <?= ($currentPage=="coursemanagement") || ($currentPage=="usermanagement") ? "class=\"nav-link dropdown-toggle link-light active\"" : "class=\"nav-link dropdown-toggle  link-light\"";?> id="navbarDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,6 +39,7 @@
                             </li>
                         </ul>
                     </li>
+                    <?php } ?>
                     <li class="nav-item">
                         <a href="<?=$pageRedirect;?>account" <?= $currentPage=="account" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-user"></i> Account</a>
                     </li>
