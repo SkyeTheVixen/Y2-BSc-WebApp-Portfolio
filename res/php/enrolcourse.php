@@ -47,7 +47,13 @@
     $stmt->bind_param("ss", $_SESSION['UserID'], $course_id);
     if($stmt->execute()){
         $mysqli->commit();
-        sendMail(getLoggedInUser($mysqli)->Email, "Vixendev Training", "You have been enrolled in a course", "You have been enrolled in the course " . $course["CourseName"] . ".", "You have been enrolled in the course " . $course["CourseName"] . ".");
+        $sql2 = "SELECT * FROM `tblCourses` WHERE `CUID`=?";
+        $stmt2 = $mysqli->prepare($sql2);
+        $stmt2->bind_param("s", $course_id);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        $course = $result2->fetch_object();
+        sendMail(getLoggedInUser($mysqli)->Email, "Vixendev Training", "You have been enrolled in a course", "You have been enrolled in the course " . $course->CourseTitle . ".", "You have been enrolled in the course " . $course->CourseTitle . ".");
         echo json_encode(array("statuscode"=>200)); //Only one return as no one could possibly submit bad data
 
     }
