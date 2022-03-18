@@ -47,6 +47,7 @@
     $stmt->bind_param("ss", $_SESSION['UserID'], $course_id);
     if($stmt->execute()){
         $mysqli->commit();
+        sendMail(getLoggedInUser($mysqli)->Email, "Vixendev Training", "You have been enrolled in a course", "You have been enrolled in the course " . $course["CourseName"] . ".", "You have been enrolled in the course " . $course["CourseName"] . ".");
         echo json_encode(array("statuscode"=>200)); //Only one return as no one could possibly submit bad data
 
     }
