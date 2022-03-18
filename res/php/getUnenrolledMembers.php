@@ -1,5 +1,6 @@
 <?php
     include("_connect.php");
+    $CUID = $_POST['CUID'];
     //Function to return users who are able to be enrolled on a course
     $sql = "SELECT * FROM `tblUsers` WHERE `UUID` NOT IN (SELECT `UUID` FROM `tblUserCourses` WHERE `CUID` = ?)";
     $stmt = $mysqli->prepare($sql);

@@ -144,7 +144,6 @@ $(document).ready(function () {
                     },
                     cache: false,
                     success: function (result) {
-                        console.log(result);
                         var data = JSON.parse(result);
                         for (var i = 0; i < data.length; i++) {
                             $("#viewCourseEnrolledMembers").append("<a class='unenrol-btn' data-unenrol-uuid='" + data[i] + "'>" + data[i + 1] + "</a><br>");
@@ -244,6 +243,14 @@ $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
                     names[data[i]] = data[i+1];
                     i++; //Fix for the weird array i passed back
+                }
+                console.log(names);
+                if (Object.keys(names).length == 0) {
+                    return Swal.fire({
+                        title: "Oops...",
+                        text: "No unenrolled members are available for this course",
+                        icon: "error",
+                    });
                 }
                 async function getNames() {
                     const { value: member } = await Swal.fire({

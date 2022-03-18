@@ -1,5 +1,6 @@
 <?php
     include("_connect.php");
+    $CUID = $_POST['CUID'];
     //Function to return users who are enrolled on a course
     $sql = "SELECT * FROM `tblUserCourses` WHERE `CUID` = ?";
     $stmt = $mysqli->prepare($sql);
@@ -16,7 +17,7 @@
         $stmt2->execute();
         $result2 = $stmt2->get_result();
         $user = $result2->fetch_object();
-        array_push($users, $user["FirstName"]. " " . $user["LastName"]);
+        array_push($users, $user->FirstName. " " . $user->LastName);
     }
     $stmt->close();
     echo json_encode($users);

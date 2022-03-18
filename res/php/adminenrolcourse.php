@@ -42,7 +42,6 @@
     $stmt->execute();
     $stmt->close();
     $mysqli->commit();
-
     $sql = "INSERT INTO `tblUserCourses` (`UUID`, `CUID`) VALUES (?, ?);";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ss", $member, $course_id);
