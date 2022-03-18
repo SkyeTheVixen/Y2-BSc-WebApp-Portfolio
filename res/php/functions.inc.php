@@ -87,6 +87,23 @@
     }
 
 
+    //Function to get the logged in user
+    function getUser($mysqli, $userID){
+        $mysqli->autocommit(false);
+        $sql="SELECT * FROM `tblUsers` WHERE `UUID`=?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("s", $userID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows < 0){
+            $mysqli->rollback();
+            return false;
+        }
+        $user = $result->fetch_object();
+        $mysqli->commit();
+        return $user;
+    }
+
 
     //Function to check if user is admin
     function isAdmin($mysqli){
