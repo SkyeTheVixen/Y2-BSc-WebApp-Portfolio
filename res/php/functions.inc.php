@@ -7,7 +7,6 @@
     $dotenv->load();
 
 
-
     //Function to generate a UUIDv4
     function GenerateID() {
         $IDData = $IDData ?? random_bytes(16);
@@ -143,36 +142,6 @@
         return true;
     }
 
-    function GetEnrolled($mysqli, $CUID){
-        $sql = "SELECT * FROM `tblUserCourses` WHERE `CUID` = ?";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("s", $CUID);
-        $stmt->execute();
-        $users = [];
-        $result = $stmt->get_result();
-        while($row = $result->fetch_assoc())
-        {
-            array_push($users, $row["UUID"]);
-            $sql2 = "SELECT * FROM `tblUsers` WHERE `UUID` = ?";
-            $stmt2 = $mysqli->prepare($sql2);
-            $stmt2->bind_param("s", $row["UUID"]);
-            $stmt2->execute();
-            $result2 = $stmt2->get_result();
-            $user = $result2->fetch_object();
-            array_push($users, $user["FirstName"]. " " . $user["LastName"]);
-        }
-        $stmt->close();
-        return $users;
-    }
 
-    function getCourse($mysqli, $CUID){
-        $sql = "SELECT * FROM `tblCourses` WHERE `CUID` = ?";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("s", $CUID);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $course = $result->fetch_object();
-        $stmt->close();
-        return $course;
-    }
+
 ?>

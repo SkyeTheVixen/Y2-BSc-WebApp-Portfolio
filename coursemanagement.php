@@ -26,6 +26,7 @@
     </ul>
     <!-- End Tab List -->
 
+    <!-- Tab Content -->
     <div class="tab-content mt-1" id="myTabContent">
 
         <!-- Upcoming Courses -->
@@ -133,7 +134,7 @@
             <!-- End Table of Courses -->
         </div>
     </div>
-
+    <!-- End Tab Content -->
 
 
     <br>
@@ -272,7 +273,7 @@
                             <div class="form-control" id="viewCourseEnrolledMembers"></div>
                         </div>
                         <div class="my-3">
-                            <button class="btn btn-primary" id="enrolMemberBtn">Enrol Staff Member</button>
+                            <button class="btn btn-primary" id="enrollMemberBtn">Enrol Staff Member</button>
                             <button class="btn btn-primary" id="generateAttendanceBtn">Generate Attendance List</button>
                         </div>
                     </div>
