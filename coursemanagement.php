@@ -204,14 +204,50 @@
     <div class="modal fade" id="editCourseModal" tabindex="-1" aria-labelledby="editCourseModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+        <div class="modal-content">
                 <form autocomplete="off" id="editCourseForm">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editCourseModalLabel">Edit Course</h5>
+                        <h5 class="modal-title" id="editCourseModalLabel">edit Course</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-
+                        <div class="mb-3">
+                            <label for="courseNameInput" class="form-label">Course Name</label>
+                            <p class="form-control" id="editCourseName"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseDescriptionInput" class="form-label">Course Description</label>
+                            <p class="form-control" id="editCourseDescription"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseStartDateInput" class="form-label">Start Date</label>
+                            <p class="form-control" id="editCourseStartDate">
+                                <p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseEndDateInput" class="form-label">End Date</label>
+                            <p class="form-control" id="editCourseEndDate">
+                                <p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseDeliveryMethod" class="form-label">Delivery Method</label>
+                            <p class="form-control" id="editCourseDeliveryMethod">
+                                <p>
+                        </div>
+                        <div class="mb-3 form-check form-switch">
+                            <label for="courseSelfEnrol" class="form-label">Allow Self Enrolment?</label>
+                            <input class="form-check-input" disabled type="checkbox" role="switch"
+                                id="editCourseSelfEnrol"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
+                            <p class="form-control" id="editCourseMaxParticipants">
+                                <p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseEnrolledMembers" class="form-label">Enrolled Members</label>
+                            <div class="form-control" id="editCourseEnrolledMembers"></div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -270,7 +306,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="courseEnrolledMembers" class="form-label">Enrolled Members</label>
-                            <div class="form-control" id="viewCourseEnrolledMembers"></div>
+                            <div class="form-group" id="viewCourseEnrolledMembers"></div>
                         </div>
                         <div class="my-3">
                             <button class="btn btn-primary" id="enrollMemberBtn">Enrol Staff Member</button>
