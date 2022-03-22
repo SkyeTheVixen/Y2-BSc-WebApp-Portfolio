@@ -220,7 +220,7 @@
     <!-- End Edit Course Modal -->
 
     <!-- View Course Modal -->
-    <div class="modal fade" id="viewCourseModal" tabindex="-1" aria-labelledby="viewCourseModalLabel"
+    <div class="modal fade" id="viewCourseModal" tabindex="-1" z-index="-1" aria-labelledby="viewCourseModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">

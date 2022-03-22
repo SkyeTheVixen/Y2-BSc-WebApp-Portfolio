@@ -146,7 +146,7 @@ $(document).ready(function () {
                     success: function (result) {
                         var data = JSON.parse(result);
                         for (var i = 0; i < data.length; i++) {
-                            $("#viewCourseEnrolledMembers").append("<a class='unenrol-btn' data-unenrol-uuid='" + data[i] + "'>" + data[i + 1] + "</a><br>");
+                            $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark\" data-unenrol-uuid='" + data[i] + "'>" + data[i + 1] + "</a><br>");
                             i++; //Fix for the weird array i passed back
                         }
                     }
@@ -178,9 +178,8 @@ $(document).ready(function () {
         var names = [];
         $.ajax({
             type: "post",
-            url: "res/php/functions.inc.php",
+            url: "res/php/getEnrolledMembers.php",
             data: {
-                function: "getEnrolled",
                 CUID: $(this).attr('data-id')
             },
             cache: false,
@@ -241,7 +240,7 @@ $(document).ready(function () {
             success: function (result) {
                 var data = JSON.parse(result);
                 for (var i = 0; i < data.length; i++) {
-                    names[data[i]] = data[i+1];
+                    names[data[i]] = data[i + 1];
                     i++; //Fix for the weird array i passed back
                 }
                 console.log(names);
@@ -253,7 +252,9 @@ $(document).ready(function () {
                     });
                 }
                 async function getNames() {
-                    const { value: member } = await Swal.fire({
+                    const {
+                        value: member
+                    } = await Swal.fire({
                         title: 'Enroll a staff member',
                         input: 'select',
                         inputOptions: names,
@@ -285,17 +286,55 @@ $(document).ready(function () {
                                     swal.fire({
                                         icon: 'success',
                                         title: 'Enrolled!',
-                                        text: 'You have successfully enrolled ' + Data.name +  ' in this course.',
+                                        text: 'You have successfully enrolled ' + Data.name + ' in this course.',
                                     });
                                 }
                             }
-                
+
                         });
                     }
                 }
-                getNames();                
+                getNames();
             }
         });
 
+    });
+
+
+    //Admin unenrol member
+    $(".unenrolBtn").click(async function (event) {
+        event.preventDefault();
+        await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, unenrol!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var userID = $(this).attr('data-unenrol-uuid');
+                $.ajax({
+                    type: "post",
+                    url: "res/php/adminunenrolcourse.php",
+                    data: {
+                        CUID: $("#enrollMemberBtn").attr('data-id'),
+                        UUID: userID
+                    },
+                    cache: false,
+                    success: function (result) {
+                        var Data = JSON.parse(result);
+                        if (Data.statuscode === 200) {
+                            swal.fire({
+                                icon: 'success',
+                                title: 'Unenrolled!',
+                                text: 'You have successfully unenrolled ' + Data.name + ' from this course.',
+                            });
+                        }
+                    }
+                });
+            }
+        })
     });
 })
