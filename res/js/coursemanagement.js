@@ -362,21 +362,6 @@ $(document).ready(function () {
                 if (data.SelfEnrol == 1) {
                     $("#editCourseSelfEnrol").prop('checked', true);
                 }
-                $.ajax({
-                    type: "post",
-                    url: "res/php/getEnrolledMembers.php",
-                    data: {
-                        CUID: CUID
-                    },
-                    cache: false,
-                    success: function (result) {
-                        var data = JSON.parse(result);
-                        for (var i = 0; i < data.length; i++) {
-                            $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark\" data-unenrol-uuid='" + data[i] + "'>" + data[i + 1] + "</a><br>");
-                            i++; //Fix for the weird array i passed back
-                        }
-                    }
-                });
             }
         });
     });
