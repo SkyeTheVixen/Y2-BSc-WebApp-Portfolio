@@ -7,7 +7,7 @@
     //Function to delete link table entry
     $sql = "DELETE FROM `tblUserCourses` WHERE `CUID` = ? AND `UUID` = ?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("sS", $CUID, $UUID);
+    $stmt->bind_param("ss", $CUID, $UUID);
     $stmt->execute();
     $stmt->close();
     

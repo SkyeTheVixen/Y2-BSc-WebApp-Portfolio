@@ -1,4 +1,60 @@
 $(document).ready(function () {
+
+    //Delegate Function to unenrol users
+    $(document).on("click", ".unenrolBtn", async function (e) {
+        e.preventDefault();
+        await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, unenrol!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var userID = $(this).attr('data-user-id');
+                $.ajax({
+                    type: "post",
+                    url: "res/php/adminunenrolcourse.php",
+                    data: {
+                        CUID: $(".unenrolBtn").attr('data-course-id'),
+                        UUID: userID
+                    },
+                    cache: false,
+                    success: function (result) {
+                        var Data = JSON.parse(result);
+                        if (Data.statusCode === 200) {
+                            $.ajax({
+                                type: "post",
+                                url: "res/php/getEnrolledMembers.php",
+                                data: {
+                                    CUID: $(".unenrolBtn").attr('data-course-id')
+                                },
+                                cache: false,
+                                success: function (result) {
+                                    var data = JSON.parse(result);
+                                    $("#viewCourseEnrolledMembers").empty();
+                                    for (var i = 0; i < data.length; i++) {
+                                        $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + data[i] + "\" data-course-id=" + CUID + " data-user-id='" + data[i] + "'>" + data[i + 1] + "</a><br>");
+                                        i++; //Fix for the weird array i passed back
+                                    }
+                                }
+                            });
+                            swal.fire({
+                                icon: 'success',
+                                title: 'Unenrolled!',
+                                text: 'You have successfully unenrolled ' + Data.name + ' from this course.',
+                            });
+                        }
+                    }
+                });
+            }
+        })
+    });
+    
+    
+
     //Add a new course
     $("#addCourseForm").submit(function (event) {
         var data = $(this).serialize();
@@ -39,6 +95,7 @@ $(document).ready(function () {
         })
 
     });
+
 
 
     //Functions to delete course
@@ -94,7 +151,8 @@ $(document).ready(function () {
     });
 
 
-    //Data table
+
+    //Enable Data table
     $("#pastCourseTable").DataTable({
         columnDefs: [{
             targets: [1, 4, 5, 6, 7, 8, 9],
@@ -102,7 +160,9 @@ $(document).ready(function () {
         }]
     });
 
-    //Data Table
+
+
+    //Enable Data Table
     $("#futureCourseTable").DataTable({
         columnDefs: [{
             targets: [1, 4, 5, 6, 7, 8, 9],
@@ -111,7 +171,7 @@ $(document).ready(function () {
     });
 
 
-    //Load the form data when a user clicks the show icon
+    //Load the view modal content
     $(".viewCourse").click(function (event) {
         var CUID = $(this).attr('data-id');
         event.preventDefault();
@@ -146,7 +206,7 @@ $(document).ready(function () {
                     success: function (result) {
                         var data = JSON.parse(result);
                         for (var i = 0; i < data.length; i++) {
-                            $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark\" data-unenrol-uuid='" + data[i] + "'>" + data[i + 1] + "</a><br>");
+                            $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + data[i] + "\" data-course-id=" + CUID + " data-user-id='" + data[i] + "'>" + data[i + 1] + "</a><br>");
                             i++; //Fix for the weird array i passed back
                         }
                     }
@@ -156,7 +216,8 @@ $(document).ready(function () {
     });
 
 
-    //Do this when modal closes - empty fields
+
+    //Empty the view modal
     $("#viewCourseModal").on("hidden.bs.modal", function (event) {
         event.preventDefault();
         $("#viewCourseEnrolledMembers").empty();
@@ -172,7 +233,8 @@ $(document).ready(function () {
     });
 
 
-    //Generate the attendance report
+
+    //Generate the attendance register
     $("#generateAttendanceBtn").click(function (event) {
         event.preventDefault();
         var names = [];
@@ -226,7 +288,8 @@ $(document).ready(function () {
     });
 
 
-    //Admin enrol member
+
+    //Allow admins to enrol members
     $("#enrollMemberBtn").click(function (event) {
         event.preventDefault();
         var names = {};
@@ -243,7 +306,6 @@ $(document).ready(function () {
                     names[data[i]] = data[i + 1];
                     i++; //Fix for the weird array i passed back
                 }
-                console.log(names);
                 if (Object.keys(names).length == 0) {
                     return Swal.fire({
                         title: "Oops...",
@@ -252,9 +314,7 @@ $(document).ready(function () {
                     });
                 }
                 async function getNames() {
-                    const {
-                        value: member
-                    } = await Swal.fire({
+                    const { value: member } = await Swal.fire({
                         title: 'Enroll a staff member',
                         input: 'select',
                         inputOptions: names,
@@ -280,7 +340,6 @@ $(document).ready(function () {
                             },
                             cache: false,
                             success: function (result) {
-                                console.log(result);
                                 var Data = JSON.parse(result);
                                 if (Data.statuscode === 200) {
                                     swal.fire({
@@ -288,6 +347,7 @@ $(document).ready(function () {
                                         title: 'Enrolled!',
                                         text: 'You have successfully enrolled ' + Data.name + ' in this course.',
                                     });
+                                    $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + data[i] + "\" data-course-id=" + $("#enrollMemberBtn").attr('data-id') + " data-user-id='" + member + "'>" + Data.name + "</a><br>");
                                 }
                             }
 
@@ -301,45 +361,8 @@ $(document).ready(function () {
     });
 
 
-    //Admin unenrol member
-    $(".unenrolBtn").click(async function (event) {
-        event.preventDefault();
-        await Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, unenrol!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var userID = $(this).attr('data-unenrol-uuid');
-                $.ajax({
-                    type: "post",
-                    url: "res/php/adminunenrolcourse.php",
-                    data: {
-                        CUID: $("#enrollMemberBtn").attr('data-id'),
-                        UUID: userID
-                    },
-                    cache: false,
-                    success: function (result) {
-                        var Data = JSON.parse(result);
-                        if (Data.statuscode === 200) {
-                            swal.fire({
-                                icon: 'success',
-                                title: 'Unenrolled!',
-                                text: 'You have successfully unenrolled ' + Data.name + ' from this course.',
-                            });
-                        }
-                    }
-                });
-            }
-        })
-    });
 
-
-    //Load the form data when a user clicks the show icon
+    //Load the edit form data
     $(".editCourse").click(function (event) {
         var CUID = $(this).attr('data-id');
         event.preventDefault();
@@ -367,7 +390,8 @@ $(document).ready(function () {
     });
 
 
-    //Do this when modal closes - empty fields
+
+    //Empty the Edit Modal
     $("#editCourseModal").on("hidden.bs.modal", function (event) {
         event.preventDefault();
         $("#editCourseEnrolledMembers").empty();
