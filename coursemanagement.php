@@ -244,10 +244,6 @@
                             <p class="form-control" id="editCourseMaxParticipants">
                                 <p>
                         </div>
-                        <div class="mb-3">
-                            <label for="courseEnrolledMembers" class="form-label">Enrolled Members</label>
-                            <div class="form-control" id="editCourseEnrolledMembers"></div>
-                        </div>
                     </div>
                 </form>
             </div>
