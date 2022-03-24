@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //Function to add a new user to the database
     $("#addUserForm").submit(function (event) {
         event.preventDefault();
         var email = $("#emailInput").val();
@@ -52,6 +53,9 @@ $(document).ready(function () {
 
     });
 
+
+
+    //Function to delete a user
     function delUser(uuid) {
         $.ajax({
             type: "post",
@@ -102,8 +106,14 @@ $(document).ready(function () {
         })
     });
 
+
+
+    //Datatables enablement
     $("#userTable").DataTable();
 
+
+
+    //Function to enable or disable the password reset functionality. but why... would you?
     $("#userPassReset").change(function (event) {
         if($("#userPassReset").prop('checked')){
             $.ajax({
