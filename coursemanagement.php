@@ -182,7 +182,7 @@
                         </div>
                         <div class="mb-3 form-check form-switch">
                             <label for="courseSelfEnrol" class="form-label">Allow Self Enrolment?</label>
-                            <input class="form-check-input" type="checkbox" role="switch" name="courseSelfEnrol">
+                            <input class="form-check-input" type="checkbox" role="switch" id="courseSelfEnrol" name="courseSelfEnrol">
                         </div>
                         <div class="mb-3">
                             <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
@@ -243,6 +243,11 @@
                             <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
                             <p class="form-control" id="editCourseMaxParticipants">
                                 <p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="editCourseId" name="editCourseId">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="addCourseBtn">Add Course</button>
                         </div>
                     </div>
                 </form>

@@ -17,7 +17,6 @@
             header("Location: index");
         }
     }
-
     $courseName= $mysqli->real_escape_string($_POST["courseNameInput"]);
     $courseDescription= $mysqli->real_escape_string($_POST["courseDescriptionInput"]);
     $courseStartDate= $mysqli->real_escape_string($_POST["courseStartDateInput"]);
@@ -25,7 +24,7 @@
     $courseDeliveryMethod= $mysqli->real_escape_string($_POST["courseDeliveryMethod"]);
     $CourseMaxParticipants= $mysqli->real_escape_string($_POST["courseMaxParticipants"]);
     $CourseSelfEnrol= $mysqli->real_escape_string($_POST["courseSelfEnrol"]);
-    $CourseSelfEnrol == "on" ? $CourseSelfEnrol = 1 : $CourseSelfEnrol = 0;
+    $CourseSelfEnrol == "true" ? $CourseSelfEnrol = 1 : $CourseSelfEnrol = 0;
     $CUID= GenerateID();
 
     //SQL Prepped Statement
@@ -37,10 +36,10 @@
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ssssssss", $CUID, $courseName, $courseDescription, $courseStartDate, $courseEndDate, $courseDeliveryMethod, $CourseSelfEnrol, $CourseMaxParticipants);
     if($stmt -> execute()){
-        $to = $User["email"];
+        $to = $User["Email"];
         $subject = "Course Creation";
-        $txt = "Hi ".$User["firstName"]." ".$User["lastName"].".\n\nThis email is confirmation that course $CUID has been created.\n\nKind Regards,\nVD Training Team\n\n";
-        sendMail($to, $userName,  $subject, $txt, $txt);
+        $txt = "Hi ".$User["FirstName"]." ".$User["LastName"].".\n\nThis email is confirmation that course $courseName [$CUID] has been created.\n\nKind Regards,\nVD Training Team\n\n";
+        sendMail($to, "Vixendev Training",  $subject, $txt, $txt);
         echo json_encode(array("statuscode" => 200));
     }
     else{
