@@ -62,9 +62,10 @@ $(document).ready(function () {
         $.ajax({
             type: "post",
             url: "res/php/addcourse.php",
-            data: data,
+            data: data + "&courseSelfEnrol=" + $("#courseSelfEnrol").prop("checked"),
             cache: false,
             success: function (result) {
+                console.log(result);
                 var Data = JSON.parse(result);
                 if (Data.statuscode === 200) {
                     $("#addCourseModal").modal('toggle');
@@ -111,11 +112,12 @@ $(document).ready(function () {
                 var Data = JSON.parse(result);
                 if (Data.statuscode === 200) {
                     $("#delUserModal").modal('toggle');
-                    Swal.fire(
-                        'Deleted!',
-                        'Course has been deleted.',
-                        'success'
-                    ).then(function () {
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: 'Course has been deleted.',
+                        icon: 'success',
+                        heightAuto: false
+                    }).then(function () {
                         window.location.reload();
                     })
                 } else if (Data.statuscode === 201) {
@@ -385,6 +387,8 @@ $(document).ready(function () {
                 if (data.SelfEnrol == 1) {
                     $("#editCourseSelfEnrol").prop('checked', true);
                 }
+                $("#editCourseId").val(CUID);
+
             }
         });
     });
@@ -402,5 +406,48 @@ $(document).ready(function () {
         $("#editCourseDeliveryMethod").text("");
         $("#editCourseCurrentParticipants").text("");
         $("#editCourseMaxParticipants").text("");
+        $("#editCourseId").val("");
+    });
+
+
+
+    //Edit the course
+    $("#editCourseForm").submit(function (event) {
+        event.preventDefault();
+        var CUID = $("#editCourseId").val();
+        var name = $("#editCourseName").val();
+        var description = $("#editCourseDescription").val();
+        var startDate = $("#editCourseStartDate").val();
+        var endDate = $("#editCourseEndDate").val();
+        var deliveryMethod = $("#editCourseDeliveryMethod").val();
+        var maxParticipants = $("#editCourseMaxParticipants").val();
+        var selfEnrol = $("#editCourseSelfEnrol").prop("checked");
+        $.ajax({
+            type: "post",
+            url: "res/php/editCourse.php",
+            data: {
+                CUID: CUID,
+                name: name,
+                description: description,
+                startDate: startDate,
+                endDate: endDate,
+                deliveryMethod: deliveryMethod,
+                maxParticipants: maxParticipants,
+                selfEnrol: selfEnrol
+            },
+            cache: false,
+            success: function (result) {
+                var data = JSON.parse(result);
+                if (data.statuscode === 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Updated!',
+                        text: 'You have successfully updated ' + data.name + '.',
+                    }).then( function() {
+                        $("#editCourseModal").modal("hide");
+                    })
+                }
+            }
+        });
     });
 })
