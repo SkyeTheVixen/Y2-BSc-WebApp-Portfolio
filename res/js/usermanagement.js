@@ -110,7 +110,6 @@ $(document).ready(function () {
                 type: "post",
                 url: "res/php/enableuserpasswordreset.php",
                 success: function (result) {
-                    console.log("Done");
                 }
             })
         } else {
@@ -118,7 +117,6 @@ $(document).ready(function () {
                 type: "post",
                 url: "res/php/disableuserpasswordreset.php",
                 success: function (result) {
-                    console.log("Done");
                 }
             })
         }

@@ -65,7 +65,6 @@ $(document).ready(function () {
             data: data + "&courseSelfEnrol=" + $("#courseSelfEnrol").prop("checked"),
             cache: false,
             success: function (result) {
-                console.log(result);
                 var Data = JSON.parse(result);
                 if (Data.statuscode === 200) {
                     $("#addCourseModal").modal('toggle');
@@ -377,13 +376,13 @@ $(document).ready(function () {
             cache: false,
             success: function (result) {
                 var data = JSON.parse(result);
-                $("#editCourseName").text(data.CourseTitle);
-                $("#editCourseDescription").text(data.CourseDescription);
-                $("#editCourseStartDate").text(data.StartDate);
-                $("#editCourseEndDate").text(data.EndDate);
-                $("#editCourseDeliveryMethod").text(data.DeliveryMethod);
-                $("#editCourseCurrentParticipants").text(data.CurrentParticipants);
-                $("#editCourseMaxParticipants").text(data.MaxParticipants);
+                $("#editCourseName").val(data.CourseTitle);
+                $("#editCourseDescription").val(data.CourseDescription);
+                $("#editCourseStartDate").val(data.StartDate);
+                $("#editCourseEndDate").val(data.EndDate);
+                $("#editCourseDeliveryMethod").val(data.DeliveryMethod);
+                $("#editCourseCurrentParticipants").val(data.CurrentParticipants);
+                $("#editCourseMaxParticipants").val(data.MaxParticipants);
                 if (data.SelfEnrol == 1) {
                     $("#editCourseSelfEnrol").prop('checked', true);
                 }

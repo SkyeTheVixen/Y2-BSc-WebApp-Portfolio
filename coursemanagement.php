@@ -207,47 +207,48 @@
         <div class="modal-content">
                 <form autocomplete="off" id="editCourseForm">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editCourseModalLabel">edit Course</h5>
+                        <h5 class="modal-title" id="editCourseModalLabel">Edit Course</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="courseNameInput" class="form-label">Course Name</label>
-                            <p class="form-control" id="editCourseName"></p>
+                            <input type="text" class="form-control" id="editCourseName"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseDescriptionInput" class="form-label">Course Description</label>
-                            <p class="form-control" id="editCourseDescription"></p>
+                            <input type="text" class="form-control" id="editCourseDescription"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseStartDateInput" class="form-label">Start Date</label>
-                            <p class="form-control" id="editCourseStartDate">
-                                <p>
+                            <input type="date" class="form-control" id="editCourseStartDate"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseEndDateInput" class="form-label">End Date</label>
-                            <p class="form-control" id="editCourseEndDate">
-                                <p>
+                            <input type="date" class="form-control" id="editCourseEndDate"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseDeliveryMethod" class="form-label">Delivery Method</label>
-                            <p class="form-control" id="editCourseDeliveryMethod">
-                                <p>
+                            <select class="form-select" required id="editCourseDeliveryMethod"
+                                aria-label="selectAccessLevel">
+                                <option selected>Delivery Method</option>
+                                <option value="In Person">In Person</option>
+                                <option value="Online">Online</option>
+                            </select>
                         </div>
                         <div class="mb-3 form-check form-switch">
                             <label for="courseSelfEnrol" class="form-label">Allow Self Enrolment?</label>
-                            <input class="form-check-input" disabled type="checkbox" role="switch"
+                            <input class="form-check-input" type="checkbox" role="switch"
                                 id="editCourseSelfEnrol"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
-                            <p class="form-control" id="editCourseMaxParticipants">
-                                <p>
+                            <input class="form-control" type="number" id="editCourseMaxParticipants"></input>
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" id="editCourseId" name="editCourseId">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary" id="addCourseBtn">Add Course</button>
+                            <button type="submit" class="btn btn-primary" id="addCourseBtn">Edit Course</button>
                         </div>
                     </div>
                 </form>
