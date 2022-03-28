@@ -41,5 +41,4 @@
         echo json_encode(array("statusCode" => 201));
     }
     $stmt -> close();
-
 ?>
