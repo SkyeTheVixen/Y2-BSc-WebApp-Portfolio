@@ -82,31 +82,30 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="addUserForm">
-
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="firstNameInput" class="form-label">First Name</label>
-                            <input type="text" required class="form-control" name="firstNameInput">
+                            <label for="addFirstName" class="form-label">First Name</label>
+                            <input type="text" required class="form-control" name="addFirstName">
                         </div>
                         <div class="mb-3">
-                            <label for="lastNameInput" class="form-label">Last Name</label>
-                            <input type="text" required class="form-control" name="lastNameInput">
+                            <label for="addLastName" class="form-label">Last Name</label>
+                            <input type="text" required class="form-control" name="addLastName">
                         </div>
                         <div class="mb-3">
-                            <label for="jobTitleInput" class="form-label">Job Title</label>
-                            <input type="text" required class="form-control" name="jobTitleInput">
+                            <label for="addJobTitle" class="form-label">Job Title</label>
+                            <input type="text" required class="form-control" name="addJobTitle">
                         </div>
                         <div class="mb-3">
-                            <label for="accessLevelSelect" class="form-label">Access Level</label>
-                            <select class="form-select" required name="accessLevelSelect" aria-label="selectAccessLevel">
+                            <label for="addAccessLevel" class="form-label">Access Level</label>
+                            <select class="form-select" required name="addAccessLevel" aria-label="selectAccessLevel">
                                 <option selected>Access Level</option>
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="emailInput" class="form-label">Email address</label>
-                            <input type="email" required class="form-control" name="emailInput">
+                            <label for="addEmail" class="form-label">Email address</label>
+                            <input type="email" required class="form-control" name="addEmail">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -114,11 +113,58 @@
                         <button type="submit" class="btn btn-primary" id="addUserBtn">Add User</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
     <!-- End Add User Modal -->
+
+    <!-- Edit User Modal -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Edit User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addUserForm">
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="firstNameInput" class="form-label">First Name</label>
+                            <input type="text" required class="form-control" name="editFirstName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastNameInput" class="form-label">Last Name</label>
+                            <input type="text" required class="form-control" name="editLastName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="jobTitleInput" class="form-label">Job Title</label>
+                            <input type="text" required class="form-control" name="editJobTitle">
+                        </div>
+                        <div class="mb-3">
+                            <label for="accessLevelSelect" class="form-label">Access Level</label>
+                            <select class="form-select" required name="editAccessLevel" aria-label="selectAccessLevel">
+                                <option selected>Access Level</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label">Email address</label>
+                            <input type="email" required class="form-control" name="editEmail">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="editUUID">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="editUserBtn">Edit User</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Edit User Modal -->
 </div>
 <!-- End Main Content -->
 

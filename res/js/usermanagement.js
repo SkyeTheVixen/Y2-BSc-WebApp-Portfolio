@@ -3,29 +3,31 @@ $(document).ready(function () {
     //Function to add a new user
     $("#addUserForm").submit(function (event) {
         event.preventDefault();
-        $.post("res/php/adduser.php", $(this).serialize(),
+        $.post("res/php/user/addUser.php", $(this).serialize(),
             function (result) {
                 if (JSON.parse(result).statusCode === 200) {
                     $("#addUserModal").modal('toggle');
-                    Swal.fire('User Added!', 'Reloading page for changes to become visible.', 'success').then(function(){ window.location.reload(); });
+                    Swal.fire('User Added!', 'Reloading page for changes to become visible.', 'success', {heightAuto: false}).then(function(){ window.location.reload(); });
                 } else if (JSON.parse(result).statusCode === 201) {
-                    Swal.fire('Oops...', 'Something went wrong. Please try again', 'error');
+                    Swal.fire('Oops...', 'Something went wrong. Please try again', 'error', {heightAuto: false});
+                } else if (JSON.parse(result).statusCode === 202) {
+                    Swal.fire('Oops...', 'Please ensure you fill out all fields', 'error', {heightAuto: false});
                 }
             }
         )
     });
 
     //Function to delete a user
-    $(".delUUID").click(function (event) {
-        event.preventDefault();
+    $(".delUUID").click(function () {
         Swal.fire('Are you sure?', 'This action is irreversible', 'warning', {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Delete'
+            confirmButtonText: 'Delete',
+            heightAuto: false
         }).then((result) => {
             if (result.isConfirmed) {
-                $.post("res/php/deluser.php", {uuid: $(this).attr('data-id')},
+                $.post("res/php/user/delUser.php", {uuid: $(this).attr('data-id')},
                     function (result) {
                         if (JSON.parse(result).statusCode === 200) {
                             Swal.fire('Deleted!', 'User has been deleted.', 'success').then(function(){ window.location.reload(); });
@@ -41,7 +43,7 @@ $(document).ready(function () {
     //Function to edit a user
     $("#editUserForm").submit(function (event) {
         event.preventDefault();
-        $.post("res/php/edituser.php", $(this).serialize(),
+        $.post("res/php/user/editUser.php", $(this).serialize(),
             function (result) {
                 if (JSON.parse(result).statusCode === 200) {
                     $("#editUserModal").modal('toggle');
@@ -59,6 +61,6 @@ $(document).ready(function () {
 
     //Function to enable or disable the password reset functionality. but why... would you?
     $("#userPassReset").change(function () {
-        $.post("res/php/toggleUserPassReset.php");
+        $.post("res/php/user/toggleUserPassReset.php");
     });
 });
