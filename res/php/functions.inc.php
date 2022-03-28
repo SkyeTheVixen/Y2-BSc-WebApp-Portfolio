@@ -143,5 +143,23 @@
     }
 
 
+    function getCourse($mysqli, $CourseID){
+        $mysqli->autocommit(false);
+        $sql="SELECT * FROM `tblCourses` WHERE `CUID`=?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("s", $CourseID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows <= 0){
+            $mysqli->rollback();
+            $stmt->close();
+            return false;
+        }
+        $course = $result->fetch_object();
+        $mysqli->commit();
+        $stmt->close();
+        return $course;
+    }
+
 
 ?>

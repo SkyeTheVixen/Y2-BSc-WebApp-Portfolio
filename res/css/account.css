@@ -5,3 +5,7 @@
 .container{
     min-height: 65vh;
 }
+
+.h-10{
+    width: 10%;
+}
