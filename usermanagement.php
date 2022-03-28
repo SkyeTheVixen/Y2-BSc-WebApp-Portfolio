@@ -17,7 +17,6 @@
         <table class="mt-5 table table-striped table-hover" id="userTable">
             <thead>
                 <tr>
-                    <th>User ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
@@ -36,13 +35,12 @@
                         {
                     ?>
                 <tr>
-                    <td><?=$result["UUID"]?></td>
                     <td><?=$result["FirstName"]?></td>
                     <td><?=$result["LastName"]?></td>
                     <td><?=$result["Email"]?></td>
                     <td><?=$result["JobTitle"]?></td>
                     <td><?=$result["AccessLevel"]?></td>
-                    <td><a data-id="<?=$result["UUID"]?>" class="editUser"><i class="fa fa-pencil"></i></a>
+                    <td><a data-id="<?=$result["UUID"]?>" class="editUUID"><i class="fa fa-pencil"></i></a>
                     </td>
                     <td><a class="delUUID" data-id="<?=$result["UUID"]?>"><i class="fas fa-trash-alt"></i></a>
                     </td>
@@ -126,36 +124,35 @@
                     <h5 class="modal-title" id="addUserModalLabel">Edit User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="addUserForm">
-
+                <form id="editUserForm">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="firstNameInput" class="form-label">First Name</label>
-                            <input type="text" required class="form-control" name="editFirstName">
+                            <input type="text" required class="form-control" name="editFirstName" id="editFirstName">
                         </div>
                         <div class="mb-3">
                             <label for="lastNameInput" class="form-label">Last Name</label>
-                            <input type="text" required class="form-control" name="editLastName">
+                            <input type="text" required class="form-control" id="editLastName" name="editLastName">
                         </div>
                         <div class="mb-3">
                             <label for="jobTitleInput" class="form-label">Job Title</label>
-                            <input type="text" required class="form-control" name="editJobTitle">
+                            <input type="text" required class="form-control" name="editJobTitle" id="editJobTitle">
                         </div>
                         <div class="mb-3">
                             <label for="accessLevelSelect" class="form-label">Access Level</label>
-                            <select class="form-select" required name="editAccessLevel" aria-label="selectAccessLevel">
+                            <select class="form-select" required name="editAccessLevel" id="editAccessLevel" aria-label="selectAccessLevel">
                                 <option selected>Access Level</option>
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="emailInput" class="form-label">Email address</label>
-                            <input type="email" required class="form-control" name="editEmail">
+                            <label for="editEmail" class="form-label">Email address</label>
+                            <input type="email" required class="form-control" name="editEmail" id="editEmail">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="editUUID">
+                        <input type="hidden" name="editUUID" id="editUUID">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary" id="editUserBtn">Edit User</button>
                     </div>

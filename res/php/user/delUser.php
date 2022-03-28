@@ -14,16 +14,26 @@
         header("Location: ../../index");
     }
 
+    //Check form details
+    if(!isset($_POST["uuid"])){
+        echo json_encode(array("statusCode" => 202));
+        return;
+    }
+
+    //Set form details
+    $uuid = $mysqli->real_escape_string($_POST["uuid"]);
+
     //SQL query
     $sql = "DELETE FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('s', $mysqli->real_escape_string($_POST["uuid"]));
+    $stmt->bind_param('s', $uuid);
     if($stmt -> execute()){
+        $mysqli->commit();
         echo json_encode(array("statusCode" => 200));
     }
     else{
+        $mysqli->rollback();
         echo json_encode(array("statusCode" => 201));
-
     }
     
 ?>

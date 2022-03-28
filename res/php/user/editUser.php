@@ -1,5 +1,4 @@
 <?php
-
     //Check the session is active
     session_start();
     if (!isset($_SESSION['UserID'])){
@@ -16,7 +15,7 @@
     }
 
     //Check form details
-    if(!isset($_POST["editEmail"]) || !isset($_POST["editFirstName"]) || !isset($_POST["editLastName"]) || !isset($_POST["editJobTitle"]) || !isset($_POST["editAccessLevel"])){
+    if(!isset($_POST["editEmail"]) || !isset($_POST["editFirstName"]) || !isset($_POST["editLastName"]) || !isset($_POST["editJobTitle"]) || !isset($_POST["editAccessLevel"]) || !isset($_POST["editUUID"])){
         echo json_encode(array("statusCode" => 202));
         return;
     }
@@ -30,13 +29,15 @@
     $accessLevel= $mysqli->real_escape_string($_POST["editAccessLevel"]);
 
     //SQL Prepared Statement
-    $sql="UPDATE `tblUsers` SET `Email` = ?, `FirstName` = ? `LastName` = ?, `JobTitle` = ?, `AccessLevel` = ?) WHERE `tblUsers`.`UUID` = ?";
+    $sql="UPDATE `tblUsers` SET `Email` = ?, `FirstName` = ?, `LastName` = ?, `JobTitle` = ?, `AccessLevel` = ? WHERE `tblUsers`.`UUID` = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ssssss", $email, $firstName, $lastName, $jobTitle, $accessLevel, $UUID);
     if($stmt -> execute()){
+        $mysqli->commit();
         echo json_encode(array("statusCode" => 200));
     }
     else{
+        $mysqli->rollback();
         echo json_encode(array("statusCode" => 201));
     }
     $stmt -> close();
