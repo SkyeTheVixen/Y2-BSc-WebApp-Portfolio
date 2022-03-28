@@ -116,19 +116,9 @@ $(document).ready(function () {
     //Function to enable or disable the password reset functionality. but why... would you?
     $("#userPassReset").change(function (event) {
         if($("#userPassReset").prop('checked')){
-            $.ajax({
-                type: "post",
-                url: "res/php/enableuserpasswordreset.php",
-                success: function (result) {
-                }
-            })
+            $.post("res/php/enableuserpasswordreset.php");
         } else {
-            $.ajax({
-                type: "post",
-                url: "res/php/disableuserpasswordreset.php",
-                success: function (result) {
-                }
-            })
+            $.post("res/php/disableuserpasswordreset.php");
         }
     });
 });
