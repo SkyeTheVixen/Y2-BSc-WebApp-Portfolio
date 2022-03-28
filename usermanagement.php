@@ -86,19 +86,19 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="firstNameInput" class="form-label">First Name</label>
-                            <input type="text" required class="form-control" id="firstNameInput">
+                            <input type="text" required class="form-control" name="firstNameInput">
                         </div>
                         <div class="mb-3">
                             <label for="lastNameInput" class="form-label">Last Name</label>
-                            <input type="text" required class="form-control" id="lastNameInput">
+                            <input type="text" required class="form-control" name="lastNameInput">
                         </div>
                         <div class="mb-3">
                             <label for="jobTitleInput" class="form-label">Job Title</label>
-                            <input type="text" required class="form-control" id="jobTitleInput">
+                            <input type="text" required class="form-control" name="jobTitleInput">
                         </div>
                         <div class="mb-3">
                             <label for="accessLevelSelect" class="form-label">Access Level</label>
-                            <select class="form-select" required id="accessLevelSelect" aria-label="selectAccessLevel">
+                            <select class="form-select" required name="accessLevelSelect" aria-label="selectAccessLevel">
                                 <option selected>Access Level</option>
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="emailInput" class="form-label">Email address</label>
-                            <input type="email" required class="form-control" id="emailInput">
+                            <input type="email" required class="form-control" name="emailInput">
                         </div>
                     </div>
                     <div class="modal-footer">
