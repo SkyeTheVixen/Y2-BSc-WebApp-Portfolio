@@ -19,10 +19,10 @@ if($result -> num_rows === 1){
     $stmt = mysqli_prepare($mysqli, $sql);
     mysqli_stmt_bind_param($stmt, 's', $_POST["cuid"]);
     if($stmt -> execute()){
-        echo json_encode(array("statuscode" => 200));
+        echo json_encode(array("statusCode" => 200));
     }
     else{
-        echo json_encode(array("statuscode" => 201));
+        echo json_encode(array("statusCode" => 201));
 
     }
     

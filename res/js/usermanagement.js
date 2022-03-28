@@ -121,4 +121,52 @@ $(document).ready(function () {
             $.post("res/php/disableuserpasswordreset.php");
         }
     });
+
+
+
+    //Function to edit an existing user
+    $("#editUserForm").submit(function (event) {
+        event.preventDefault();
+
+        $.post({
+            url: "res/php/edituser.php",
+            data: {
+                email: $("#editEmailInput").val(),
+                firstname: $("#editFirstNameInput").val(),
+                lastname: $("#editLastNameInput").val(),
+                jobtitle: $("#editJobTitleInput").val(),
+                accesslevel: $("#editAccessLevelSelect").val()
+            },
+            cache: false,
+            success: function (result) {
+                var Data = JSON.parse(result);
+                if (Data.statusCode === 200) {
+                    $("#editUserModal").modal('toggle');
+                    let timerInterval;
+                    Swal.fire({
+                        title: 'User Added!',
+                        html: 'Reloading page for changes to become visible.',
+                        timer: 2000,
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                    }).then(function(){
+                        window.location.reload();
+                    })
+                } else if (Data.statusCode === 201) {
+                    let timerInterval;
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong. Please try again',
+                        timer: 2000,
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                    });
+                }
+            }
+        })
+
+    });
 });

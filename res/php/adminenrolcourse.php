@@ -21,19 +21,19 @@
     if($result->num_rows <= 0){
         $mysqli->rollback();
         $stmt->close();
-        echo json_encode(array("statuscode"=>202)); //Added a return as some one could possibly submit bad data
+        echo json_encode(array("statusCode"=>202)); //Added a return as some one could possibly submit bad data
         exit();
     }
     $course = $result->fetch_array(MYSQLI_ASSOC);
     $stmt->close();
     if($course["CurrentParticipants"] == $course["MaxParticipants"]){
         $mysqli->rollback();
-        echo json_encode(array("statuscode"=>203)); //Added a return as some one could possibly submit bad data
+        echo json_encode(array("statusCode"=>203)); //Added a return as some one could possibly submit bad data
         exit();
     }
     if($course["SelfEnrol"] == 0 && !isAdmin($mysqli)){
         $mysqli->rollback();
-        echo json_encode(array("statuscode"=>204)); //Added a return as some one could possibly submit bad data
+        echo json_encode(array("statusCode"=>204)); //Added a return as some one could possibly submit bad data
         exit();
     }
     $sql="UPDATE `tblCourses` SET `CurrentParticipants`=`CurrentParticipants`+1 WHERE `CUID`=?";
@@ -54,12 +54,12 @@
         $result2 = $stmt2->get_result();
         $course = $result2->fetch_object();
         sendMail(getUser($mysqli, $member)->Email, "Vixendev Training", "You have been enrolled in a course", "You have been enrolled in the following course by an administrator:" . PHP_EOL . $course->CourseTitle , "You have been enrolled in the following course by an administrator:" . PHP_EOL . $course->CourseTitle);
-        echo json_encode(array("statuscode"=>200, "name"=>getUser($mysqli, $member)->FirstName." ".getUser($mysqli, $member)->LastName)); //Only one return as no one could possibly submit bad data
+        echo json_encode(array("statusCode"=>200, "name"=>getUser($mysqli, $member)->FirstName." ".getUser($mysqli, $member)->LastName)); //Only one return as no one could possibly submit bad data
 
     }
     else{
         $mysqli->rollback();
-        echo json_encode(array("statuscode"=>201)); //Added a return as some one could possibly submit bad data
+        echo json_encode(array("statusCode"=>201)); //Added a return as some one could possibly submit bad data
     }
     $stmt->close();
 

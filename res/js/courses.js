@@ -11,7 +11,7 @@ $(document).ready(function () {
             cache: false,
             success: function (result) {
                 var Data = JSON.parse(result);
-                if (Data.statuscode === 200) {
+                if (Data.statusCode === 200) {
                     swal.fire({
                         icon: 'success',
                         title: 'Enrolled!',

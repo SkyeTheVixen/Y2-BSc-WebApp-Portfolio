@@ -37,10 +37,10 @@
         $subject = "Course Update";
         $txt = "Hi ".$User["FirstName"]." ".$User["LastName"].".\n\nThis email is confirmation that course $courseName [$CUID] has been updated.\n\nKind Regards,\nVD Training Team\n\n";
         sendMail($to, "Vixendev Training",  $subject, $txt, $txt);
-        echo json_encode(array("statuscode" => 200));
+        echo json_encode(array("statusCode" => 200));
     }
     else{
-        echo json_encode(array("statuscode" => 201));
+        echo json_encode(array("statusCode" => 201));
     }
 
 ?>

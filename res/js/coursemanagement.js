@@ -66,7 +66,7 @@ $(document).ready(function () {
             cache: false,
             success: function (result) {
                 var Data = JSON.parse(result);
-                if (Data.statuscode === 200) {
+                if (Data.statusCode === 200) {
                     $("#addCourseModal").modal('toggle');
                     let timerInterval
                     Swal.fire({
@@ -79,7 +79,7 @@ $(document).ready(function () {
                     }).then(function () {
                         window.location.reload();
                     });
-                } else if (Data.statuscode === 201) {
+                } else if (Data.statusCode === 201) {
                     let timerInterval;
                     Swal.fire({
                         icon: 'error',
@@ -109,7 +109,7 @@ $(document).ready(function () {
             cache: false,
             success: function (result) {
                 var Data = JSON.parse(result);
-                if (Data.statuscode === 200) {
+                if (Data.statusCode === 200) {
                     $("#delUserModal").modal('toggle');
                     Swal.fire({
                         title: 'Deleted!',
@@ -119,7 +119,7 @@ $(document).ready(function () {
                     }).then(function () {
                         window.location.reload();
                     })
-                } else if (Data.statuscode === 201) {
+                } else if (Data.statusCode === 201) {
                     let timerInterval;
                     Swal.fire({
                         icon: 'error',
@@ -342,7 +342,7 @@ $(document).ready(function () {
                             cache: false,
                             success: function (result) {
                                 var Data = JSON.parse(result);
-                                if (Data.statuscode === 200) {
+                                if (Data.statusCode === 200) {
                                     swal.fire({
                                         icon: 'success',
                                         title: 'Enrolled!',
@@ -437,7 +437,7 @@ $(document).ready(function () {
             cache: false,
             success: function (result) {
                 var data = JSON.parse(result);
-                if (data.statuscode === 200) {
+                if (data.statusCode === 200) {
                     Swal.fire({
                         icon: 'success',
                         title: 'Updated!',

@@ -40,10 +40,10 @@
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ssssssss", $UUID, $email, "NOPASS", $firstName, $lastName, $jobTitle, $accessLevel, $url);
     if($stmt -> execute()){
-        echo json_encode(array("statuscode" => 200));
+        echo json_encode(array("statusCode" => 200));
     }
     else{
-        echo json_encode(array("statuscode" => 201));
+        echo json_encode(array("statusCode" => 201));
     }
     $stmt -> close();
 
