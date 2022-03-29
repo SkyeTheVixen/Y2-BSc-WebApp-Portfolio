@@ -7,8 +7,8 @@
     include_once("res/php/_connect.php");
     include_once("res/php/_authcheck.php");
     include_once("res/php/functions.inc.php");
-    include_once("res/php/header.php"); 
-    include_once("res/php/navbar.php");
+    include_once("res/php/main/header.php"); 
+    include_once("res/php/main/navbar.php");
     $mysqli->autocommit(false);
 
 ?>
@@ -79,5 +79,5 @@
 
 
 <?php
-    include("res/php/footer.php");
+    include("res/php/main/main.footer.php");
 ?>

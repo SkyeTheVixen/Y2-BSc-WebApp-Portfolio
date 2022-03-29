@@ -6,12 +6,15 @@
     }
 
     //Include the connection and functions
-    include_once("_connect.php");
-    include_once("functions.inc.php");
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    include_once("$path/res/php/_connect.php");
+    include_once("$path/res/php/functions.inc.php");
+
 
     $mysqli->autocommit(FALSE);
     //Escape the course ID, just in case
     $course_id = $mysqli->real_escape_string($_POST['courseID']);
+    $member = $mysqli->real_escape_string($_POST['member']);
     $sql="SELECT * FROM `tblCourses` WHERE `CUID`=?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $course_id);
@@ -41,10 +44,9 @@
     $stmt->execute();
     $stmt->close();
     $mysqli->commit();
-
     $sql = "INSERT INTO `tblUserCourses` (`UUID`, `CUID`) VALUES (?, ?);";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("ss", $_SESSION['UserID'], $course_id);
+    $stmt->bind_param("ss", $member, $course_id);
     if($stmt->execute()){
         $mysqli->commit();
         $sql2 = "SELECT * FROM `tblCourses` WHERE `CUID`=?";
@@ -53,8 +55,8 @@
         $stmt2->execute();
         $result2 = $stmt2->get_result();
         $course = $result2->fetch_object();
-        sendMail(getLoggedInUser($mysqli)->Email, "Vixendev Training", "You have been enrolled in a course", "You have been enrolled in the course " . $course->CourseTitle . ".", "You have been enrolled in the course " . $course->CourseTitle . ".");
-        echo json_encode(array("statusCode"=>200)); //Only one return as no one could possibly submit bad data
+        sendMail(getUser($mysqli, $member)->Email, "Vixendev Training", "You have been enrolled in a course", "You have been enrolled in the following course by an administrator:" . PHP_EOL . $course->CourseTitle , "You have been enrolled in the following course by an administrator:" . PHP_EOL . $course->CourseTitle);
+        echo json_encode(array("statusCode"=>200, "name"=>getUser($mysqli, $member)->FirstName." ".getUser($mysqli, $member)->LastName)); //Only one return as no one could possibly submit bad data
 
     }
     else{

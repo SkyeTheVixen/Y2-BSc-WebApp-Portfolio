@@ -3,10 +3,10 @@
     $title="Course Management | VD Training";
     $pathHead="res/";
     $pageRedirect="";
-    include("res/php/_connect.php");
-    include("res/php/_authcheck.php");
-    include("res/php/header.php"); 
-    include("res/php/navbar.php");
+    include_once("res/php/_connect.php");
+    include_once("res/php/_authcheck.php");
+    include_once("res/php/main/header.php"); 
+    include_once("res/php/main/navbar.php");
 ?>
 
 
@@ -324,5 +324,5 @@
 
 
 <?php
-    include("res/php/footer.php");
+    include("res/php/main/main.footer.php");
 ?>

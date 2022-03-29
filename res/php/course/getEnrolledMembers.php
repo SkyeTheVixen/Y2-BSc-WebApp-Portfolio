@@ -1,5 +1,8 @@
 <?php
-    include("_connect.php");
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    include_once("$path/res/php/_connect.php");
+    include_once("$path/res/php/functions.inc.php");
+    
     $CUID = $_POST['CUID'];
     //Function to return users who are enrolled on a course
     $sql = "SELECT * FROM `tblUserCourses` WHERE `CUID` = ?";

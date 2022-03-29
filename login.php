@@ -76,35 +76,35 @@
         <!-- End Login Form -->
 
         <?php $data = file_get_contents("res/php/data.txt"); if($data == "true") {?>
-        <!-- Password Reset Modal -->
-        <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="addUserModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Forgot Password?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form id="passResetForm">
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="emailInputReset" class="form-label">Email address</label>
-                                <input type="email" required class="form-control" id="emailInputReset">
+            <!-- Password Reset Modal -->
+            <div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="addUserModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Forgot Password?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="passResetForm">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="emailInputReset" class="form-label">Email address</label>
+                                    <input type="email" required class="form-control" id="emailInputReset">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary" id="sendLinkBtn">Send Link</button>
-                        </div>
-                    </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" id="sendLinkBtn">Send Link</button>
+                            </div>
+                        </form>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- End Password Reset Modal -->
+            <!-- End Password Reset Modal -->
         <?php } ?>
 
     </div>
     <!-- End Main Page Content -->
-    <?php include_once("res/php/login_footer.php"); ?>
+    <?php include_once("res/php/main/login.footer.php"); ?>

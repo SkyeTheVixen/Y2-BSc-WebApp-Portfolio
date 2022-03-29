@@ -3,8 +3,9 @@
     if (!isset($_SESSION['UserID'])){
         header("Location: ../login");
     }
-    include_once("_connect.php");
-    include("functions.inc.php");
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    include_once("$path/res/php/_connect.php");
+    include_once("$path/res/php/functions.inc.php");
 
     $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
     $stmt = $mysqli->prepare($sql);

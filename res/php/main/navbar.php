@@ -1,6 +1,7 @@
 <?php
-    include_once("_connect.php");
-    include_once("functions.inc.php");
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    include_once("$path/res/php/_connect.php");
+    include_once("$path/res/php/headerfuncs.inc.php");
 ?>
 <body style="min-height: 100%;">
     <!-- Navigation bar -->

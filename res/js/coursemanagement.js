@@ -1,158 +1,5 @@
 $(document).ready(function () {
 
-    //Delegate Function to unenrol users
-    $(document).on("click", ".unenrolBtn", async function (e) {
-        e.preventDefault();
-        await Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, unenrol!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var userID = $(this).attr('data-user-id');
-                $.ajax({
-                    type: "post",
-                    url: "res/php/adminunenrolcourse.php",
-                    data: {
-                        CUID: $(".unenrolBtn").attr('data-course-id'),
-                        UUID: userID
-                    },
-                    cache: false,
-                    success: function (result) {
-                        var Data = JSON.parse(result);
-                        if (Data.statusCode === 200) {
-                            $.ajax({
-                                type: "post",
-                                url: "res/php/getEnrolledMembers.php",
-                                data: {
-                                    CUID: $(".unenrolBtn").attr('data-course-id')
-                                },
-                                cache: false,
-                                success: function (result) {
-                                    var data = JSON.parse(result);
-                                    $("#viewCourseEnrolledMembers").empty();
-                                    for (var i = 0; i < data.length; i++) {
-                                        $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + data[i] + "\" data-course-id=" + CUID + " data-user-id='" + data[i] + "'>" + data[i + 1] + "</a><br>");
-                                        i++; //Fix for the weird array i passed back
-                                    }
-                                }
-                            });
-                            swal.fire({
-                                icon: 'success',
-                                title: 'Unenrolled!',
-                                text: 'You have successfully unenrolled ' + Data.name + ' from this course.',
-                            });
-                        }
-                    }
-                });
-            }
-        })
-    });
-    
-    
-
-    //Add a new course
-    $("#addCourseForm").submit(function (event) {
-        var data = $(this).serialize();
-        event.preventDefault();
-        $.ajax({
-            type: "post",
-            url: "res/php/addcourse.php",
-            data: data + "&courseSelfEnrol=" + $("#courseSelfEnrol").prop("checked"),
-            cache: false,
-            success: function (result) {
-                var Data = JSON.parse(result);
-                if (Data.statusCode === 200) {
-                    $("#addCourseModal").modal('toggle');
-                    let timerInterval
-                    Swal.fire({
-                        title: 'Course Added!',
-                        html: 'Reloading page for changes to become visible.',
-                        timer: 2000,
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    }).then(function () {
-                        window.location.reload();
-                    });
-                } else if (Data.statusCode === 201) {
-                    let timerInterval;
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong. Please try again',
-                        timer: 2000,
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    });
-                }
-            }
-        })
-
-    });
-
-
-
-    //Functions to delete course
-    function delCourse(cuid) {
-        $.ajax({
-            type: "post",
-            url: "res/php/delcourse.php",
-            data: {
-                cuid: cuid
-            },
-            cache: false,
-            success: function (result) {
-                var Data = JSON.parse(result);
-                if (Data.statusCode === 200) {
-                    $("#delUserModal").modal('toggle');
-                    Swal.fire({
-                        title: 'Deleted!',
-                        text: 'Course has been deleted.',
-                        icon: 'success',
-                        heightAuto: false
-                    }).then(function () {
-                        window.location.reload();
-                    })
-                } else if (Data.statusCode === 201) {
-                    let timerInterval;
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong. Please try again',
-                        timer: 2000,
-                        willClose: () => {
-                            clearInterval(timerInterval)
-                        }
-                    });
-                }
-            }
-        });
-    };
-
-    $(".delCourse").click(function (event) {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                delCourse($(this).attr('data-id'));
-            }
-        })
-    });
-
-
-
     //Enable Data table
     $("#pastCourseTable").DataTable({
         columnDefs: [{
@@ -160,8 +7,6 @@ $(document).ready(function () {
             orderable: false
         }]
     });
-
-
 
     //Enable Data Table
     $("#futureCourseTable").DataTable({
@@ -171,19 +16,65 @@ $(document).ready(function () {
         }]
     });
 
+    //Add a new course
+    $("#addCourseForm").submit(function () {
+        $.post("res/php/course/addCourse.php", $(this).serialize(),
+            function (result) {
+                if (JSON.parse(result).statusCode === 200) {
+                    $("#addCourseModal").modal('toggle');
+                    Swal.fire('Course Added!', 'Reloading page to populate changes', 'success', {
+                        heightAuto: false
+                    }).then(function () {
+                        window.location.reload();
+                    });
+                } else {
+                    Swal.fire('Oops...', 'Something went wrong!', 'error');
+                }
+            }
+        );
+
+
+    });
+
+    //Function to delete course
+    $(".delCourse").click(function () {
+        Swal.fire('Are you sure?', "You won't be able to revert this!", 'warning', {
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            heightAuto: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post("res/php/course/deleteCourse.php", {
+                        cuid: $(this).attr('data-id')
+                    },
+                    function (result) {
+                        if (JSON.parse(result).statusCode === 200) {
+                            $("#delUserModal").modal('toggle');
+                            Swal.fire('Deleted!', 'Course has been deleted.', 'success', {
+                                heightAuto: false
+                            }).then(function () {
+                                window.location.reload();
+                            })
+                        } else if (Data.statusCode === 201) {
+                            Swal.fire('Oops...', 'Something went wrong. Please try again', 'error', {
+                                heightAuto: false
+                            });
+                        }
+                    }
+                );
+            }
+        })
+    });
 
     //Load the view modal content
-    $(".viewCourse").click(function (event) {
+    $(".viewCourse").click(function () {
         var CUID = $(this).attr('data-id');
-        event.preventDefault();
-        $.ajax({
-            type: "post",
-            url: "res/php/getCourse.php",
-            data: {
+        $.post("res/php/course/getCourse.php", {
                 CUID: CUID
             },
-            cache: false,
-            success: function (result) {
+            function (result) {
                 var data = JSON.parse(result);
                 $("#viewCourseName").text(data.CourseTitle);
                 $("#viewCourseDescription").text(data.CourseDescription);
@@ -197,130 +88,92 @@ $(document).ready(function () {
                 if (data.SelfEnrol == 1) {
                     $("#viewCourseSelfEnrol").prop('checked', true);
                 }
-                $.ajax({
-                    type: "post",
-                    url: "res/php/getEnrolledMembers.php",
-                    data: {
+                $.post("res/php/course/getEnrolledMembers.php", {
                         CUID: CUID
                     },
-                    cache: false,
-                    success: function (result) {
+                    function (result) {
                         var data = JSON.parse(result);
                         for (var i = 0; i < data.length; i++) {
                             $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + data[i] + "\" data-course-id=" + CUID + " data-user-id='" + data[i] + "'>" + data[i + 1] + "</a><br>");
                             i++; //Fix for the weird array i passed back
                         }
                     }
-                });
+                );
             }
-        });
+        );
     });
 
-
-
     //Empty the view modal
-    $("#viewCourseModal").on("hidden.bs.modal", function (event) {
-        event.preventDefault();
+    $("#viewCourseModal").on("hidden.bs.modal", function () {
+        $(this).find('p').text("");
+        $("#viewCourseSelfEnrol").prop('checked', false);
         $("#viewCourseEnrolledMembers").empty();
-        $("#viewCourseName").text("");
-        $("#viewCourseDescription").text("");
-        $("#viewCourseStartDate").text("");
-        $("#viewCourseEndDate").text("");
-        $("#viewCourseDeliveryMethod").text("");
-        $("#viewCourseCurrentParticipants").text("");
-        $("#viewCourseMaxParticipants").text("");
         $("#enrolMemberBtn").attr('data-id', "");
         $("#generateAttendanceBtn").attr('data-id', "");
     });
 
-
-
     //Generate the attendance register
-    $("#generateAttendanceBtn").click(function (event) {
-        event.preventDefault();
+    $("#generateAttendanceBtn").click(function () {
         var names = [];
-        $.ajax({
-            type: "post",
-            url: "res/php/getEnrolledMembers.php",
-            data: {
+        $.post("res/php/course/getEnrolledMembers.php", {
                 CUID: $(this).attr('data-id')
             },
-            cache: false,
-            success: function (result) {
+            function (result) {
                 var data = JSON.parse(result);
                 for (var i = 0; i < data.length; i++) {
                     names = names.concat(data[i + 1]);
                     i++; //Fix for the weird array i passed back
                 }
-                $.ajax({
-                    type: "post",
-                    url: "res/php/generateRegister.php",
-                    data: {
+                $.post("res/php/course/generateRegister.php", {
                         courseName: $("#viewCourseName").text(),
                         names: names
                     },
-                    cache: false,
-                    success: function (result) {
+                    function (result) {
                         var data = JSON.parse(result);
                         if (data.statusCode === 200) {
-                            Swal.fire({
+                            Swal.fire('Generated!', {
                                 icon: 'success',
-                                title: 'Generated!',
                                 html: 'Register has been generated. <a download="' + data.URL + '" href="registers/' + data.URL + '">Download</a>',
                                 heightAuto: false
                             }).then(function () {
-                                $.ajax({
-                                    type: "post",
-                                    url: "res/php/deleteRegister.php",
-                                    data: {
-                                        URL: 'registers/' + data.URL
-                                    },
-                                    cache: false,
-                                    success: function (result) {}
+                                $.post("res/php/course/deleteRegister.php", {
+                                    URL: 'registers/' + data.URL
                                 });
                             });
                         }
                     }
-                });
+                );
             }
-        });
-
-
+        );
     });
 
-
-
     //Allow admins to enrol members
-    $("#enrollMemberBtn").click(function (event) {
-        event.preventDefault();
+    $("#enrollMemberBtn").click(function () {
         var names = {};
-        $.ajax({
-            type: "post",
-            url: "res/php/getUnenrolledMembers.php",
-            data: {
+        $.post("res/php/course/getUnenrolledMembers.php", {
                 CUID: $(this).attr('data-id')
             },
-            cache: false,
-            success: function (result) {
+            function (result) {
                 var data = JSON.parse(result);
                 for (var i = 0; i < data.length; i++) {
                     names[data[i]] = data[i + 1];
                     i++; //Fix for the weird array i passed back
                 }
-                if (Object.keys(names).length == 0) {
-                    return Swal.fire({
-                        title: "Oops...",
-                        text: "No unenrolled members are available for this course",
-                        icon: "error",
-                    });
-                }
+                if (Object.keys(names).length == 0) return Swal.fire('Oops...', 'No unenrolled members are available for this course', 'error', {
+                    heightAuto: false
+                });
+
+                //Async function as this needs to be asynchronous
                 async function getNames() {
-                    const { value: member } = await Swal.fire({
+                    const {
+                        value: member
+                    } = await Swal.fire({
                         title: 'Enroll a staff member',
                         input: 'select',
                         inputOptions: names,
                         inputPlaceholder: 'Select staff to enrol',
                         showCancelButton: true,
+                        heightAuto: false,
                         inputValidator: (value) => {
                             return new Promise((resolve) => {
                                 if (value) {
@@ -332,49 +185,32 @@ $(document).ready(function () {
                         }
                     })
                     if (member) {
-                        $.ajax({
-                            type: "post",
-                            url: "res/php/adminenrolcourse.php",
-                            data: {
+                        $.post("res/php/course/adminEnrolCourse.php", {
                                 courseID: $("#enrollMemberBtn").attr('data-id'),
                                 member: member
                             },
-                            cache: false,
-                            success: function (result) {
-                                var Data = JSON.parse(result);
-                                if (Data.statusCode === 200) {
-                                    swal.fire({
-                                        icon: 'success',
-                                        title: 'Enrolled!',
-                                        text: 'You have successfully enrolled ' + Data.name + ' in this course.',
-                                    });
-                                    $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + data[i] + "\" data-course-id=" + $("#enrollMemberBtn").attr('data-id') + " data-user-id='" + member + "'>" + Data.name + "</a><br>");
+                            function (result) {
+                                if (JSON.parse(result).statusCode === 200) {
+                                    Swal.fire('Enrolled!', 'You have successfully enrolled ' + JSON.parse(result).name + ' in this course.', 'success');
+                                    $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + JSON.parse(result)[i] + "\" data-course-id=" + $("#enrollMemberBtn").attr('data-id') + " data-user-id='" + member + "'>" + Data.name + "</a><br>");
                                 }
                             }
 
-                        });
+                        );
                     }
                 }
                 getNames();
             }
-        });
+        );
 
     });
 
-
-
     //Load the edit form data
-    $(".editCourse").click(function (event) {
-        var CUID = $(this).attr('data-id');
-        event.preventDefault();
-        $.ajax({
-            type: "post",
-            url: "res/php/getCourse.php",
-            data: {
-                CUID: CUID
+    $(".editCourse").click(function () {
+        $.post("res/php/course/getCourse.php", {
+                CUID: $(this).attr('data-id')
             },
-            cache: false,
-            success: function (result) {
+            function (result) {
                 var data = JSON.parse(result);
                 $("#editCourseName").val(data.CourseTitle);
                 $("#editCourseDescription").val(data.CourseDescription);
@@ -389,64 +225,57 @@ $(document).ready(function () {
                 $("#editCourseId").val(CUID);
 
             }
-        });
+        );
     });
 
-
-
     //Empty the Edit Modal
-    $("#editCourseModal").on("hidden.bs.modal", function (event) {
-        event.preventDefault();
+    $("#editCourseModal").on("hidden.bs.modal", function () {
         $("#editCourseEnrolledMembers").empty();
-        $("#editCourseName").text("");
-        $("#editCourseDescription").text("");
-        $("#editCourseStartDate").text("");
-        $("#editCourseEndDate").text("");
-        $("#editCourseDeliveryMethod").text("");
-        $("#editCourseCurrentParticipants").text("");
-        $("#editCourseMaxParticipants").text("");
+        $(this).find('input, p, textarea').text("");
         $("#editCourseId").val("");
     });
 
-
-
     //Edit the course
-    $("#editCourseForm").submit(function (event) {
-        event.preventDefault();
-        var CUID = $("#editCourseId").val();
-        var name = $("#editCourseName").val();
-        var description = $("#editCourseDescription").val();
-        var startDate = $("#editCourseStartDate").val();
-        var endDate = $("#editCourseEndDate").val();
-        var deliveryMethod = $("#editCourseDeliveryMethod").val();
-        var maxParticipants = $("#editCourseMaxParticipants").val();
-        var selfEnrol = $("#editCourseSelfEnrol").prop("checked");
-        $.ajax({
-            type: "post",
-            url: "res/php/editCourse.php",
-            data: {
-                CUID: CUID,
-                name: name,
-                description: description,
-                startDate: startDate,
-                endDate: endDate,
-                deliveryMethod: deliveryMethod,
-                maxParticipants: maxParticipants,
-                selfEnrol: selfEnrol
-            },
-            cache: false,
-            success: function (result) {
-                var data = JSON.parse(result);
-                if (data.statusCode === 200) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Updated!',
-                        text: 'You have successfully updated ' + data.name + '.',
-                    }).then( function() {
-                        $("#editCourseModal").modal("hide");
-                    })
+    $("#editCourseForm").submit(function () {
+        $.post("res/php/course/editCourse.php", $(this).serialize(),
+            function (result) {
+                if (JSON.parse(result).statusCode === 200) {
+                    Swal.fire('Updated!', 'You have successfully updated ' + JSON.parse(result).name + '.', 'success', { heightAuto: false }).then(function () { $("#editCourseModal").modal("hide"); });
                 }
             }
-        });
+        );
+    });
+
+    //Delegate Function to unenrol users
+    $(document).on("click", ".unenrolBtn", async function () {
+        await Swal.fire('Are you sure?', 'You will not be able to recover this course!', 'warning', {
+            heightAuto: false,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, unenrol!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post("res/php/course/adminUnenrolCourse.php", { CUID: $(".unenrolBtn").attr('data-course-id'), UUID: $(".unenrolBtn").attr('data-user-id') },
+                    function (result) {
+                        if (JSON.parse(result).statusCode === 200) {
+                            $.post("res/php/course/getEnrolledMembers.php", {
+                                    CUID: $(".unenrolBtn").attr('data-course-id')
+                                },
+                                function (result) {
+                                    var data = JSON.parse(result);
+                                    $("#viewCourseEnrolledMembers").empty();
+                                    for (var i = 0; i < data.length; i++) {
+                                        $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + data[i] + "\" data-course-id=" + $(".unenrolBtn").attr('data-course-id') + " data-user-id='" + data[i] + "'>" + data[i + 1] + "</a><br>");
+                                        i++; //Fix for the weird array i passed back
+                                    }
+                                }
+                            );
+                            Swal.fire('Unenrolled!', 'You have successfully unenrolled the member from this course.', 'success');
+                        }
+                    }
+                );
+            }
+        })
     });
 })

@@ -5,8 +5,9 @@
     $pageRedirect="";
     include("res/php/_connect.php");
     include("res/php/_authcheck.php");
-    include("res/php/header.php"); 
-    include("res/php/navbar.php");
+    
+    include("res/php/main/header.php"); 
+    include("res/php/main/navbar.php");
 ?>
 
 
@@ -28,26 +29,25 @@
             </thead>
             <tbody>
                 <?php
-                        $sql = "SELECT * FROM `tblUsers`";
-                        $run = mysqli_query($mysqli, $sql);
-
-                        while($result = mysqli_fetch_assoc($run))
-                        {
+                    $sql = "SELECT * FROM `tblUsers`";
+                    $run = mysqli_query($mysqli, $sql);
+                    while($result = mysqli_fetch_assoc($run))
+                    {
+                ?>
+                    <tr>
+                        <td><?=$result["FirstName"]?></td>
+                        <td><?=$result["LastName"]?></td>
+                        <td><?=$result["Email"]?></td>
+                        <td><?=$result["JobTitle"]?></td>
+                        <td><?=$result["AccessLevel"]?></td>
+                        <td><a class="editUUID" data-id="<?=$result["UUID"]?>"><i class="fa fa-pencil"></i></a>
+                        </td>
+                        <td><a class="delUUID" data-id="<?=$result["UUID"]?>"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                <?php
+                        }
                     ?>
-                <tr>
-                    <td><?=$result["FirstName"]?></td>
-                    <td><?=$result["LastName"]?></td>
-                    <td><?=$result["Email"]?></td>
-                    <td><?=$result["JobTitle"]?></td>
-                    <td><?=$result["AccessLevel"]?></td>
-                    <td><a data-id="<?=$result["UUID"]?>" class="editUUID"><i class="fa fa-pencil"></i></a>
-                    </td>
-                    <td><a class="delUUID" data-id="<?=$result["UUID"]?>"><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                    <?php
-                            }
-                        ?>
-                </tr>
             </tbody>
         </table>
         <!-- End Table of Users -->
@@ -167,5 +167,5 @@
 
 
 <?php
-    include("res/php/footer.php");
+    include("res/php/main/main.footer.php");
 ?>

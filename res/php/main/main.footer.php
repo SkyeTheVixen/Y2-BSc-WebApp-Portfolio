@@ -4,8 +4,7 @@
     <footer class="py-3 mt-3 bg-dark" style="bottom: 0;">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item">
-                <a href="<?=$pageRedirect;?>index"
-                    <?= $currentPage=="index" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>>Home</a>
+                <a href="<?=$pageRedirect;?>index" <?= $currentPage=="index" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>>Home</a>
             </li>
             <li class="nav-item">
                 <a href="<?=$pageRedirect;?>courses" <?= $currentPage=="courses" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>> Courses</a>
@@ -14,7 +13,7 @@
                 <a href="<?=$pageRedirect;?>account" <?=$currentPage=="account" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>>My Account</a>
             </li>
             <li class="nav-item right" id="logoutBtn">
-                <a href="<?= $pathHead;?>php/logout" class="nav-link link-light">Logout</a>
+                <a href="<?=$pathHead;?>php/logout" class="nav-link link-light">Logout</a>
             </li>
         </ul>
         <p class="text-center text-muted pb-3">© 2021 - <?= date("Y");?> Vixendev</p>
@@ -28,6 +27,4 @@
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" ></script>
 </body>
-
-
 </html>
