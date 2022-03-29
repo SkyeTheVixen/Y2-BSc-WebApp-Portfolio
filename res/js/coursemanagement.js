@@ -131,7 +131,8 @@ $(document).ready(function () {
                     function (result) {
                         var data = JSON.parse(result);
                         if (data.statusCode === 200) {
-                            Swal.fire('Generated!', {
+                            Swal.fire({
+                                title: 'Generated!',
                                 icon: 'success',
                                 html: 'Register has been generated. <a download="' + data.URL + '" href="registers/' + data.URL + '">Download</a>',
                                 heightAuto: false
