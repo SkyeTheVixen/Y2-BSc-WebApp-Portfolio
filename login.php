@@ -1,4 +1,5 @@
-<?php 
+<?php
+    phpinfo();
     $title="Login | VD Training";
     $currentPage="login";
     $pathHead="res/";
