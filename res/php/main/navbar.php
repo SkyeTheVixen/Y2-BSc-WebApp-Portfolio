@@ -46,7 +46,7 @@
                         <a href="<?=$pageRedirect;?>account" <?= $currentPage=="account" ? "class=\"nav-link link-light active\" aria-current=\"page\"" : "class=\"nav-link link-light\"";?>><i class="fas fa-user"></i> Account</a>
                     </li>
                     <li class="nav-item align-right" id="logoutBtn">
-                        <a href="<?=$pathHead;?>php/logout" class="nav-link link-light"><i class="fas fa-door-open"></i>Logout</a>
+                        <a href="<?=$pathHead;?>php/main/logout" class="nav-link link-light"><i class="fas fa-door-open"></i>Logout</a>
                     </li>
                 </ul>
             </div>
