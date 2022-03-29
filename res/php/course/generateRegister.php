@@ -3,7 +3,7 @@
     if (!isset($_SESSION['UserID'])){
         header("Location: ../login");
     }
-    require('../tfpdf/tfpdf.php');
+    require('../../tfpdf/tfpdf.php');
     $register = new tFPDF();
 
     $names = $_POST['names'];
@@ -19,7 +19,7 @@
         $register->Cell(40,10, "☐    " . $name);
         $register->Ln();
     }
-    $register->Output('F', '../../registers/AttendanceRegister'.date('dmy').'.pdf');
+    $register->Output('F', '../../../registers/AttendanceRegister'.date('dmy').'.pdf');
     echo(json_encode(array('statusCode' => 200, 'URL' => 'AttendanceRegister'.date('dmy').'.pdf')));
     
 
