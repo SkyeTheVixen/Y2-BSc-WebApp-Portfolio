@@ -5,7 +5,7 @@
     $pageRedirect="";
     include("res/php/_connect.php");
     include("res/php/_authcheck.php");
-    
+    include_once("res/php/functions.inc.php");
     include("res/php/main/header.php"); 
     include("res/php/main/navbar.php");
 ?>
