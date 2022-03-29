@@ -22,11 +22,11 @@
 
     //Set form details
     $UUID= GenerateID();
-    $email= $mysqli->real_escape_string($_POST["addEmail"]);
-    $firstName= $mysqli->real_escape_string($_POST["addFirstName"]);
-    $lastName= $mysqli->real_escape_string($_POST["addLastName"]);
-    $jobTitle= $mysqli->real_escape_string($_POST["addJobTitle"]);
-    $accessLevel= $mysqli->real_escape_string($_POST["addAccessLevel"]);
+    $email= $_POST["addEmail"];
+    $firstName= $_POST["addFirstName"];
+    $lastName= $_POST["addLastName"];
+    $jobTitle= $_POST["addJobTitle"];
+    $accessLevel= $_POST["addAccessLevel"];
 
     //SQL Prepared Statement
     $sql="INSERT INTO `tblUsers` (`UUID`, `Email`, `FirstName`, `LastName`, `JobTitle`, `IsLocked`, `AccessLevel`, `Password`) VALUES (?, ?, ?, ?, ?, 0, ?, 'NOPASS')";

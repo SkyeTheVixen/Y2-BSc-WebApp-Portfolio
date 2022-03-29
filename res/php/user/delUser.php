@@ -21,7 +21,7 @@
     }
 
     //Set form details
-    $uuid = $mysqli->real_escape_string($_POST["uuid"]);
+    $uuid = $_POST["uuid"];
 
     //SQL query
     $sql = "DELETE FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";

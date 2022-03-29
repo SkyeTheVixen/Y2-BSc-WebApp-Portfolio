@@ -16,7 +16,7 @@
     }
 
     //Function to get a single User object
-    $UUID = $mysqli->real_escape_string($_POST["uuid"]);
+    $UUID = $_POST["uuid"];
     $sql = "SELECT * FROM `tblUsers` WHERE `UUID` = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $UUID);

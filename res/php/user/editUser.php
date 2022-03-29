@@ -21,12 +21,12 @@
     }
 
     //Set form details
-    $UUID= $mysqli->real_escape_string($_POST["editUUID"]);
-    $email= $mysqli->real_escape_string($_POST["editEmail"]);
-    $firstName= $mysqli->real_escape_string($_POST["editFirstName"]);
-    $lastName= $mysqli->real_escape_string($_POST["editLastName"]);
-    $jobTitle= $mysqli->real_escape_string($_POST["editJobTitle"]);
-    $accessLevel= $mysqli->real_escape_string($_POST["editAccessLevel"]);
+    $UUID= $_POST["editUUID"];
+    $email= $_POST["editEmail"];
+    $firstName= $_POST["editFirstName"];
+    $lastName= $_POST["editLastName"];
+    $jobTitle= $_POST["editJobTitle"];
+    $accessLevel= $_POST["editAccessLevel"];
 
     //SQL Prepared Statement
     $sql="UPDATE `tblUsers` SET `Email` = ?, `FirstName` = ?, `LastName` = ?, `JobTitle` = ?, `AccessLevel` = ? WHERE `tblUsers`.`UUID` = ?";
