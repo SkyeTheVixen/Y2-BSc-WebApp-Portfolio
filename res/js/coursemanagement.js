@@ -222,7 +222,7 @@ $(document).ready(function () {
                 if (data.SelfEnrol == 1) {
                     $("#editCourseSelfEnrol").prop('checked', true);
                 }
-                $("#editCourseId").val(CUID);
+                $("#editCourseId").val(data.CUID);
 
             }
         );
@@ -236,11 +236,14 @@ $(document).ready(function () {
     });
 
     //Edit the course
-    $("#editCourseForm").submit(function () {
-        $.post("res/php/course/editCourse.php", $(this).serialize(),
-            function (result) {
-                if (JSON.parse(result).statusCode === 200) {
-                    Swal.fire('Updated!', 'You have successfully updated ' + JSON.parse(result).name + '.', 'success', { heightAuto: false }).then(function () { $("#editCourseModal").modal("hide"); });
+    $("#editCourseForm").submit(function (event) {
+        event.preventDefault();
+        $.post("res/php/course/editCourse.php", $(this).serialize() + "&editCourseSelfEnrol=" + $("#editCourseSelfEnrol").prop('checked'),
+            function (data, statusText, xhr) {
+                if (xhr.status == 200) {
+                    Swal.fire('Updated!', 'You have successfully updated ' + JSON.parse(data).name + '.', 'success', { heightAuto: false }).then(function () { window.location.reload(); });
+                } else {
+                    Swal.fire('Oops...', 'Something went wrong. Please try again.', 'error', { heightAuto: false });
                 }
             }
         );
@@ -248,7 +251,7 @@ $(document).ready(function () {
 
     //Delegate Function to unenrol users
     $(document).on("click", ".unenrolBtn", async function () {
-        await Swal.fire('Are you sure?', 'You will not be able to recover this course!', 'warning', {
+        await Swal.fire('Are you sure?', 'You will unenrol this user from the course!', 'warning', {
             heightAuto: false,
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

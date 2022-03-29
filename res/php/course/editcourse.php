@@ -1,49 +1,50 @@
 <?php
 
+    //Check the user is logged in
     session_start();
     if (!isset($_SESSION['UserID'])){
         header("Location: ../login");
     }
     
+    //Required includes
     $path = $_SERVER['DOCUMENT_ROOT'];
     include_once("$path/res/php/_connect.php");
     include_once("$path/res/php/functions.inc.php");
 
-
-    $sql = "SELECT * FROM `tblUsers` WHERE `tblUsers`.`UUID` = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('s', $_SESSION["UserID"]);
-    $stmt -> execute();
-    $result = $stmt->get_result();
-    if($result -> num_rows === 1){
-        $User = $result->fetch_array(MYSQLI_ASSOC);
-        if($User["AccessLevel"] === "user"){
-            header("Location: index");
-        }
+    //Check user is admin
+    if(getLoggedInUser($mysqli) && getLoggedInUser($mysqli)->AccessLevel == "user"){
+        return http_response_code(202);
     }
-    $CUID = $_POST["CUID"];
-    $courseName= $mysqli->real_escape_string($_POST["name"]);
-    $courseDescription= $mysqli->real_escape_string($_POST["description"]);
-    $courseStartDate= $mysqli->real_escape_string($_POST["startDate"]);
-    $courseEndDate= $mysqli->real_escape_string($_POST["endDate"]);
-    $courseDeliveryMethod= $mysqli->real_escape_string($_POST["deliveryMethod"]);
-    $CourseMaxParticipants= $mysqli->real_escape_string($_POST["maxParticipants"]);
-    $CourseSelfEnrol= $mysqli->real_escape_string($_POST["selfEnrol"]);
+
+    //Check form has been submitted
+    if(!isset($_POST) && count($_POST) < 7){
+        return http_response_code(202);
+    }
+
+    $CUID = $_POST["editCourseId"];
+    $courseTitle= $mysqli->real_escape_string($_POST["editCourseName"]);
+    $courseDescription= $mysqli->real_escape_string($_POST["editCourseDescription"]);
+    $courseStartDate= $mysqli->real_escape_string($_POST["editCourseStartDate"]);
+    $courseEndDate= $mysqli->real_escape_string($_POST["editCourseEndDate"]);
+    $courseDeliveryMethod= $mysqli->real_escape_string($_POST["editCourseDeliveryMethod"]);
+    $CourseMaxParticipants= $mysqli->real_escape_string($_POST["editCourseMaxParticipants"]);
+    $CourseSelfEnrol= $mysqli->real_escape_string($_POST["editCourseSelfEnrol"]);
     $CourseSelfEnrol == "true" ? $CourseSelfEnrol = 1 : $CourseSelfEnrol = 0;
 
     //SQL prepared Statement
     $sql="UPDATE `tblCourses` SET `CourseTitle`=?,`CourseDescription`=?,`StartDate`=?,`EndDate`=?,`DeliveryMethod`=?,`SelfEnrol`=?,`MaxParticipants`=?,`CurrentParticipants`=? WHERE `CUID`=?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("sssssssss", $courseName, $courseDescription, $courseStartDate, $courseEndDate, $courseDeliveryMethod, $CourseSelfEnrol, $CourseMaxParticipants, $CourseMaxParticipants, $CUID);
+    $stmt->bind_param("sssssssss", $courseTitle, $courseDescription, $courseStartDate, $courseEndDate, $courseDeliveryMethod, $CourseSelfEnrol, $CourseMaxParticipants, $CourseMaxParticipants, $CUID);
     if($stmt -> execute()){
-        $to = $User["Email"];
+        $mysqli->commit();
         $subject = "Course Update";
-        $txt = "Hi ".$User["FirstName"]." ".$User["LastName"].".\n\nThis email is confirmation that course $courseName [$CUID] has been updated.\n\nKind Regards,\nVD Training Team\n\n";
-        sendMail($to, "Vixendev Training",  $subject, $txt, $txt);
-        echo json_encode(array("statusCode" => 200));
+        $txt = "Hi ".getLoggedInUser($mysqli)->FirstName." ".getLoggedInUser($mysqli)->LastName.".\n\nThis email is confirmation that course $courseTitle [$CUID] has been updated.\n\nKind Regards,\nVD Training Team\n\n";
+        sendMail(getLoggedInUser($mysqli)->Email, "Vixendev Training",  $subject, $txt, $txt);
+        echo json_encode(array("name" => $courseTitle));
+        http_response_code(200);
     }
     else{
-        echo json_encode(array("statusCode" => 201));
+        http_response_code(201);
     }
 
 ?>

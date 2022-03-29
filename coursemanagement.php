@@ -213,24 +213,23 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="courseNameInput" class="form-label">Course Name</label>
-                            <input type="text" class="form-control" id="editCourseName"></input>
+                            <input type="text" class="form-control" name="editCourseName" id="editCourseName"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseDescriptionInput" class="form-label">Course Description</label>
-                            <input type="text" class="form-control" id="editCourseDescription"></input>
+                            <input type="text" class="form-control" name="editCourseDescription" id="editCourseDescription"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseStartDateInput" class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="editCourseStartDate"></input>
+                            <input type="date" class="form-control" name="editCourseStartDate" id="editCourseStartDate"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseEndDateInput" class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="editCourseEndDate"></input>
+                            <input type="date" class="form-control" name="editCourseEndDate" id="editCourseEndDate"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseDeliveryMethod" class="form-label">Delivery Method</label>
-                            <select class="form-select" required id="editCourseDeliveryMethod"
-                                aria-label="selectAccessLevel">
+                            <select class="form-select" required name="editCourseDeliveryMethod" id="editCourseDeliveryMethod" aria-label="selectAccessLevel">
                                 <option selected>Delivery Method</option>
                                 <option value="In Person">In Person</option>
                                 <option value="Online">Online</option>
@@ -238,12 +237,11 @@
                         </div>
                         <div class="mb-3 form-check form-switch">
                             <label for="courseSelfEnrol" class="form-label">Allow Self Enrolment?</label>
-                            <input class="form-check-input" type="checkbox" role="switch"
-                                id="editCourseSelfEnrol"></input>
+                            <input class="form-check-input" type="checkbox" role="switch" name="editCourseSelfEnrol" id="editCourseSelfEnrol"></input>
                         </div>
                         <div class="mb-3">
                             <label for="courseMaxParticipants" class="form-label">Maximum Participants</label>
-                            <input class="form-control" type="number" id="editCourseMaxParticipants"></input>
+                            <input class="form-control" type="number" name="editCourseMaxParticipants" id="editCourseMaxParticipants"></input>
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" id="editCourseId" name="editCourseId">
