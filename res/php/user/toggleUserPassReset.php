@@ -6,9 +6,9 @@
     }
     
     //Simple logic to toggle password reset
-    if(file_get_contents("data.txt") == "true"){
-        file_put_contents("data.txt", "false");
+    if(file_get_contents("../data.txt") == "true"){
+        file_put_contents("../data.txt", "false");
     } else {
-        file_put_contents("data.txt", "true");
+        file_put_contents("../data.txt", "true");
     }
 ?>
