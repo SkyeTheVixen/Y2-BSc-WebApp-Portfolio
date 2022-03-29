@@ -3,7 +3,7 @@
     $currentPage="login";
     $pathHead="res/";
     $pageRedirect="";
-    include_once("res/php/header.php"); 
+    include_once("res/php/main/header.php"); 
 ?>
 
 <body>
