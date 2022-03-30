@@ -8,6 +8,9 @@
     include_once("res/php/main/header.php"); 
     include_once("res/php/main/navbar.php");
     include_once("res/php/functions.inc.php");
+    if(!isAdmin($mysqli)){
+        header("Location: index.php?er=insufperms");
+    }
 ?>
 
 

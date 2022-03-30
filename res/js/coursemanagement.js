@@ -124,11 +124,10 @@ $(document).ready(function () {
                     names = names.concat(data[i + 1]);
                     i++; //Fix for the weird array i passed back
                 }
-                $.post("res/php/course/generateRegister.php", {
-                        courseName: $("#viewCourseName").text(),
-                        names: names
-                    },
+                console.log(names[0]);
+                $.post("res/php/course/generateRegister.php", { courseName: $("#viewCourseName").text(), names: [names] },
                     function (result) {
+                        console.log(result);
                         var data = JSON.parse(result);
                         if (data.statusCode === 200) {
                             Swal.fire({

@@ -21,6 +21,4 @@
     }
     $register->Output('F', '../../../registers/AttendanceRegister'.date('dmy').'.pdf');
     echo(json_encode(array('statusCode' => 200, 'URL' => 'AttendanceRegister'.date('dmy').'.pdf')));
-    
-
 ?>

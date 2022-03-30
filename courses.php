@@ -8,7 +8,6 @@
     include("res/php/functions.inc.php");
     include("res/php/main/header.php"); 
     include("res/php/main/navbar.php");
-    $mysqli->autocommit(false);
 ?>
 
 
@@ -65,26 +64,25 @@
                                 <li class="list-group-item">Start Date: <?= $rows['StartDate']; ?></li>
                                 <li class="list-group-item">End Date: <?=$rows['EndDate']; ?></li>
                                 <li class="list-group-item">Delivery Method: <?=$rows['DeliveryMethod']; ?></li>
-                                <li class="list-group-item" id="participantCount-<?=$rows["CUID"];?>">Participants:
-                                    <?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?></li>
-                                <li class="list-group-item"><progress id="progress-<?=$rows["CUID"];?>"
-                                        max="<?=$rows['MaxParticipants']; ?>"
-                                        value="<?=$rows['CurrentParticipants']?>"></progress>
+                                <li class="list-group-item" id="participantCount-<?=$rows["CUID"];?>">Participants: <?=$rows['CurrentParticipants']?>/<?=$rows['MaxParticipants']; ?></li>
+                                <li class="list-group-item"><progress id="progress-<?=$rows["CUID"];?>" max="<?=$rows['MaxParticipants']; ?>" value="<?=$rows['CurrentParticipants']?>"></progress></li>
+                                <li class="list-group-item d-flex" id="btns<?=$rows["CUID"];?>">
                                     <?php if((($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == 1) || (($rows['CurrentParticipants'] < $rows['MaxParticipants']) && isAdmin($mysqli))){?>
                                         <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
-                                            <li class="list-group-item"><a class="btn btn-success">✅ Enrolled!</a></li>
+                                                <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-enrol btn-success disabled me-1" disabled>✅ Enrolled!</a>
+                                                <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-unenrol btn-danger">Unenroll</a>
                                         <?php } else { ?>
-                                            <li class="list-group-item"><a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-primary">Register</a></li>
+                                            <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-enrol btn-primary">Register</a>
                                         <?php } ?>
-                                    <?php } else { ?>
+                                    <?php } else { ?>                                    
                                         <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
-                                            <li class="list-group-item"><a class="btn btn-success disabled" disabled>✅ Enrolled!</a></li>
-                                <?php } else { ?>
-                                <li class="list-group-item"><a class="enrol-btn btn btn-secondary disabled" disabled
-                                        title="Please speak to your admin to request access to this course">Register</a>
+                                                <a data-courseid="<?=$rows['CUID']; ?>"  class="btn btn-enrol btn-success disabled me-1" disabled>✅ Enrolled!</a>
+                                                <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-unenrol btn-danger">Unenroll</a>
+                                        <?php } else { ?>
+                                            <a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-secondary disabled" disabled title="Please speak to your admin to request access to this course">Register</a>
+                                        <?php } ?>
+                                    <?php } ?>
                                 </li>
-                                <?php } ?>
-                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -126,23 +124,19 @@
                                 <li class="list-group-item"><progress id="progress-<?=$rows["CUID"];?>"
                                         max="<?=$rows['MaxParticipants']; ?>"
                                         value="<?=$rows['CurrentParticipants']?>"></progress>
-                                    <?php if(($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == 1){?>
-                                    <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
-                                <li class="list-group-item"><a class="btn btn-success">✅ Enrolled!</a></li>
-                                <?php } else { ?>
-                                <li class="list-group-item"><a data-courseid="<?=$rows['CUID']; ?>"
-                                        class="enrol-btn btn btn-primary" disabled>Expired</a></li>
-                                <?php } ?>
-                                <?php } else { ?>
-                                <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
-                                <li class="list-group-item"><a class="btn btn-success disabled" disabled>✅ Enrolled!</a>
-                                </li>
-                                <?php } else { ?>
-                                <li class="list-group-item"><a class="enrol-btn btn btn-secondary disabled" disabled
-                                        title="Please speak to your admin to request access to this course">Expired</a>
-                                </li>
-                                <?php } ?>
-                                <?php } ?>
+                                    <?php if((($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == 1) || (($rows['CurrentParticipants'] < $rows['MaxParticipants']) && isAdmin($mysqli))){?>
+                                        <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
+                                                <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-enrol btn-success disabled me-1" disabled>✅ Enrolled!</a>
+                                        <?php } else { ?>
+                                            <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-enrol btn-primary disabled" disabled>Register</a>
+                                        <?php } ?>
+                                    <?php } else { ?>                                    
+                                        <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
+                                                <a data-courseid="<?=$rows['CUID']; ?>"  class="btn btn-enrol btn-success disabled me-1" disabled>✅ Enrolled!</a>
+                                        <?php } else { ?>
+                                            <a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-secondary disabled" disabled title="Please speak to your admin to request access to this course">Register</a>
+                                        <?php } ?>
+                                    <?php } ?>
                             </ul>
                         </div>
                     </div>

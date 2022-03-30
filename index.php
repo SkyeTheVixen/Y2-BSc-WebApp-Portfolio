@@ -9,8 +9,10 @@
     include_once("res/php/functions.inc.php");
     include_once("res/php/main/header.php"); 
     include_once("res/php/main/navbar.php");
-    $mysqli->autocommit(false);
 
+    if(isset($_GET['er'])){
+        echo "<script>Swal.fire('Oops...', 'Insufficient Permissions', 'error');</script>";
+    }
 ?>
 
 
@@ -44,6 +46,7 @@
                         <tbody>
                             <?php
                                 //Fetch Users course ID's
+                                $courseCount = 0;
                                 $sql = "SELECT * FROM `tblUserCourses` WHERE `UUID` = ?";
                                 $stmt = $mysqli->prepare($sql);
                                 $loggedInUser = getLoggedInUser($mysqli);
@@ -58,11 +61,21 @@
                                     $stmt2->bind_param("s", $row->CUID);
                                     $stmt2->execute();
                                     $result2 = $stmt2->get_result();
-                                    $row2 = $result2->fetch_object();
+                                    if($stmt2->num_rows() > 0){
+                                        $courseCount = 1;
+                                        $row2 = $result2->fetch_object();
+                                        echo "<tr>";
+                                        echo "<td>" . getFriendlyDate($row2->StartDate) . "</td>";
+                                        echo "<td>" . $row2->CourseTitle . "</td>";
+                                        echo "<td>" . $row2->DeliveryMethod . "</td>";
+                                        echo "</tr>";
+                                    }
+                                }
+                                if($courseCount == 0) {
                                     echo "<tr>";
-                                    echo "<td>" . getFriendlyDate($row2->StartDate) . "</td>";
-                                    echo "<td>" . $row2->CourseTitle . "</td>";
-                                    echo "<td>" . $row2->DeliveryMethod . "</td>";
+                                    echo "<td>No Upcoming Courses</td>";
+                                    echo "<td></td>";
+                                    echo "<td></td>";
                                     echo "</tr>";
                                 }
                             ?>
