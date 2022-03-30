@@ -69,8 +69,13 @@
                                 <li class="list-group-item d-flex" id="btns<?=$rows["CUID"];?>">
                                     <?php if((($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == 1) || (($rows['CurrentParticipants'] < $rows['MaxParticipants']) && isAdmin($mysqli))){?>
                                         <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
+<<<<<<< HEAD
                                                 <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-enrol btn-success disabled me-1" disabled>✅ Enrolled!</a>
                                                 <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-unenrol btn-danger">Unenroll</a>
+=======
+                                            <li class="list-group-item d-flex"><a class="btn btn-success">✅ Enrolled!</a>
+                                            <a class="btn btn-danger">Unenroll</a></li>
+>>>>>>> f00380d89089199b885db4098a0b31400e3061da
                                         <?php } else { ?>
                                             <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-enrol btn-primary">Register</a>
                                         <?php } ?>
@@ -82,6 +87,7 @@
                                             <a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-secondary disabled" disabled title="Please speak to your admin to request access to this course">Register</a>
                                         <?php } ?>
                                     <?php } ?>
+
                                 </li>
                             </ul>
                         </div>
