@@ -71,15 +71,15 @@
                                         value="<?=$rows['CurrentParticipants']?>"></progress>
                                     <?php if((($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == 1) || (($rows['CurrentParticipants'] < $rows['MaxParticipants']) && isAdmin($mysqli))){?>
                                         <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
-                                            <li class="list-group-item"><a class="btn btn-success">✅ Enrolled!</a></li>
-                                            <li class="list-group-item"><a class="btn btn-danger">Unenroll</a></li>
+                                            <li class="list-group-item d-flex"><a class="btn btn-success">✅ Enrolled!</a>
+                                            <a class="btn btn-danger">Unenroll</a></li>
                                         <?php } else { ?>
                                             <li class="list-group-item"><a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-primary">Register</a></li>
                                         <?php } ?>
                                     <?php } else { ?>
                                         <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
-                                            <li class="list-group-item"><a class="btn btn-success disabled" disabled>✅ Enrolled!</a></li>
-                                            <li class="list-group-item"><a class="btn btn-danger disabled" disabled>unenroll</a></li>
+                                            <li class="list-group-item d-flex"><a class="btn btn-success disabled" disabled>✅ Enrolled!</a>
+                                            <a class="btn btn-danger disabled" disabled>unenroll</a></li>
                                 <?php } else { ?>
                                 <li class="list-group-item"><a class="enrol-btn btn btn-secondary disabled" disabled
                                         title="Please speak to your admin to request access to this course">Register</a>
