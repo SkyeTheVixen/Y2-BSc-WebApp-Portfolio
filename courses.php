@@ -69,13 +69,8 @@
                                 <li class="list-group-item d-flex" id="btns<?=$rows["CUID"];?>">
                                     <?php if((($rows['CurrentParticipants'] < $rows['MaxParticipants']) && $rows['SelfEnrol'] == 1) || (($rows['CurrentParticipants'] < $rows['MaxParticipants']) && isAdmin($mysqli))){?>
                                         <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
-<<<<<<< HEAD
-                                                <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-enrol btn-success disabled me-1" disabled>✅ Enrolled!</a>
-                                                <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-unenrol btn-danger">Unenroll</a>
-=======
-                                            <li class="list-group-item d-flex"><a class="btn btn-success">✅ Enrolled!</a>
-                                            <a class="btn btn-danger">Unenroll</a></li>
->>>>>>> f00380d89089199b885db4098a0b31400e3061da
+                                                <a class="btn btn-success disabled" disabled>✅ Enrolled!</a>
+                                            <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-danger btn-unenrol">Unenroll</a></li>
                                         <?php } else { ?>
                                             <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-enrol btn-primary">Register</a>
                                         <?php } ?>

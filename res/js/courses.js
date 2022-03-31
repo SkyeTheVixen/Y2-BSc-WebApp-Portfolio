@@ -19,6 +19,7 @@ $(document).ready(function () {
         );
     });
 
+    
     $(".btn-unenrol").click(function (event) {
         var courseid = $(this).attr("data-courseid");
         $.post("res/php/course/unenrolCourse.php", {courseID: courseid} , function(res) {

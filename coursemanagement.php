@@ -121,12 +121,7 @@
                             <td><?=$result["DeliveryMethod"]?></td>
                             <td><?=$result["SelfEnrol"] == 1 ? "Y" : "N"?></td>
                             <td><?=$result["MaxParticipants"]?></td>
-                            <td><a data-id="<?=$result["CUID"]?>" class="viewCourse" data-bs-toggle="modal"
-                                    data-bs-target="#viewCourseModal"><i class="fa fa-eye"></i></a></td>
-                            <td><a data-id="<?=$result["CUID"]?>" class="editCourse" data-bs-toggle="modal"
-                                    data-bs-target="#editCourseModal"><i class="fa fa-pencil"></i></a></td>
-                            <td><a data-id="<?=$result["CUID"]?>" class="delCourse"><i class="fas fa-trash-alt"></i></a>
-                            </td>
+                            <td><a data-id="<?=$result["CUID"]?>" class="viewCourse" data-bs-toggle="modal" data-bs-target="#viewCourseModal"><i class="fa fa-eye"></i></a></td>
                             <?php
                             }
                         ?>
