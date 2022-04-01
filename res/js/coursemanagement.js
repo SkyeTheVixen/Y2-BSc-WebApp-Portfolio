@@ -189,7 +189,7 @@ $(document).ready(function () {
                         }
                     })
                     if (member) {
-                        $.post("res/php/course/adminEnrolCourse.php", {
+                        $.post("res/php/course/adminEnrol.php", {
                                 courseID: $("#enrollMemberBtn").attr('data-id'),
                                 member: member
                             },
