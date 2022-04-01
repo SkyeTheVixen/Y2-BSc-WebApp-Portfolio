@@ -76,8 +76,13 @@
                                         <?php } ?>
                                     <?php } else { ?>                                    
                                         <?php if(UserIsEnrolled($mysqli, $rows['CUID'])){ ?>
+                                            <?php if($rows["SelfEnrol"] == 0){?>
                                                 <a data-courseid="<?=$rows['CUID']; ?>"  class="btn btn-enrol btn-success disabled me-1" disabled>✅ Enrolled!</a>
+                                                <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-unenrol btn-danger disabled" disabled>Unenroll</a>
+                                                    <?php } ?>
                                                 <a data-courseid="<?=$rows['CUID']; ?>" class="btn btn-unenrol btn-danger">Unenroll</a>
+                                                <a data-courseid="<?=$rows['CUID']; ?>"  class="btn btn-enrol btn-success disabled me-1" disabled>✅ Enrolled!</a>
+
                                         <?php } else { ?>
                                             <a data-courseid="<?=$rows['CUID']; ?>" class="enrol-btn btn btn-secondary disabled" disabled title="Please speak to your admin to request access to this course">Register</a>
                                         <?php } ?>
