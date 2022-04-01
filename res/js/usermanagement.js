@@ -5,6 +5,7 @@ $(document).ready(function () {
         event.preventDefault();
         $.post("res/php/user/addUser.php", $(this).serialize(),
             function (result) {
+                console.log(result);
                 if (JSON.parse(result).statusCode === 200) {
                     $("#addUserModal").modal('toggle');
                     Swal.fire('User Added!', 'Reloading page for changes to become visible.', 'success', {heightAuto: false}).then(function(){ window.location.reload(); });

@@ -5,13 +5,13 @@
     include_once("../functions.inc.php");
 
     //Check form data
-    if(!isset($_POST["email"])){
+    if(!isset($_POST["emailInputReset"])){
         http_response_code(201);
         return;
     }
 
     //Get user based on email
-    $email = $_POST["resetEmail"];
+    $email = $_POST["emailInputReset"];
     $sql = "SELECT `UUID` FROM `tblUsers` WHERE `Email` = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -28,7 +28,7 @@
 
     //Generate a token and send it to user
     $token = GenerateID();
-    $sql = "INSERT INTO `tblPasswordResets` (`UUID`, `Token`, `Expiry) VALUES (?, ?, now() + INTERVAL 15 MINUTE) ON DUPLICATE KEY UPDATE `Token` = ?, `Expiry` = now() + INTERVAL 15 MINUTE";
+    $sql = "INSERT INTO `tblPasswordResets` (`UUID`, `Token`, `Expiry`) VALUES (?, ?, now() + INTERVAL 15 MINUTE) ON DUPLICATE KEY UPDATE `Token` = ?, `Expiry` = now() + INTERVAL 15 MINUTE";
     $stmt = $mysqli -> prepare($sql);
     $stmt -> bind_param('sss', $user->UUID, $token, $token);
     if($stmt -> execute()){

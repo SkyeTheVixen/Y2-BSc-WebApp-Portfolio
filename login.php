@@ -89,7 +89,7 @@
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label for="emailInputReset" class="form-label">Email address</label>
-                                    <input type="email" required class="form-control" id="emailInputReset">
+                                    <input type="email" required class="form-control" name="emailInputReset" id="emailInputReset">
                                 </div>
                             </div>
 
