@@ -17,6 +17,8 @@
         if($User["AccessLevel"] === "user"){
             header("Location: index");
         }
+        $mysqli->commit();
+        $stmt->close();
     }
     $courseName= $mysqli->real_escape_string($_POST["courseNameInput"]);
     $courseDescription= $mysqli->real_escape_string($_POST["courseDescriptionInput"]);
@@ -37,6 +39,7 @@
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ssssssss", $CUID, $courseName, $courseDescription, $courseStartDate, $courseEndDate, $courseDeliveryMethod, $CourseSelfEnrol, $CourseMaxParticipants);
     if($stmt -> execute()){
+        $mysqli->commit();
         $to = $User["Email"];
         $subject = "Course Creation";
         $txt = "Hi ".$User["FirstName"]." ".$User["LastName"].".\n\nThis email is confirmation that course $courseName [$CUID] has been created.\n\nKind Regards,\nVD Training Team\n\n";
@@ -44,6 +47,7 @@
         echo json_encode(array("statusCode" => 200));
     }
     else{
+        $mysqli->rollback();
         echo json_encode(array("statusCode" => 201));
     }
     $stmt -> close();

@@ -11,7 +11,6 @@
     include_once("$path/res/php/functions.inc.php");
 
 
-    $mysqli->autocommit(FALSE);
     //Escape the course ID, just in case
     $course_id = $mysqli->real_escape_string($_POST['courseID']);
     $member = $mysqli->real_escape_string($_POST['member']);

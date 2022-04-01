@@ -15,8 +15,9 @@
     $register->Cell(40,10,'Register for '. $_POST["courseName"]);
     $register->Ln();
     $register->SetFont('DejaVu','',16);
-    foreach ($names as $name) {
-        $register->Cell(40,10, "☐    " . $name);
+    // for($i = 0; $i < count($names); $i++) {
+        foreach ($names as $name){
+        @$register->Cell(40,10, "☐    " . $name);
         $register->Ln();
     }
     $register->Output('F', '../../../registers/AttendanceRegister'.date('dmy').'.pdf');

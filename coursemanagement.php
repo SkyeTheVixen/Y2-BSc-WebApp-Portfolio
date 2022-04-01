@@ -146,7 +146,7 @@
 
     <!-- Add Course Modal -->
     <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-scrollable">
             <div class="modal-content">
                 <form autocomplete="off" id="addCourseForm">
                     <div class="modal-header">

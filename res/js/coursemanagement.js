@@ -1,23 +1,24 @@
 $(document).ready(function () {
 
     //Enable Data table
-    $("#pastCourseTable").DataTable({
-        columnDefs: [{
-            targets: [1, 4, 5, 6, 7, 8, 9],
-            orderable: false
-        }]
-    });
+    // $("#pastCourseTable").DataTable({
+    //     // columnDefs: [{
+    //     //     targets: [3, 4, 5, 6, 7, 8],
+    //     //     orderable: false
+    //     // }]
+    // });
 
-    //Enable Data Table
-    $("#futureCourseTable").DataTable({
-        columnDefs: [{
-            targets: [1, 4, 5, 6, 7, 8, 9],
-            orderable: false
-        }]
-    });
+    // //Enable Data Table
+    // $("#futureCourseTable").DataTable({
+    //     // columnDefs: [{
+    //     //     targets: [3, 4, 5, 6, 7, 8],
+    //     //     orderable: false
+    //     // }]
+    // });
 
     //Add a new course
-    $("#addCourseForm").submit(function () {
+    $("#addCourseForm").submit(function (event) {
+        event.preventDefault()
         $.post("res/php/course/addCourse.php", $(this).serialize(),
             function (result) {
                 if (JSON.parse(result).statusCode === 200) {
@@ -113,7 +114,8 @@ $(document).ready(function () {
     });
 
     //Generate the attendance register
-    $("#generateAttendanceBtn").click(function () {
+    $("#generateAttendanceBtn").click(function (e) {
+        e.preventDefault();
         var names = [];
         $.post("res/php/course/getEnrolledMembers.php", {
                 CUID: $(this).attr('data-id')
@@ -124,8 +126,8 @@ $(document).ready(function () {
                     names = names.concat(data[i + 1]);
                     i++; //Fix for the weird array i passed back
                 }
-                console.log(names[0]);
-                $.post("res/php/course/generateRegister.php", { courseName: $("#viewCourseName").text(), names: [names] },
+                console.log(names);
+                $.post("res/php/course/generateRegister.php", { courseName: $("#viewCourseName").text(), names: names },
                     function (result) {
                         console.log(result);
                         var data = JSON.parse(result);
@@ -148,12 +150,14 @@ $(document).ready(function () {
     });
 
     //Allow admins to enrol members
-    $("#enrollMemberBtn").click(function () {
+    $("#enrollMemberBtn").click(function (e) {
+        e.preventDefault();
         var names = {};
         $.post("res/php/course/getUnenrolledMembers.php", {
                 CUID: $(this).attr('data-id')
             },
             function (result) {
+                console.log(result);
                 var data = JSON.parse(result);
                 for (var i = 0; i < data.length; i++) {
                     names[data[i]] = data[i + 1];
@@ -192,7 +196,7 @@ $(document).ready(function () {
                             function (result) {
                                 if (JSON.parse(result).statusCode === 200) {
                                     Swal.fire('Enrolled!', 'You have successfully enrolled ' + JSON.parse(result).name + ' in this course.', 'success');
-                                    $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + JSON.parse(result)[i] + "\" data-course-id=" + $("#enrollMemberBtn").attr('data-id') + " data-user-id='" + member + "'>" + Data.name + "</a><br>");
+                                    $("#viewCourseEnrolledMembers").append("<a class=\"unenrolBtn link-dark " + JSON.parse(result)[i] + "\" data-course-id=" + $("#enrollMemberBtn").attr('data-id') + " data-user-id='" + member + "'>" + JSON.parse(result).name + "</a><br>");
                                 }
                             }
 
